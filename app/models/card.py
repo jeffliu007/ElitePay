@@ -11,9 +11,8 @@ class Card(db.Model):
       __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
-    debit_number = db.Column(db.BigInteger, nullable=False, unique=True)
+    full_name = db.Column(db.String(100), nullable=False)
+    debit_number = db.Column(db.String(16), nullable=False, unique=True)
     cvc_number = db.Column(db.Integer, nullable=False)
     balance = db.Column(db.Float, default=0.00)
     created_at = db.Column(db.DateTime, nullable=False, default=today)

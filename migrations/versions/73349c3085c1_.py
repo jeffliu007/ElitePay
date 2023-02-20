@@ -33,9 +33,8 @@ def upgrade():
     )
     op.create_table('cards',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('first_name', sa.String(length=50), nullable=False),
-    sa.Column('last_name', sa.String(length=50), nullable=False),
-    sa.Column('debit_number', sa.BigInteger(), nullable=False),
+    sa.Column('full_name', sa.String(length=100), nullable=False),
+    sa.Column('debit_number', sa.String(length=16), nullable=False),
     sa.Column('cvc_number', sa.Integer(), nullable=False),
     sa.Column('balance', sa.Float(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),

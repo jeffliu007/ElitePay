@@ -2,18 +2,16 @@ from app.models import db, Card, environment, SCHEMA
 
 
 card1 = Card(
-  first_name = 'Demo',
-  last_name = 'Lition',
-  debit_number = 12,
+  full_name = 'Demo Lition',
+  debit_number = "1234567812345678",
   cvc_number = 123,
   balance = 10000.00,
   user_id = 1
 )
 
 card2 = Card(
-  first_name = 'Demo',
-  last_name = 'Lition',
-  debit_number = 87,
+  full_name = 'Demo Lition',
+  debit_number = "2234567812345678",
   cvc_number = 321,
   balance = 100.00,
   user_id = 1
@@ -21,45 +19,40 @@ card2 = Card(
 
 
 card3 = Card(
-  first_name = 'Demo',
-  last_name = 'Lition',
-  debit_number = 23,
+  full_name = 'Demo Lition',
+  debit_number = "3234567812345678",
   cvc_number = 333,
   balance = 25000.00,
   user_id = 1
 )
 
 card4 = Card(
-  first_name = 'Marnie',
-  last_name = 'Klay',
-  debit_number = 22,
+  full_name = 'Marnie Klay',
+  debit_number = "4234567812345678",
   cvc_number = 232,
   balance = 500.00,
   user_id = 2
 )
 
 card5 = Card(
-  first_name = 'Marnie',
-  last_name = 'Klay',
-  debit_number = 253,
+  full_name = 'Marnie Klay',
+  debit_number = "5234567812345678",
   cvc_number = 231,
   balance = 100.00,
   user_id = 2
 )
 
 card6 = Card(
-  first_name = 'Bobbie',
-  last_name = 'Lee',
-  debit_number = 33,
+  full_name = 'Bobbie Lee',
+  debit_number = "6234567812345678",
   cvc_number = 121,
   balance = 450.00,
   user_id = 3
 )
 
 card7 = Card(
-  first_name = 'Bobbie',
-  last_name = 'Lee',
-  debit_number = 211,
+  full_name = 'Bobbie Lee',
+  debit_number = "7234567812345678",
   cvc_number = 532,
   balance = 100.00,
   user_id = 3
