@@ -1,0 +1,34 @@
+from .db import db, environment, SCHEMA, add_prefix_for_prod
+from datetime import datetime
+
+today = datetime.now()
+
+
+class Card(db.Model):
+    __tablename__ = 'cards'
+
+    if environment == "production":
+      __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
+    debit_number = db.Column(db.BigInteger, nullable=False, unique=True)
+    cvc_number = db.Column(db.Integer, nullable=False)
+    balance = db.Column(db.Float, default=0.00)
+    created_at = db.Column(db.DateTime, nullable=False, default=today)
+
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+
+    users = db.relationship("User", back_populates="cards")
+
+    def to_dict(self):
+      return {
+        "id": self.id,
+        'first_name': self.first_name,
+        'last_name': self.last_name,
+        'debit_number': self.debit_number,
+        'cvc_number': self.cvc_number,
+        'balance': self.balance,
+        'createdAt': self.created_at
+      }

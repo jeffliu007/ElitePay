@@ -14,6 +14,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    cards = db.relationship('Card', back_populates='users', cascade='all,delete')
+    transactions= db.relationship('Transaction', back_populates='users', cascade='all, delete')
+    wallets= db.relationship('Wallet', back_populates='users', cascade='all, delete')
+
     @property
     def password(self):
         return self.hashed_password
@@ -29,5 +33,5 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
         }
