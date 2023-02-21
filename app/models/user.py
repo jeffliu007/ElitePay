@@ -16,7 +16,6 @@ class User(db.Model, UserMixin):
 
     cards = db.relationship('Card', back_populates='users', cascade='all,delete')
     transactions= db.relationship('Transaction', back_populates='users', cascade='all, delete')
-    wallets= db.relationship('Wallet', back_populates='users', cascade='all, delete')
 
     @property
     def password(self):
