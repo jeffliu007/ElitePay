@@ -10,10 +10,11 @@ def name_validator(form, field):
 
 def debit_number_validator(form,field):
   if len(field.data) != 16 :
-    raise ValidationError("Debit number must be exactly 16 characters long")
+    raise ValidationError("Debit number must be exactly 16 digits long")
 
 def cvc_validator(form,field):
-  pass
+  if len(field.data) != 3 :
+    raise ValidationError("Cvc number must be exactly 3 digits long")
 
 class CreateCardForm(FlaskForm):
   full_name = StringField('full name', validators=[DataRequired(), name_validator])
