@@ -109,7 +109,7 @@ input the keys and values for the environment variables you need for production
 into the Render GUI.
 
 Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment..
+need for the production environment.
 
 Add the following keys and values in the Render GUI form:
 
