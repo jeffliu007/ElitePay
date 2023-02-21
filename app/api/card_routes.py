@@ -97,3 +97,22 @@ def update_card(cardId):
     return edit_card.to_dict()
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+#route to delete existing debit card by cardId
+@card_routes.route('/<int:cardId>', methods=['DELETE'])
+@login_required
+def delete_card(cardId):
+  #find card
+  delete_card = db.session.query(Card).get(int(cardId))
+
+  if not delete_card:
+      return {"message": "Photo couldn't be found"}, 404
+
+  if delete_card.user_id != current_user.id:
+      return {'errors': ['Unauthorized']}, 401
+
+  db.session.delete(delete_card)
+  db.session.commit()
+
+  return {"message": "Successfully deleted"}
