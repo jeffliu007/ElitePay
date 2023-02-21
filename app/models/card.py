@@ -24,8 +24,7 @@ class Card(db.Model):
     def to_dict(self):
       return {
         "id": self.id,
-        'first_name': self.first_name,
-        'last_name': self.last_name,
+        'full_name': self.full_name,
         'debit_number': self.debit_number,
         'cvc_number': self.cvc_number,
         'balance': self.balance,
