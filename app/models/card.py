@@ -13,7 +13,7 @@ class Card(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     full_name = db.Column(db.String(100), nullable=False)
     debit_number = db.Column(db.String(16), nullable=False, unique=True)
-    cvc_number = db.Column(db.Integer, nullable=False)
+    cvc_number = db.Column(db.String(3), nullable=False)
     balance = db.Column(db.Float, default=0.00)
     created_at = db.Column(db.DateTime, nullable=False, default=today)
 
@@ -28,5 +28,6 @@ class Card(db.Model):
         'debit_number': self.debit_number,
         'cvc_number': self.cvc_number,
         'balance': self.balance,
-        'createdAt': self.created_at
+        'createdAt': self.created_at,
+        'user_id': self.user_id
       }
