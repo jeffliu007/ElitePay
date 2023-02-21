@@ -26,3 +26,10 @@ class CreateCardForm(FlaskForm):
   debit_number = StringField("debit_number", validators=[DataRequired(), debit_number_validator])
   cvc_number = StringField("cvc_number", validators=[DataRequired(), cvc_validator])
   balance = FloatField("balance", validators=[DataRequired(), positive_balance_validator])
+
+
+class EditCardForm(FlaskForm):
+  full_name = StringField('full_name', validators=[DataRequired(), name_validator])
+  debit_number = StringField("debit_number", validators=[DataRequired(), debit_number_validator])
+  cvc_number = StringField("cvc_number", validators=[DataRequired(), cvc_validator])
+  balance = FloatField("balance", validators=[DataRequired(), positive_balance_validator])
