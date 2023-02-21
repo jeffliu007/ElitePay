@@ -28,6 +28,6 @@ class Card(db.Model):
         'debit_number': self.debit_number,
         'cvc_number': self.cvc_number,
         'balance': self.balance,
-        'createdAt': self.created_at,
+        'created_at': self.created_at,
         'user_id': self.user_id
       }
