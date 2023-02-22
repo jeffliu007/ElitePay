@@ -77,6 +77,8 @@ def get_single_transaction(transactionId):
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
+
 # create transaction but all pending
 @transaction_routes.route("/", methods=['POST'])
 @login_required
@@ -110,7 +112,8 @@ def create_transaction():
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-# route to allow user to accept transaction
+
+# route to allow user to accept transaction that is pending
 @transaction_routes.route("/<int:transactionId>/accept", methods=['POST'])
 @login_required
 def accept_transaction(transactionId):
@@ -152,10 +155,10 @@ def accept_transaction(transactionId):
 
 
 
-#route to edit existing transaction
-@transaction_routes.route("/<int:transactionId>", methods=['PUT'])
-@login_required
-def update_transaction(transactionId):
+# #route to edit existing transaction
+# @transaction_routes.route("/<int:transactionId>", methods=['PUT'])
+# @login_required
+# def update_transaction(transactionId):
   #find transaction
   edit_transaction = db.session.query(Transaction).get(int(transactionId))
 
@@ -164,8 +167,6 @@ def update_transaction(transactionId):
 
   if edit_transaction.sender_id != current_user.id:
     return {'errors': ['Unauthorized']}, 401
-
-
 
   form = EditTransactionForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -191,6 +192,46 @@ def update_transaction(transactionId):
     return edit_transaction.to_dict()
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# new edit route
+@transaction_routes.route("/<int:transactionId>", methods=['PUT'])
+@login_required
+def update_transaction(transactionId):
+    form = EditTransactionForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+
+        transaction = db.session.query(Transaction).filter_by(id=transactionId, sender_id=current_user.id).first()
+
+        if not transaction:
+            return {'errors': ["Transaction not found"]}, 404
+
+        if transaction.status != "pending":
+            return {'errors': ["Transaction cannot be updated"]}, 400
+
+        selected_card = transaction.card
+
+        # check card for sufficient balance
+        if selected_card.balance < data['amount']:
+            return {'errors': ["Insufficient balance"]}, 401
+
+        # update transaction details
+        transaction.amount = data['amount']
+        transaction.description = data['description']
+        db.session.add(transaction)
+
+        db.session.commit()
+
+        return transaction.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
+
 
 
 #route to delete existing transaction
