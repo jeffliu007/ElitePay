@@ -45,8 +45,9 @@ def upgrade():
     )
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('amount', sa.Float(), nullable=True),
-    sa.Column('description', sa.String(length=255), nullable=True),
+    sa.Column('amount', sa.Float(), nullable=False),
+    sa.Column('description', sa.String(length=255), nullable=False),
+    sa.Column('status', sa.String(length=20), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('sender_id', sa.Integer(), nullable=False),
     sa.Column('recipient_id', sa.Integer(), nullable=False),

@@ -10,8 +10,9 @@ class Transaction(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    amount = db.Column(db.Float)
-    description = db.Column(db.String(255))
+    amount = db.Column(db.Float, nullable=False)
+    description = db.Column(db.String(255), nullable=False)
+    status = db.Column(db.String(20), default="pending", nullable=False)
     created_at = db.Column(db.DateTime, default=today)
     sender_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     recipient_id = db.Column(db.Integer, nullable=False)
