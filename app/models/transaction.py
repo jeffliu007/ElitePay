@@ -27,6 +27,4 @@ class Transaction(db.Model):
         'created_at': self.created_at,
         'sender_id': self.sender_id,
         "recipient_id": self.recipient_id,
-        "sender_name": self.sender.username,
-        'recipient_name': self.recipient.username
     }
