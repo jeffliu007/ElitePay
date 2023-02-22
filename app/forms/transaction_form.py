@@ -16,9 +16,11 @@ def description_validator(form,field):
 class CreateTransactionForm(FlaskForm):
   amount = FloatField('amount', validators=[DataRequired(), amount_validator])
   description = StringField('description', validators=[DataRequired(), description_validator])
-  recipient_id = IntegerField('receiver', validators=[DataRequired()])
+  recipient_id = IntegerField('recipient_id', validators=[DataRequired()])
+  card_id = IntegerField('card_id', validators=[DataRequired()])
 
 class EditTransactionForm(FlaskForm):
   amount = FloatField('amount', validators=[DataRequired(), amount_validator])
   description = StringField('description', validators=[DataRequired(), description_validator])
   recipient_id = IntegerField('receiver', validators=[DataRequired()])
+  card_id = IntegerField('card_id', validators=[DataRequired()])

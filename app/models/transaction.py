@@ -16,9 +16,10 @@ class Transaction(db.Model):
     created_at = db.Column(db.DateTime, default=today)
     sender_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     recipient_id = db.Column(db.Integer, nullable=False)
-
+    card_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('cards.id')), nullable=False)
 
     users = db.relationship('User', back_populates='transactions')
+    card = db.relationship('Card', back_populates='transactions')
 
     def to_dict(self):
       return {
