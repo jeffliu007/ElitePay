@@ -20,6 +20,7 @@ class Card(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     users = db.relationship("User", back_populates="cards")
+    transactions = db.relationship("Transaction", back_populates="card")
 
     def to_dict(self):
       return {

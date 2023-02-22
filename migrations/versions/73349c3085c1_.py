@@ -51,8 +51,11 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('sender_id', sa.Integer(), nullable=False),
     sa.Column('recipient_id', sa.Integer(), nullable=False),
+    sa.Column('card_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['sender_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['card_id'], ['cards.id'],),
     sa.PrimaryKeyConstraint('id')
+
     )
     # ### end Alembic commands ###
 
