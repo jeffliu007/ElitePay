@@ -1,0 +1,67 @@
+.Splash-Container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.Splash-Text-Image-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.robotarm {
+  height: 78vh;
+  margin-right: 128px;
+  margin-top: 8vh;
+  width: 78vh;
+}
+
+.Splash-Text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  font-size: 95px;
+  margin-top: 28vh;
+  margin-left: 21vh;
+  color: white;
+  font-weight: lighter;
+}
+
+.Splash-GetStarted {
+  display: flex;
+  width: 140px;
+  height: 140px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #32bacf;
+  border-radius: 9999px;
+  padding: 3px;
+  /* color: #ffffff; */
+  cursor: pointer;
+  margin-top: 34vh;
+  margin-left: 42%;
+  font-size: 23px;
+  background: linear-gradient(to right, #32bacf, #4bd7df, #f7fcfb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fa-arrow-up {
+  transform: rotate(45deg);
+  margin-left: -13px;
+  margin-bottom: 22px;
+}
+
+.Splash-GenerationSpan {
+  background: linear-gradient(to right, #32bacf, #4bd7df, #a2f1f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
