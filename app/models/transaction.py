@@ -29,4 +29,6 @@ class Transaction(db.Model):
         'created_at': self.created_at,
         'sender_id': self.sender_id,
         "recipient_id": self.recipient_id,
+        "card_id": self.card_id,
+        "status": self.status
     }

@@ -24,3 +24,7 @@ class EditTransactionForm(FlaskForm):
   description = StringField('description', validators=[DataRequired(), description_validator])
   recipient_id = IntegerField('receiver', validators=[DataRequired()])
   card_id = IntegerField('card_id', validators=[DataRequired()])
+
+
+class AcceptTransactionForm(FlaskForm):
+    transaction_id = IntegerField('transaction_id', validators=[DataRequired()])

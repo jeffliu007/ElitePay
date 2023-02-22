@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 from app.models import db, Transaction, Card
-from ..forms.transaction_form import CreateTransactionForm, EditTransactionForm
+from ..forms.transaction_form import CreateTransactionForm, EditTransactionForm, AcceptTransactionForm
 
 transaction_routes = Blueprint('transaction', __name__)
 
@@ -39,7 +39,45 @@ def get_single_transaction(transactionId):
   return info
 
 
-#route to create a new transaction
+# old route to create a new transaction
+# @transaction_routes.route("/", methods=['POST'])
+# @login_required
+# def create_transaction():
+  form = CreateTransactionForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  if form.validate_on_submit():
+    data = form.data
+
+    # Find the selected card by id
+    selected_card = db.session.query(Card).filter_by(id=data['card_id'], user_id=current_user.id).first()
+
+    # check card for sufficient balance
+    if selected_card.balance < data['amount']:
+            return {'errors': ["Insufficient balance"]}, 401
+
+    recipient_card = db.session.query(Card).filter_by(user_id=data['recipient_id']).first()
+    recipient_card.balance += data['amount']
+
+    new_transaction = Transaction(
+      amount = data['amount'],
+      description = data['description'],
+      sender_id = current_user.id,
+      recipient_id = data['recipient_id'],
+      card_id = selected_card.id
+    )
+
+    # Update sender's balance
+    selected_card.balance -= data['amount']
+
+    db.session.add(new_transaction)
+    db.session.commit()
+
+    return new_transaction.to_dict()
+
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# create transaction but all pending
 @transaction_routes.route("/", methods=['POST'])
 @login_required
 def create_transaction():
@@ -61,17 +99,57 @@ def create_transaction():
       description = data['description'],
       sender_id = current_user.id,
       recipient_id = data['recipient_id'],
-      card_id = selected_card.id
+      card_id = selected_card.id,
+      status = "pending"
     )
-
-    #update balance
-    selected_card.balance -= data['amount']
 
     db.session.add(new_transaction)
     db.session.commit()
     return new_transaction.to_dict()
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# route to allow user to accept transaction
+@transaction_routes.route("/<int:transactionId>/accept", methods=['POST'])
+@login_required
+def accept_transaction(transactionId):
+  form = AcceptTransactionForm()
+  form["csrf_token"].data = request.cookies["csrf_token"]
+
+  if form.validate_on_submit():
+    data = form.data
+
+    transaction = db.session.query(Transaction).filter_by(id=transactionId, recipient_id=current_user.id).first()
+
+    # if current_user.id != recipient_id:
+    #   return {'errors': ['Unauthorized'] }
+
+    if not transaction:
+      return {'errors': ["Transaction not found"]}, 404
+
+    if transaction.status != "pending":
+      return {'errors': ["Transaction has already been accepted"]}, 400
+
+    # update the balances
+    selected_card = transaction.card
+    recipient_card = db.session.query(Card).filter_by(user_id=current_user.id).first()
+
+    if not recipient_card:
+      return {'errors': ["Recipient card not found"]}, 404
+
+    if selected_card.balance < transaction.amount:
+      return {'errors': ["Insufficient balance"]}, 400
+
+    selected_card.balance -= transaction.amount
+    transaction.status = "completed"
+    db.session.add(transaction)
+
+    db.session.commit()
+
+    return transaction.to_dict()
+
+
 
 
 #route to edit existing transaction
@@ -87,15 +165,27 @@ def update_transaction(transactionId):
   if edit_transaction.sender_id != current_user.id:
     return {'errors': ['Unauthorized']}, 401
 
+
+
   form = EditTransactionForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
     data = form.data
+    # Find the selected card by id
+    selected_card = db.session.query(Card).filter_by(id=data['card_id'], user_id=current_user.id).first()
+
+    # check card for sufficient balance
+    if selected_card.balance < data['amount']:
+      return {'errors': ["Insufficient balance"]}, 401
 
     edit_transaction.amount = data['amount']
     edit_transaction.description = data['description']
     edit_transaction.recipient_id = data['recipient_id']
+    edit_transaction.card_id = selected_card.id
+
+    #update balance
+    selected_card.balance -= data['amount']
 
     db.session.commit()
     return edit_transaction.to_dict()
