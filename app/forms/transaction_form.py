@@ -17,3 +17,8 @@ class CreateTransactionForm(FlaskForm):
   amount = FloatField('amount', validators=[DataRequired(), amount_validator])
   description = StringField('description', validators=[DataRequired(), description_validator])
   recipient_id = IntegerField('receiver', validators=[DataRequired()])
+
+class EditTransactionForm(FlaskForm):
+  amount = FloatField('amount', validators=[DataRequired(), amount_validator])
+  description = StringField('description', validators=[DataRequired(), description_validator])
+  recipient_id = IntegerField('receiver', validators=[DataRequired()])

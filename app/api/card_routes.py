@@ -77,7 +77,7 @@ def update_card(cardId):
   edit_card = db.session.query(Card).get(int(cardId))
 
   if not edit_card:
-      return {"message": "Photo couldn't be found"}, 404
+      return {"message": "Card couldn't be found"}, 404
 
   if edit_card.user_id != current_user.id:
       return {'errors': ['Unauthorized']}, 401
@@ -107,7 +107,7 @@ def delete_card(cardId):
   delete_card = db.session.query(Card).get(int(cardId))
 
   if not delete_card:
-      return {"message": "Photo couldn't be found"}, 404
+      return {"message": "Card couldn't be found"}, 404
 
   if delete_card.user_id != current_user.id:
       return {'errors': ['Unauthorized']}, 401
