@@ -2,8 +2,8 @@ import "./DashboardPage.css";
 
 const DashboardPage = () => {
   return (
-    <div className="Dashboard-Container">
-      <h1 className="Dashboard-Test">Empty for now dashboard page</h1>
+    <div className="Dashboard-Main-Container">
+      <div>holder</div>
     </div>
   );
 };

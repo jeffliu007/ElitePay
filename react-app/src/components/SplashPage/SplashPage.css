@@ -65,6 +65,29 @@
   background-color: transparent;
   border-radius: inherit;
   cursor: pointer;
+  transition: background-color 0.2s ease-out; /* add a transition for a smoother effect */
+}
+
+.Splash-GetStarted:hover::before {
+  background-color: transparent;
+}
+
+.Splash-GetStarted:hover {
+  display: flex;
+  width: 140px;
+  height: 140px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #b3fbfa;
+  border-radius: 9999px;
+  padding: 3px;
+  margin-top: 41vh;
+  margin-left: -72%;
+  font-size: 23px;
+  background: linear-gradient(to right, #7ce5f5, #aaf2f6, #f7fcfb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
 }
 
 .Splash-GenerationSpan {
