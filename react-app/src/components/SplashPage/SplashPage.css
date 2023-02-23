@@ -1,0 +1,120 @@
+.Splash-Container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  min-height: 100%;
+  background-size: contain;
+  width: 100%;
+}
+
+.Splash-Text-Image-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.robotarm {
+  height: 78vh;
+  margin-right: 128px;
+  margin-top: 8vh;
+  width: 78vh;
+  position: relative;
+  z-index: 5;
+}
+
+.Splash-Text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  font-size: 71px;
+  margin-top: -9vh;
+  margin-left: 21vh;
+  color: white;
+  font-weight: lighter;
+}
+
+.Splash-GetStarted {
+  display: flex;
+  width: 140px;
+  height: 140px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #32bacf;
+  border-radius: 9999px;
+  padding: 3px;
+  /* color: #ffffff; */
+  margin-top: 41vh;
+  margin-left: -8%;
+  font-size: 23px;
+  background: linear-gradient(to right, #32bacf, #4bd7df, #f7fcfb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.Splash-GetStarted::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.Splash-GenerationSpan {
+  background: linear-gradient(to right, #32bacf, #4bd7df, #a2f1f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Splash-Logo {
+  margin-left: 16vh;
+  margin-top: -3vh;
+  height: 52vh;
+}
+
+.Splash-Background-Gradient {
+  position: absolute;
+  z-index: 0;
+  width: 26%;
+  height: 101%;
+  background: linear-gradient(90deg, #07aaeb 0, #073f85 100%);
+  filter: blur(500px);
+  top: 0;
+  right: 0;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) and (-webkit-min-device-pixel-ratio: 2) {
+  .robotarm {
+    height: 78vh;
+    margin-right: 22px;
+    margin-top: 16vh;
+    width: 78vh;
+    position: relative;
+    z-index: 5;
+  }
+
+  .Splash-Text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    font-size: 55px;
+    margin-top: -9vh;
+    margin-left: 21vh;
+    color: white;
+    font-weight: lighter;
+  }
+}
