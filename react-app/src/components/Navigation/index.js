@@ -5,13 +5,19 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import OpenModalButton from "../OpenModalButton";
+import { useLocation } from "react-router-dom";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session);
+  const location = useLocation();
 
   return (
-    <div className="Navbar">
+    <div
+      className={`Navbar ${
+        location.pathname === "/" ? "Navbar-transparent" : "Navbar"
+      }`}
+    >
       <div className="leftNav">
         <NavLink exact to="/">
           <img
