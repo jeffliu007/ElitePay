@@ -17,18 +17,19 @@ const SplashPage = () => {
     <>
       <div className="Splash-Container">
         <div className="Splash-Text-Image-Container">
-          <i class="fa-solid fa-arrow-up"></i>
-          <img
-            src={process.env.PUBLIC_URL + "/logo.png"}
-            className="Splash-Logo"
-          />
-          <h1 className="Splash-Text">
-            The Next <br />
-            <span className="Splash-GenerationSpan">Generation</span>
-            Payment Method
-          </h1>
-          <div className="Splash-GetStarted">
-            <div>
+          <div>
+            <img
+              src={process.env.PUBLIC_URL + "/logo.png"}
+              className="Splash-Logo"
+            />
+            <h1 className="Splash-Text">
+              The Next <br />
+              <span className="Splash-GenerationSpan">Generation</span>
+              Payment Method
+            </h1>
+          </div>
+          <div className="Splash-GetStarted-Container">
+            <div className="Splash-GetStarted">
               Get <br />
               Started
             </div>

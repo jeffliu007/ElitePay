@@ -29,7 +29,7 @@
   align-items: flex-start;
   position: absolute;
   font-size: 84px;
-  margin-top: 40vh;
+  margin-top: -9vh;
   margin-left: 21vh;
   color: white;
   font-weight: lighter;
@@ -46,7 +46,7 @@
   padding: 3px;
   /* color: #ffffff; */
   margin-top: 41vh;
-  margin-left: 42%;
+  margin-left: -8%;
   font-size: 23px;
   background: linear-gradient(to right, #32bacf, #4bd7df, #f7fcfb);
   -webkit-background-clip: text;
@@ -66,15 +66,6 @@
   cursor: pointer;
 }
 
-.fa-arrow-up {
-  transform: rotate(45deg);
-  margin-left: 93vh;
-  margin-top: 45vh;
-  color: white;
-  position: absolute;
-  font-size: 25px;
-}
-
 .Splash-GenerationSpan {
   background: linear-gradient(to right, #32bacf, #4bd7df, #a2f1f1);
   -webkit-background-clip: text;
@@ -83,9 +74,9 @@
 }
 
 .Splash-Logo {
-  position: absolute;
-  margin-left: 15vh;
-  margin-top: -2vh;
+  margin-left: 16vh;
+  margin-top: -6vh;
+  height: 52vh;
 }
 
 .Splash-Background-Gradient {
@@ -97,4 +88,34 @@
   filter: blur(500px);
   top: 0;
   right: 0;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) and (-webkit-min-device-pixel-ratio: 2) {
+  .robotarm {
+    height: 78vh;
+    margin-right: 22px;
+    margin-top: 8vh;
+    width: 78vh;
+    position: relative;
+    z-index: 5;
+  }
+
+  .Splash-GetStarted {
+    display: flex;
+    width: 140px;
+    height: 140px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #32bacf;
+    border-radius: 9999px;
+    padding: 3px;
+    /* color: #ffffff; */
+    margin-top: 41vh;
+    margin-left: 36%;
+    font-size: 23px;
+    background: linear-gradient(to right, #32bacf, #4bd7df, #f7fcfb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+  }
 }
