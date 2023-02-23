@@ -3,6 +3,9 @@
   align-items: center;
   justify-content: center;
   background-color: black;
+  min-height: 100%;
+  background-size: contain;
+  width: 100%;
 }
 
 .Splash-Text-Image-Container {
@@ -10,6 +13,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 }
 
 .robotarm {
@@ -27,8 +31,8 @@
   align-items: center;
   justify-content: center;
   align-items: flex-start;
-  position: absolute;
-  font-size: 84px;
+  position: relative;
+  font-size: 71px;
   margin-top: -9vh;
   margin-left: 21vh;
   color: white;
@@ -75,7 +79,7 @@
 
 .Splash-Logo {
   margin-left: 16vh;
-  margin-top: -6vh;
+  margin-top: -3vh;
   height: 52vh;
 }
 
@@ -94,28 +98,23 @@
   .robotarm {
     height: 78vh;
     margin-right: 22px;
-    margin-top: 8vh;
+    margin-top: 16vh;
     width: 78vh;
     position: relative;
     z-index: 5;
   }
 
-  .Splash-GetStarted {
+  .Splash-Text {
     display: flex;
-    width: 140px;
-    height: 140px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid #32bacf;
-    border-radius: 9999px;
-    padding: 3px;
-    /* color: #ffffff; */
-    margin-top: 41vh;
-    margin-left: 36%;
-    font-size: 23px;
-    background: linear-gradient(to right, #32bacf, #4bd7df, #f7fcfb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    align-items: flex-start;
     position: relative;
+    font-size: 55px;
+    margin-top: -9vh;
+    margin-left: 21vh;
+    color: white;
+    font-weight: lighter;
   }
 }
