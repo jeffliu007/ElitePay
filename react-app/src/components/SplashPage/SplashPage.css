@@ -1,10 +1,7 @@
 .Splash-Container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: black;
-  min-height: 100%;
-  background-size: contain;
+  min-height: 90vh;
   width: 100%;
 }
 
@@ -19,10 +16,10 @@
 .robotarm {
   height: 78vh;
   margin-right: 128px;
-  margin-top: 8vh;
+  margin-top: 5vh;
   width: 78vh;
   position: relative;
-  z-index: 5;
+  z-index: 2;
 }
 
 .Splash-Text {
@@ -77,8 +74,8 @@
 }
 
 .Splash-Logo {
-  margin-left: 16vh;
-  margin-top: -3vh;
+  margin-left: 13vh;
+  margin-bottom: 2vh;
   height: 52vh;
 }
 
@@ -93,11 +90,35 @@
   right: 0;
 }
 
-@media only screen and (min-width: 1280px) and (max-width: 1440px) and (-webkit-min-device-pixel-ratio: 2) {
+.SplashPage-Footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 5%;
+  background-color: #202022;
+}
+
+.SplashPage-Footer-Text {
+  color: white;
+}
+
+.fa-github {
+  display: flex;
+  font-size: 25px;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1440px) {
   .robotarm {
     height: 78vh;
     margin-right: 22px;
-    margin-top: 16vh;
+    margin-top: 4vh;
     width: 78vh;
     position: relative;
     z-index: 5;
@@ -115,5 +136,9 @@
     margin-left: 21vh;
     color: white;
     font-weight: lighter;
+  }
+
+  .Splash-Container {
+    overflow: hidden !important;
   }
 }
