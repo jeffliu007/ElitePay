@@ -2,16 +2,17 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { useHistory } from "react-router-dom";
 import "./SplashPage.css";
+import Footer from "./footer";
 
 const SplashPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // const demoLogin = () => {
-  //   dispatch(sessionActions.login("demo@aa.io", "password"));
-  //   return history.push("/api/dashboard/cards");
-  // };
+  const demoLogin = () => {
+    dispatch(sessionActions.login("demo@aa.io", "password"));
+    return history.push("/api/dashboard/cards/");
+  };
 
   return (
     <>
@@ -29,7 +30,7 @@ const SplashPage = () => {
             </h1>
           </div>
           <div className="Splash-GetStarted-Container">
-            <div className="Splash-GetStarted">
+            <div className="Splash-GetStarted" onClick={demoLogin}>
               Get <br />
               Started
             </div>
@@ -41,9 +42,9 @@ const SplashPage = () => {
             />
             <div className="Splash-Background-Gradient" />
           </div>
-          <div className="Splash-Background-Gradient" />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

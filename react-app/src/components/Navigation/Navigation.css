@@ -5,3 +5,48 @@
 .hidden {
   display: none;
 }
+
+.Navbar {
+  background-color: #000000;
+  height: 69px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 0;
+}
+
+.Navbar-Home-Logo {
+  width: 108px;
+  object-fit: cover;
+  margin-left: 65px;
+  padding-right: 14px;
+}
+
+.leftNav {
+  display: flex;
+  align-items: center;
+}
+
+.rightNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 30vh;
+  justify-content: flex-end;
+}
+
+.Login-Signup-Holder {
+  margin-right: 52px;
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+}
+
+.Log {
+  margin-right: 10px;
+  width: 56px;
+  color: white;
+}
