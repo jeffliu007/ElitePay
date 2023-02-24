@@ -113,6 +113,18 @@ export const thunkUpdateCard = (card) => async (dispatch) => {
   }
 };
 
+export const thunkDeleteCard = (cardId) => async (dispatch) => {
+  const response = await fetch(`/api/cards/${cardId}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    const deletedCard = await response.json();
+    dispatch(deleteCard(cardId));
+    return deletedCard;
+  }
+};
+
 // ------------------------->
 
 // Reducer here
@@ -146,6 +158,10 @@ export default function cardReducer(state = initialState, action) {
       };
     case UPDATE_CARD:
       newState = { ...state, [action.payload.id]: action.payload };
+      return newState;
+    case DELETE_CARD:
+      newState = { ...state };
+      delete newState[action.payload];
       return newState;
     default:
       return state;

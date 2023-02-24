@@ -2,21 +2,26 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 import "./SingleCardPage.css";
-import { thunkGetSingleCard } from "../../store/cards";
+import { thunkGetSingleCard, thunkDeleteCard } from "../../store/cards";
 import UpdateCardModal from "../UpdateCardModal";
 
 const SingleCardPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const singleCard = useSelector((state) => state.cards.singleCard);
   const sessionUser = useSelector((state) => state.session);
   const [loadedPage, setLoadedPage] = useState(false);
+
+  const { cardId } = useParams();
 
   useEffect(() => {
     dispatch(thunkGetSingleCard(cardId)).then(() => setLoadedPage(true));
   }, [dispatch]);
 
-  console.log("singel card ====>", singleCard);
-  const { cardId } = useParams();
+  const handleCardDelete = async (e) => {
+    e.preventDefault();
+    dispatch(thunkDeleteCard(cardId)).then(() => history.push("/dashboard"));
+  };
 
   return (
     <div className="SingleCard-Container">
@@ -31,6 +36,9 @@ const SingleCardPage = () => {
       </div>
       <div className="Dashboard-Edit-Card">
         <UpdateCardModal user={sessionUser} />
+      </div>
+      <div className="Dashboard-Delete-Card" onClick={handleCardDelete}>
+        Delete Card
       </div>
     </div>
   );
