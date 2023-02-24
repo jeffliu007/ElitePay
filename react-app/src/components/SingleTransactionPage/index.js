@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 import "./SingleTransactionPage.css";
-import { thunkGetSingleTransaction } from "../../store/transactions";
+import {
+  thunkGetSingleTransaction,
+  thunkDeleteTransaction,
+} from "../../store/transactions";
 
 //!!!!!!!!!!!!!!!!!!!!
 //!!!!!!!!!!!!!!!!!!!!!
@@ -31,6 +34,13 @@ const SingleTransactionPage = () => {
     );
   }, [dispatch]);
 
+  const handleTransactionDelete = async (e) => {
+    e.preventDefault();
+    dispatch(thunkDeleteTransaction(transactionId)).then(() =>
+      history.push("/dashboard/transactions")
+    );
+  };
+
   return (
     <div className="SingleTransaction-Container">
       <h1>Dumping all single transaction info here</h1>
@@ -47,6 +57,12 @@ const SingleTransactionPage = () => {
         </div>
         <div>Single Transaction sender_id {singleTransaction.sender_id}</div>
         <div>Single Transaction status {singleTransaction.status}</div>
+      </div>
+      <div
+        className="AllTransaction-Delete-Transaction"
+        onClick={handleTransactionDelete}
+      >
+        Delete Transaction
       </div>
     </div>
   );

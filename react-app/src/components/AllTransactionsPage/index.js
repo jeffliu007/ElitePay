@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./AllTransactionsPage.css";
 import { thunkGetAllTransactions } from "../../store/transactions";
+import CreateTransactionModal from "../CreateTransactionModal/Index";
 
 const AllTransactionsPage = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,6 @@ const AllTransactionsPage = () => {
   useEffect(() => {
     dispatch(thunkGetAllTransactions()).then(() => setLoadedPage(true));
   }, [dispatch]);
-
-  console.log("alltrans ======> ", allTransactions);
 
   // if (!loadedPage) return null;
 
@@ -37,6 +36,9 @@ const AllTransactionsPage = () => {
           <div>transaction status: {transaction.status}</div>
         </div>
       ))}
+      <div className="AllTransaction-Create-Transaction">
+        <CreateTransactionModal />
+      </div>
     </div>
   );
 };
