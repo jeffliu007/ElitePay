@@ -23,6 +23,7 @@ function Navigation({ isLoaded }) {
           <img
             src={process.env.PUBLIC_URL + "/logo.png"}
             className="Navbar-Home-Logo"
+            alt="navbar homelogo"
           />
         </NavLink>
       </div>
