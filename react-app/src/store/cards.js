@@ -94,6 +94,25 @@ export const thunkCreateCard = (data) => async (dispatch) => {
   }
 };
 
+export const thunkUpdateCard = (card) => async (dispatch) => {
+  const response = await fetch(`/api/cards/${card.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(card),
+  });
+
+  if (response.ok) {
+    const editedCard = await response.json();
+    dispatch(updateCard(editedCard));
+    return editedCard; // return response object
+  } else if (response.status < 500) {
+    const data = await response.json();
+    throw new Error(JSON.stringify(data));
+  }
+};
+
 // ------------------------->
 
 // Reducer here
@@ -125,6 +144,9 @@ export default function cardReducer(state = initialState, action) {
           [action.payload.id]: action.payload,
         },
       };
+    case UPDATE_CARD:
+      newState = { ...state, [action.payload.id]: action.payload };
+      return newState;
     default:
       return state;
   }

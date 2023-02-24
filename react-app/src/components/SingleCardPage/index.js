@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 import "./SingleCardPage.css";
 import { thunkGetSingleCard } from "../../store/cards";
+import UpdateCardModal from "../UpdateCardModal";
 
 const SingleCardPage = () => {
   const dispatch = useDispatch();
   const singleCard = useSelector((state) => state.cards.singleCard);
+  const sessionUser = useSelector((state) => state.session);
   const [loadedPage, setLoadedPage] = useState(false);
 
   useEffect(() => {
@@ -26,6 +28,9 @@ const SingleCardPage = () => {
         <div>Single Card debit num {singleCard.debit_number}</div>
         <div>Single Card full name {singleCard.full_name}</div>
         <div>Single Card id {singleCard.id}</div>
+      </div>
+      <div className="Dashboard-Edit-Card">
+        <UpdateCardModal user={sessionUser} />
       </div>
     </div>
   );

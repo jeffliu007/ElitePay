@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetAllCards } from "../../store/cards";
 import CreateCardModal from "../CreateCardModal";
+import UpdateCardModal from "../UpdateCardModal";
 
 import "./DashboardPage.css";
 
@@ -41,7 +42,6 @@ const DashboardPage = () => {
       <div className="Dashboard-Create-Card">
         <CreateCardModal user={sessionUser} />
       </div>
-      <div className="Dashboard-Edit-Card"></div>
     </div>
   );
 };
