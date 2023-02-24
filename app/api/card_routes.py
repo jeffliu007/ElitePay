@@ -33,12 +33,12 @@ def get_all_cards():
 @card_routes.route("/<int:cardId>")
 @login_required
 def get_single_card(cardId):
-  single_card = db.session.query(Card).get(int(cardId))
+  singleCard = db.session.query(Card).get(int(cardId))
 
-  if not single_card:
+  if not singleCard:
     return {"message": "Card couldn't be found"}, 404
 
-  info = single_card.to_dict()
+  info = singleCard.to_dict()
 
   return info
 

@@ -11,7 +11,7 @@ const SplashPage = () => {
 
   const demoLogin = () => {
     dispatch(sessionActions.login("demo@aa.io", "password"));
-    return history.push("/api/dashboard/cards/");
+    return history.push("/dashboard");
   };
 
   return (
@@ -22,6 +22,7 @@ const SplashPage = () => {
             <img
               src={process.env.PUBLIC_URL + "/logo.png"}
               className="Splash-Logo"
+              alt="splash logo"
             />
             <h1 className="Splash-Text">
               The Next <br />
@@ -39,6 +40,7 @@ const SplashPage = () => {
             <img
               src={process.env.PUBLIC_URL + "/robotarm.png"}
               className="robotarm"
+              alt="roboimage"
             />
             <div className="Splash-Background-Gradient" />
           </div>
