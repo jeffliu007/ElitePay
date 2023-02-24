@@ -9,6 +9,7 @@ import SplashPage from "./components/SplashPage";
 import DashboardPage from "./components/DashboardPage";
 import SingleCardPage from "./components/SingleCardPage";
 import AllTransactionsPage from "./components/AllTransactionsPage";
+import SingleTransactionPage from "./components/SingleTransactionPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,8 +35,11 @@ function App() {
           <Route path="/dashboard" exact>
             <DashboardPage />
           </Route>
-          <Route path="/dashboard/transactions">
+          <Route path="/dashboard/transactions" exact>
             <AllTransactionsPage />
+          </Route>
+          <Route path="/dashboard/transactions/:transactionId">
+            <SingleTransactionPage />
           </Route>
           <Route path="/" exact>
             <SplashPage />

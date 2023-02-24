@@ -42,3 +42,69 @@ const acceptTransaction = (transactionId) => ({
 // ------------------------->
 
 // Transaction feature thunks here
+
+export const thunkGetAllTransactions = () => async (dispatch) => {
+  const response = await fetch("/api/transactions/", {
+    method: "GET",
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllTransactions(data.allTransactions));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+
+export const thunkGetSingleTransaction =
+  (transactionId) => async (dispatch) => {
+    const response = await fetch(`/api/transactions/${transactionId}`, {
+      method: "GET",
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(getSingleTransaction(data));
+    } else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) {
+        return data.errors;
+      }
+    } else {
+      return ["An error occurred. Please try again."];
+    }
+  };
+
+// ------------------------->
+
+// Reducer here
+
+const initialState = {
+  allTransactions: {},
+  singleTransaction: {},
+};
+
+export default function transactionReducer(state = initialState, action) {
+  let newState;
+  switch (action.type) {
+    case GET_ALL_TRANSACTIONS:
+      newState = { ...state };
+      newState.allTransactions = {};
+      action.payload.forEach((transaction) => {
+        newState.allTransactions[transaction.id] = transaction;
+      });
+      return newState;
+    case GET_SINGLE_TRANSACTION:
+      newState = { ...state };
+      newState.singleTransaction = { ...action.payload };
+      return newState;
+    default:
+      return state;
+  }
+}

@@ -32,7 +32,7 @@ def get_single_transaction(transactionId):
   single_transaction = db.session.query(Transaction).get(int(transactionId))
 
   if not single_transaction:
-    return {"message": "Card couldn't be found"}, 404
+    return {"message": "Transaction couldn't be found"}, 404
 
   info = single_transaction.to_dict()
 
@@ -242,7 +242,7 @@ def delete_transaction(transactionId):
   delete_transaction = db.session.query(Transaction).get(int(transactionId))
 
   if not delete_transaction:
-    return {"message": "Card couldn't be found"}, 404
+    return {"message": "Transaction couldn't be found"}, 404
 
   if delete_transaction.sender_id != current_user.id:
     return {'errors': ['Unauthorized']}, 401
