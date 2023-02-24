@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import DashboardPage from "./components/DashboardPage";
 import SingleCardPage from "./components/SingleCardPage";
+import AllTransactionsPage from "./components/AllTransactionsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/dashboard" exact>
             <DashboardPage />
+          </Route>
+          <Route path="/dashboard/transactions">
+            <AllTransactionsPage />
           </Route>
           <Route path="/" exact>
             <SplashPage />
