@@ -119,6 +119,7 @@ def create_transaction():
 @login_required
 def accept_transaction(transactionId):
   form = AcceptTransactionForm()
+  print("hitting end point now")
   form["csrf_token"].data = request.cookies["csrf_token"]
 
   if form.validate_on_submit():
@@ -146,6 +147,7 @@ def accept_transaction(transactionId):
       return {'errors': ["Insufficient balance"]}, 400
 
     selected_card.balance -= transaction.amount
+    recipient_card.balance += transaction.amount
     transaction.status = "completed"
     db.session.add(transaction)
 
@@ -249,7 +251,7 @@ def delete_transaction(transactionId):
     return {'errors': ['Unauthorized']}, 401
 
   if delete_transaction.status == 'completed':
-     return {'errors': ['Transaction already completed, cannot remove']}, 401
+    return {'errors': ['Transaction already completed, cannot remove']}, 401
 
   db.session.delete(delete_transaction)
   db.session.commit()

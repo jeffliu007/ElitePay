@@ -109,7 +109,37 @@ export const thunkDeleteTransaction = (transactionId) => async (dispatch) => {
   if (response.ok) {
     const deletedTransaction = await response.json();
     dispatch(deleteTransaction(transactionId));
-    return deleteTransaction;
+    return deletedTransaction;
+  }
+};
+
+export const thunkAcceptTransaction = (transactionId) => async (dispatch) => {
+  try {
+    console.log(
+      "Sending accept transaction request for transactionId: ",
+      transactionId
+    );
+    const response = await fetch(`/api/transactions/${transactionId}/accept`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ transactionId }),
+    });
+    console.log("Received response ", response);
+    if (!response.ok) {
+      throw new Error("Failed to accept transaction");
+    }
+
+    const acceptedTransaction = await response.json();
+    console.log(
+      "Parsed JSON response from accept transaction ",
+      acceptedTransaction
+    );
+    dispatch(acceptTransaction(acceptedTransaction));
+    return acceptedTransaction;
+  } catch (error) {
+    return ["An error occurred. Please try again."];
   }
 };
 
@@ -144,6 +174,11 @@ export default function transactionReducer(state = initialState, action) {
           [action.payload.id]: action.payload,
         },
       };
+    case ACCEPT_TRANSACTION:
+      newState = { ...state };
+      const acceptedTransaction = action.payload;
+      newState.allTransactions[acceptedTransaction.id] = acceptedTransaction;
+      return newState;
     case DELETE_TRANSACTION:
       newState = { ...state };
       delete newState[action.payload];
