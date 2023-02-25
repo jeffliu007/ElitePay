@@ -94,7 +94,8 @@ def create_transaction():
 
     # check card for sufficient balance
     if selected_card.balance < data['amount']:
-            return {'errors': ["Insufficient balance"]}, 401
+      form.amount.errors.append("Insufficient balance")
+      return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
     new_transaction = Transaction(
       amount = data['amount'],
@@ -145,6 +146,7 @@ def accept_transaction(transactionId):
       return {'errors': ["Insufficient balance"]}, 400
 
     selected_card.balance -= transaction.amount
+    recipient_card.balance += transaction.amount
     transaction.status = "completed"
     db.session.add(transaction)
 
@@ -246,6 +248,9 @@ def delete_transaction(transactionId):
 
   if delete_transaction.sender_id != current_user.id:
     return {'errors': ['Unauthorized']}, 401
+
+  if delete_transaction.status == 'completed':
+    return {'errors': ['Transaction already completed, cannot remove']}, 401
 
   db.session.delete(delete_transaction)
   db.session.commit()

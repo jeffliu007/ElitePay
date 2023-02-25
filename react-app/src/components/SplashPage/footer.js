@@ -19,7 +19,7 @@ const Footer = () => {
         );
       })}
       <a href="https://github.com/jeffliu007">
-        <i class="fa-brands fa-github"></i>
+        <i className="fa-brands fa-github"></i>
       </a>
     </div>
   );

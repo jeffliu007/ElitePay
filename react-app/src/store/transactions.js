@@ -81,6 +81,67 @@ export const thunkGetSingleTransaction =
     }
   };
 
+export const thunkCreateTransaction = (data) => async (dispatch) => {
+  try {
+    const response = await fetch("/api/transactions/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to create transaction");
+    }
+
+    const newTransaction = await response.json();
+    dispatch(createTransaction(newTransaction));
+  } catch (error) {
+    console.error(error);
+    return ["An error occurred. Please try again."];
+  }
+};
+
+export const thunkDeleteTransaction = (transactionId) => async (dispatch) => {
+  const response = await fetch(`/api/transactions/${transactionId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const deletedTransaction = await response.json();
+    dispatch(deleteTransaction(transactionId));
+    return deletedTransaction;
+  }
+};
+
+export const thunkAcceptTransaction = (transactionId) => async (dispatch) => {
+  try {
+    const response = await fetch(
+      `/api/transactions/${transactionId.transaction_id}/accept`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ transaction_id: transactionId.transaction_id }),
+      }
+    );
+
+    if (!response.ok) {
+      const error = await response.text();
+
+      throw new Error("Failed to accept transaction");
+    }
+
+    const acceptedTransaction = await response.json();
+
+    dispatch(acceptTransaction(acceptedTransaction));
+    return acceptedTransaction;
+  } catch (error) {
+    console.error(error);
+    return ["An error occurred. Please try again."];
+  }
+};
+
 // ------------------------->
 
 // Reducer here
@@ -103,6 +164,25 @@ export default function transactionReducer(state = initialState, action) {
     case GET_SINGLE_TRANSACTION:
       newState = { ...state };
       newState.singleTransaction = { ...action.payload };
+      return newState;
+    case CREATE_NEW_TRANSACTION:
+      return {
+        ...state,
+        allTransactions: {
+          ...state.allTransactions,
+          [action.payload.id]: action.payload,
+        },
+      };
+    case ACCEPT_TRANSACTION:
+      newState = { ...state };
+      const acceptedTransaction = action.payload;
+      if (acceptedTransaction) {
+        newState.allTransactions[acceptedTransaction.id] = acceptedTransaction;
+      }
+      break;
+    case DELETE_TRANSACTION:
+      newState = { ...state };
+      delete newState[action.payload];
       return newState;
     default:
       return state;

@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 import "./SingleTransactionPage.css";
-import { thunkGetSingleTransaction } from "../../store/transactions";
+import {
+  thunkGetSingleTransaction,
+  thunkDeleteTransaction,
+} from "../../store/transactions";
+import AcceptTransactionModal from "../AcceptTransactionModal";
 
 //!!!!!!!!!!!!!!!!!!!!
 //!!!!!!!!!!!!!!!!!!!!!
@@ -10,6 +14,8 @@ import { thunkGetSingleTransaction } from "../../store/transactions";
 // MISSING CONDITIONAL
 // USER CAN CURRENTLY VIEW ANY SPECIFIC TRANSACTION
 //EVEN IF THEY ARENT THE SENDER OR RECEIVER
+//this can most likely be prevented by only allowing users to hit this route by clicking on navlinks
+//to each card they own in the all cards route
 
 const SingleTransactionPage = () => {
   const dispatch = useDispatch();
@@ -27,7 +33,15 @@ const SingleTransactionPage = () => {
     dispatch(thunkGetSingleTransaction(transactionId)).then(() =>
       setLoadedPage(true)
     );
-  }, [dispatch]);
+  }, [dispatch, transactionId]);
+
+  // -----> to delete a transaction
+  const handleTransactionDelete = async (e) => {
+    e.preventDefault();
+    dispatch(thunkDeleteTransaction(transactionId)).then(() =>
+      history.push("/dashboard/transactions")
+    );
+  };
 
   return (
     <div className="SingleTransaction-Container">
@@ -45,6 +59,15 @@ const SingleTransactionPage = () => {
         </div>
         <div>Single Transaction sender_id {singleTransaction.sender_id}</div>
         <div>Single Transaction status {singleTransaction.status}</div>
+      </div>
+      <div
+        className="AllTransaction-Delete-Transaction"
+        onClick={handleTransactionDelete}
+      >
+        Delete Transaction
+      </div>
+      <div className="AllTransaction-Accept-Transaction">
+        <AcceptTransactionModal />
       </div>
     </div>
   );
