@@ -16,7 +16,7 @@ const SingleCardPage = () => {
 
   useEffect(() => {
     dispatch(thunkGetSingleCard(cardId)).then(() => setLoadedPage(true));
-  }, [dispatch]);
+  }, [dispatch, cardId]);
 
   const handleCardDelete = async (e) => {
     e.preventDefault();

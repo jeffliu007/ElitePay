@@ -18,9 +18,6 @@ const DashboardPage = () => {
   }, [dispatch]);
 
   let allCardsArr = Object.values(allCards);
-  // allCardsArr.forEach((card) => {
-  //   console.log(card.balance);
-  // });
 
   if (!loadedPage) return null;
 

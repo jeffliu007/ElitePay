@@ -119,7 +119,6 @@ def create_transaction():
 @login_required
 def accept_transaction(transactionId):
   form = AcceptTransactionForm()
-  print("hitting end point now")
   form["csrf_token"].data = request.cookies["csrf_token"]
 
   if form.validate_on_submit():

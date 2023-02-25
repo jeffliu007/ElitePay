@@ -5,7 +5,6 @@ import "./SingleTransactionPage.css";
 import {
   thunkGetSingleTransaction,
   thunkDeleteTransaction,
-  thunkAcceptTransaction,
 } from "../../store/transactions";
 import AcceptTransactionModal from "../AcceptTransactionModal";
 
@@ -34,7 +33,7 @@ const SingleTransactionPage = () => {
     dispatch(thunkGetSingleTransaction(transactionId)).then(() =>
       setLoadedPage(true)
     );
-  }, [dispatch]);
+  }, [dispatch, transactionId]);
 
   // -----> to delete a transaction
   const handleTransactionDelete = async (e) => {
@@ -43,20 +42,6 @@ const SingleTransactionPage = () => {
       history.push("/dashboard/transactions")
     );
   };
-
-  // ------> to accept a transaction
-  // const handleTransactionAccept = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     console.log("-----> about to hit dispatch");
-  //     await dispatch(thunkAcceptTransaction(transactionId));
-  //     console.log("-----> dispatch hit");
-  //     history.push("/dashboard/transactions");
-  //   } catch (error) {
-  //     // handle error
-  //     console.log("-----> error hit");
-  //   }
-  // };
 
   return (
     <div className="SingleTransaction-Container">
