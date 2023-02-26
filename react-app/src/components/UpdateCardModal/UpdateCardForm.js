@@ -10,39 +10,59 @@ function UpdateCardForm() {
   const history = useHistory();
   const card = useSelector((state) => state.cards.singleCard);
 
-  const [full_name, setFullname] = useState("");
-  const [debit_number, set_Debit] = useState("");
-  const [cvc_number, set_Cvc] = useState("");
-  const [balance, set_Balance] = useState(0.0);
-  const [errors, setErrors] = useState([]);
+  const [full_name, setFullname] = useState(card.full_name);
+  const [debit_number, set_Debit] = useState(card.debit_number);
+  const [cvc_number, set_Cvc] = useState(card.cvc_number);
+  const [balance, set_Balance] = useState(card.balance);
+  const [validationErrors, setValidationErrors] = useState([]);
   const { closeModal } = useModal();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrors([]);
-    const body = {
-      full_name,
-      debit_number,
-      cvc_number,
-      balance,
-      id: card.id,
-    };
-
-    try {
-      const res = await dispatch(thunkUpdateCard(body));
-      closeModal();
-      // history.push(`/cards/${res.id}`);
-      // history.go(0);
-    } catch (error) {
-      let errorMessage = "Unexpected error occurred.";
-      if (error.response && error.response.data && error.response.data.errors) {
-        const result = error.response.data.errors.map((error) => {
-          return error.split(": ")[1];
-        });
-        errorMessage = result.join(", ");
-      }
-      setErrors([errorMessage]);
+  const validateSubmission = () => {
+    const errors = [];
+    if (full_name.length < 3 || full_name.length > 50) {
+      errors.push("Name must be within 3 to 50 characters long");
     }
+    if (debit_number.length !== 16) {
+      errors.push("Debit number must be exactly 16 digits long");
+    }
+    if (cvc_number.length !== 3) {
+      errors.push("CVC number must be exactly 3 digits long");
+    }
+    return errors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = validateSubmission();
+    setValidationErrors(errors);
+    if (errors.length === 0) {
+      const body = {
+        full_name,
+        debit_number,
+        cvc_number,
+        balance,
+        id: card.id,
+      };
+      dispatch(thunkUpdateCard(body))
+        .then(() => {
+          closeModal();
+        })
+        .catch((err) => {
+          setValidationErrors([err.message]);
+        });
+    }
+  };
+
+  const generateRandomDebitNumber = () => {
+    const randomNumber = Math.floor(
+      1000000000000000 + Math.random() * 9000000000000000
+    );
+    set_Debit(randomNumber.toString());
+  };
+
+  const generateRandomCvcNumber = () => {
+    const randomNumber = Math.floor(100 + Math.random() * 900);
+    set_Cvc(randomNumber.toString());
   };
 
   return (
@@ -55,13 +75,13 @@ function UpdateCardForm() {
       <div className="Global-Modal-Header">Update card</div>
       <form onSubmit={handleSubmit} className="Global-ModalForm-Container">
         <ul className="Global-Errors-UL">
-          {errors.map((error, idx) => (
+          {validationErrors.map((error, idx) => (
             <li key={idx} className="Global-Errors-LI">
               {error}
             </li>
           ))}
         </ul>
-        <label for="full_name" className="Global-Modal-Label">
+        <label htmlFor="full_name" className="Global-Modal-Label">
           <input
             type="text"
             value={full_name}
@@ -71,27 +91,33 @@ function UpdateCardForm() {
             className="Global-Modal-input"
           />
         </label>
-        <label for="debit_number" className="Global-Modal-Label">
-          <textarea
+        <label htmlFor="debit_number" className="Global-Modal-Label">
+          <input
             type="text"
             value={debit_number}
-            onChange={(e) => set_Debit(e.target.value)}
-            required
+            readOnly
             placeholder="Debit Number"
             className="Global-Modal-input"
-          ></textarea>
+          />
+          <button type="button" onClick={generateRandomDebitNumber}>
+            Generate Debit Number
+          </button>
         </label>
-        <label for="cvc-number" className="Global-Modal-Label">
+        <label htmlFor="cvc-number" className="Global-Modal-Label">
           <input
             type="text"
             value={cvc_number}
             onChange={(e) => set_Cvc(e.target.value)}
             required
+            readOnly
             placeholder="CVC"
             className="Global-Modal-input"
           />
         </label>
-        <label for="balance" className="Global-Modal-Label">
+        <button type="button" onClick={generateRandomCvcNumber}>
+          Generate CVC Number
+        </button>
+        <label htmlFor="balance" className="Global-Modal-Label">
           <input
             type="number"
             value={balance}
@@ -99,6 +125,7 @@ function UpdateCardForm() {
             required
             placeholder="Balance"
             className="Global-Modal-input"
+            min="1"
           />
         </label>
         <button type="submit" className="Global-SubmitButton">

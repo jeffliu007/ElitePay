@@ -12,7 +12,7 @@ function CreateCardForm() {
   const [full_name, setFullname] = useState("");
   const [debit_number, set_Debit] = useState("");
   const [cvc_number, set_Cvc] = useState("");
-  const [balance, set_Balance] = useState(0.0);
+  const [balance, set_Balance] = useState(null);
   const [validationErrors, setValidationErrors] = useState([]);
   const { closeModal } = useModal();
 
@@ -26,21 +26,43 @@ function CreateCardForm() {
     if (debit_number.length !== 16) {
       errors.push("Debit number must be exactly 16 digits long");
     }
-    setValidationErrors(errors);
+    if (cvc_number.length !== 3) {
+      errors.push("CVC number must be exactly 3 digits long");
+    }
+    return errors;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    validateSubmission();
-    if (!validationErrors) {
+    const errors = validateSubmission();
+    setValidationErrors(errors);
+    if (errors.length === 0) {
       const body = {
         full_name,
         debit_number,
         cvc_number,
         balance,
       };
-      dispatch(thunkCreateCard(body));
+      dispatch(thunkCreateCard(body))
+        .then(() => {
+          closeModal();
+        })
+        .catch((err) => {
+          setValidationErrors([err.message]);
+        });
     }
+  };
+
+  const generateRandomDebitNumber = () => {
+    const randomNumber = Math.floor(
+      1000000000000000 + Math.random() * 9000000000000000
+    );
+    set_Debit(randomNumber.toString());
+  };
+
+  const generateRandomCvcNumber = () => {
+    const randomNumber = Math.floor(100 + Math.random() * 900);
+    set_Cvc(randomNumber.toString());
   };
 
   return (
@@ -50,7 +72,7 @@ function CreateCardForm() {
         className="Global-Logo"
         alt="logo"
       />
-      <div className="Global-Modal-Header">Add a new card</div>
+      <div className="Global-Modal-Header">Create a card</div>
       <form onSubmit={handleSubmit} className="Global-ModalForm-Container">
         <ul className="Global-Errors-UL">
           {validationErrors.map((error, idx) => (
@@ -70,14 +92,16 @@ function CreateCardForm() {
           />
         </label>
         <label htmlFor="debit_number" className="Global-Modal-Label">
-          <textarea
+          <input
             type="text"
             value={debit_number}
-            onChange={(e) => set_Debit(e.target.value)}
-            required
+            readOnly
             placeholder="Debit Number"
             className="Global-Modal-input"
-          ></textarea>
+          />
+          <button type="button" onClick={generateRandomDebitNumber}>
+            Generate Debit Number
+          </button>
         </label>
         <label htmlFor="cvc-number" className="Global-Modal-Label">
           <input
@@ -85,10 +109,14 @@ function CreateCardForm() {
             value={cvc_number}
             onChange={(e) => set_Cvc(e.target.value)}
             required
+            readOnly
             placeholder="CVC"
             className="Global-Modal-input"
           />
         </label>
+        <button type="button" onClick={generateRandomCvcNumber}>
+          Generate CVC Number
+        </button>
         <label htmlFor="balance" className="Global-Modal-Label">
           <input
             type="number"
@@ -97,10 +125,11 @@ function CreateCardForm() {
             required
             placeholder="Balance"
             className="Global-Modal-input"
+            min="1"
           />
         </label>
         <button type="submit" className="Global-SubmitButton">
-          Add Card
+          Create Card
         </button>
       </form>
     </div>
