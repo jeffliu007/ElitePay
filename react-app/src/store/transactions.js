@@ -102,6 +102,21 @@ export const thunkCreateTransaction = (data) => async (dispatch) => {
   }
 };
 
+export const thunkUpdateTransaction = (transaction, id) => async (dispatch) => {
+  const response = await fetch(`/api/transactions/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(transaction),
+  });
+  if (response.ok) {
+    const updatedTransaction = await response.json();
+    dispatch(updateTransaction(updatedTransaction));
+    return updatedTransaction;
+  }
+};
+
 export const thunkDeleteTransaction = (transactionId) => async (dispatch) => {
   const response = await fetch(`/api/transactions/${transactionId}`, {
     method: "DELETE",
@@ -110,6 +125,13 @@ export const thunkDeleteTransaction = (transactionId) => async (dispatch) => {
     const deletedTransaction = await response.json();
     dispatch(deleteTransaction(transactionId));
     return deletedTransaction;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
 };
 
@@ -184,6 +206,8 @@ export default function transactionReducer(state = initialState, action) {
       newState = { ...state };
       delete newState[action.payload];
       return newState;
+    case UPDATE_TRANSACTION:
+      return { ...state, [action.payload.id]: action.payload };
     default:
       return state;
   }

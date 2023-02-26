@@ -39,44 +39,6 @@ def get_single_transaction(transactionId):
   return info
 
 
-# old route to create a new transaction
-# @transaction_routes.route("/", methods=['POST'])
-# @login_required
-# def create_transaction():
-  # form = CreateTransactionForm()
-  # form['csrf_token'].data = request.cookies['csrf_token']
-
-  # if form.validate_on_submit():
-  #   data = form.data
-
-  #   # Find the selected card by id
-  #   selected_card = db.session.query(Card).filter_by(id=data['card_id'], user_id=current_user.id).first()
-
-  #   # check card for sufficient balance
-  #   if selected_card.balance < data['amount']:
-  #           return {'errors': ["Insufficient balance"]}, 401
-
-  #   recipient_card = db.session.query(Card).filter_by(user_id=data['recipient_id']).first()
-  #   recipient_card.balance += data['amount']
-
-  #   new_transaction = Transaction(
-  #     amount = data['amount'],
-  #     description = data['description'],
-  #     sender_id = current_user.id,
-  #     recipient_id = data['recipient_id'],
-  #     card_id = selected_card.id
-  #   )
-
-  #   # Update sender's balance
-  #   selected_card.balance -= data['amount']
-
-  #   db.session.add(new_transaction)
-  #   db.session.commit()
-
-  #   return new_transaction.to_dict()
-
-  # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
 
 
 # create transaction but all pending
@@ -223,6 +185,8 @@ def update_transaction(transactionId):
         # update transaction details
         transaction.amount = data['amount']
         transaction.description = data['description']
+        transaction.recipient_id = data['recipient_id']
+        transaction.card_id = data['card_id']
         db.session.add(transaction)
 
         db.session.commit()
