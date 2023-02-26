@@ -57,7 +57,7 @@ def create_transaction():
     # check card for sufficient balance
     if selected_card.balance < data['amount']:
       form.amount.errors.append("Insufficient balance")
-      return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+      return {'errors': validation_errors_to_error_messages(form.errors)}, 403
 
     new_transaction = Transaction(
       amount = data['amount'],

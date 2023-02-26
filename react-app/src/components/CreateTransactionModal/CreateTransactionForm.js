@@ -36,6 +36,12 @@ function CreateTransactionForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateSubmission();
+
+    const selectedCard = allCards[card_id];
+    if (selectedCard && parseFloat(amount) > parseFloat(selectedCard.balance)) {
+      errors.push("Insufficient balance");
+    }
+
     setValidationErrors(errors);
     if (errors.length === 0) {
       const body = {

@@ -4,6 +4,7 @@ const CREATE_NEW_TRANSACTION = "transactions/create_new_transaction";
 const UPDATE_TRANSACTION = "transactions/update_transaction";
 const DELETE_TRANSACTION = "transactions/delete_transaction";
 const ACCEPT_TRANSACTION = "transactions/accept_transaction";
+const SET_TRANSACTION_ERRORS = "transactions/set_transaction_errors";
 
 // ------------------------->
 
@@ -37,6 +38,11 @@ const deleteTransaction = (transactionId) => ({
 const acceptTransaction = (transactionId) => ({
   type: ACCEPT_TRANSACTION,
   transactionId,
+});
+
+const setTransactionErrors = (errors) => ({
+  type: SET_TRANSACTION_ERRORS,
+  errors,
 });
 
 // ------------------------->
@@ -101,6 +107,21 @@ export const thunkCreateTransaction = (data) => async (dispatch) => {
     return ["An error occurred. Please try again."];
   }
 };
+
+// export const thunkCreateTransaction = (data) => async (dispatch) => {
+//   const response = await fetch("/api/transactions/", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((res) => {
+//       return res.json();
+//     })
+//     .then((res) => dispatch(createTransaction(res)))
+//     .catch((error) => dispatch(setTransactionErrors(error.errors)));
+// };
 
 export const thunkUpdateTransaction = (transaction, id) => async (dispatch) => {
   const response = await fetch(`/api/transactions/${id}`, {
