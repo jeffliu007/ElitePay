@@ -3,22 +3,25 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { thunkCreateTransaction } from "../../store/transactions";
+import { thunkUpdateTransaction } from "../../store/transactions";
 import { thunkGetAllCards } from "../../store/cards";
 
-function CreateTransactionForm() {
+function UpdateTransactionForm() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const singleTransaction = useSelector(
+    (state) => state.transactions.singleTransaction
+  );
   const allCards = useSelector((state) => state.cards.allCards);
   let allCardsArr = Object.values(allCards);
   const sessionUserId = useSelector((state) => state.session.user.id);
 
-  const [amount, setAmount] = useState("");
-  const [description, setDescription] = useState("");
-  const [validationErrors, setValidationErrors] = useState([]);
-  const [recipient_id, setRecipient] = useState(null);
-  const [card_id, setCardId] = useState(null);
+  const [amount, setAmount] = useState(singleTransaction.amount);
+  const [description, setDescription] = useState(singleTransaction.description);
+  const [recipient_id, setRecipient] = useState(singleTransaction.recipient_id);
+  const [card_id, setCardId] = useState(singleTransaction.card_id);
   const [users, setUsers] = useState([]);
+  const [validationErrors, setValidationErrors] = useState([]);
   const { closeModal } = useModal();
 
   const validateSubmission = () => {
@@ -36,12 +39,6 @@ function CreateTransactionForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateSubmission();
-
-    const selectedCard = allCards[card_id];
-    if (selectedCard && parseFloat(amount) > parseFloat(selectedCard.balance)) {
-      errors.push("Insufficient balance");
-    }
-
     setValidationErrors(errors);
     if (errors.length === 0) {
       const body = {
@@ -50,7 +47,8 @@ function CreateTransactionForm() {
         description,
         recipient_id,
       };
-      dispatch(thunkCreateTransaction(body))
+      const transaction_id = singleTransaction.id;
+      dispatch(thunkUpdateTransaction(body, transaction_id))
         .then(() => {
           closeModal();
         })
@@ -87,7 +85,7 @@ function CreateTransactionForm() {
         className="Global-Logo"
         alt="logo"
       />
-      <div className="Global-Modal-Header">Add a new transaction</div>
+      <div className="Global-Modal-Header">Update a transaction</div>
       <form onSubmit={handleSubmit} className="Global-ModalForm-Container">
         <ul className="Global-Errors-UL">
           {validationErrors.map((error, idx) => (
@@ -104,6 +102,7 @@ function CreateTransactionForm() {
             required
             placeholder="Payment amount"
             className="Global-Modal-input"
+            min={1}
           />
         </label>
         <label htmlFor="description" className="Global-Modal-Label">
@@ -149,13 +148,11 @@ function CreateTransactionForm() {
           </select>
         </label>
         <button type="submit" className="Global-SubmitButton">
-          Add Transaction
+          Update Transaction
         </button>
       </form>
     </div>
   );
 }
 
-//
-
-export default CreateTransactionForm;
+export default UpdateTransactionForm;

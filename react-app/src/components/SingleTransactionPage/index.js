@@ -7,6 +7,7 @@ import {
   thunkDeleteTransaction,
 } from "../../store/transactions";
 import AcceptTransactionModal from "../AcceptTransactionModal";
+import UpdateTransactionModal from "../UpdateTransactionModal";
 
 //!!!!!!!!!!!!!!!!!!!!
 //!!!!!!!!!!!!!!!!!!!!!
@@ -68,6 +69,9 @@ const SingleTransactionPage = () => {
       </div>
       <div className="AllTransaction-Accept-Transaction">
         <AcceptTransactionModal />
+      </div>
+      <div className="AllTransaction-Update-Transaction">
+        <UpdateTransactionModal />
       </div>
     </div>
   );

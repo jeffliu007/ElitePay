@@ -7,7 +7,7 @@
 }
 
 .Navbar {
-  background-color: black;
+  background-color: #1d1d1d;
   height: 69px;
   display: flex;
   flex-direction: row;
@@ -54,4 +54,96 @@
   margin-right: 10px;
   width: 56px;
   color: white;
+}
+
+/* Vertical Nav Starts here */
+
+.Vertical-Nav {
+  background-color: #000000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 12rem;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  z-index: 100;
+  transition: width 250ms ease;
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.VerticalNavbar-Home-Logo {
+  height: 23vh;
+  position: relative;
+  bottom: 16%;
+}
+
+.nav-item-username {
+  position: absolute;
+  bottom: 65%;
+  color: white;
+}
+
+.userIcon-img {
+  height: 20vh;
+  position: relative;
+  left: 13px;
+  top: -58px;
+}
+
+.multipleCards-img {
+  height: 22vh;
+  position: relative;
+  display: flex;
+  margin-left: 16px;
+}
+
+.link-text-allCards {
+  color: white;
+  position: absolute;
+  right: 33%;
+  bottom: 20%;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-icon-holder {
+  display: flex;
+  flex-direction: column;
+}
+
+.addCard-img {
+  height: 20vh;
+  position: relative;
+  left: 2%;
+}
+
+.nav-item-createTransaaction {
+  position: relative;
+  margin-top: -13%;
+}
+
+.nav-item-allCards {
+  position: relative;
+  margin-top: -33%;
+}
+
+.transact-img {
+  height: 22vh;
+  position: relative;
+  right: -6%;
+  top: -17%;
 }
