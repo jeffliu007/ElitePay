@@ -7,7 +7,7 @@
 }
 
 .Navbar {
-  background-color: black;
+  background-color: #111111;
   height: 69px;
   display: flex;
   flex-direction: row;

@@ -1,4 +1,121 @@
-.Dashboard-Main-Container {
+.AllTransactions-Main-Container {
   display: flex;
-  margin-top: 80px;
+  flex-direction: row;
+  margin-top: 69px;
+  background-color: #000000;
+  min-height: 100vh;
+  width: 100%;
+  text-align: left;
+}
+
+.AllTransactions-Main-Container h1 {
+  color: white;
+  opacity: 87%;
+}
+
+.AllTransactions-Card-Holder {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px hidden #575454;
+  background: #1d1d1d;
+  border-top: hidden;
+  border-radius: 17px;
+  margin-top: 35px;
+  padding-top: 4%;
+}
+
+.AllTransactions-Card-Holder h2 {
+  display: flex;
+  margin-top: 6%;
+  color: white;
+  opacity: 87%;
+  width: 100%;
+  background-color: #1d1d1d;
+  height: 13vh;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.AllTransactions-Content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-top: 2px solid #05a393cc;
+  margin: 0;
+  padding: 0;
+}
+
+.AllTransactions-Content img {
+  height: 10vh;
+}
+
+.AllTransactions-Inner-Content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  opacity: 69%;
+  align-items: center;
+  width: 100%;
+}
+
+.AllTransactions-Inner-Content > div {
+  margin-right: 10px;
+}
+
+.Date {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  margin-left: 35%;
+}
+
+.Date > *:not(.AllTransactions-Amount) {
+  margin-right: 10px;
+}
+
+.AllTransactions-Amount {
+  text-align: left;
+  flex-shrink: 0;
+  margin-right: 0;
+  padding-right: 6%;
+}
+
+.AllTransactions-Header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  opacity: 69%;
+  padding: 6px;
+  padding-bottom: 3%;
+}
+
+.AllTransactions-Header-Item1 {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-left: 2%;
+}
+
+.AllTransactions-Header-Item2 {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-right: 2%;
+}
+
+.AllTransactions-Header-Item3 {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-right: 2%;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .AllTransactions-Header-Item2 {
+    padding-left: 9%;
+  }
 }

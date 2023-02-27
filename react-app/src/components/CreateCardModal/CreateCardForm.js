@@ -16,8 +16,6 @@ function CreateCardForm() {
   const [validationErrors, setValidationErrors] = useState([]);
   const { closeModal } = useModal();
 
-  // !!!! **** change to camelcase cuz
-
   const validateSubmission = () => {
     const errors = [];
     if (full_name.length < 3 || full_name.length > 50) {
@@ -28,6 +26,9 @@ function CreateCardForm() {
     }
     if (cvc_number.length !== 3) {
       errors.push("CVC number must be exactly 3 digits long");
+    }
+    if (balance <= 0) {
+      errors.push("SelectedBalance must be greater than 0");
     }
     return errors;
   };
@@ -74,13 +75,6 @@ function CreateCardForm() {
       />
       <div className="Global-Modal-Header">Create a card</div>
       <form onSubmit={handleSubmit} className="Global-ModalForm-Container">
-        <ul className="Global-Errors-UL">
-          {validationErrors.map((error, idx) => (
-            <li key={idx} className="Global-Errors-LI">
-              {error}
-            </li>
-          ))}
-        </ul>
         <label htmlFor="full_name" className="Global-Modal-Label">
           <input
             type="text"
@@ -91,6 +85,13 @@ function CreateCardForm() {
             className="Global-Modal-input"
           />
         </label>
+        <ul className="Global-Errors-UL">
+          {validationErrors.map((error, idx) => (
+            <li key={idx} className="Global-Errors-LI">
+              {error}
+            </li>
+          ))}
+        </ul>
         <label htmlFor="debit_number" className="Global-Modal-Label">
           <input
             type="text"

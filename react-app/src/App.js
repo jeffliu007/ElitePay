@@ -6,9 +6,9 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
-import DashboardPage from "./components/DashboardPage";
+import AllCardsPage from "./components/AllCardsPage";
 import SingleCardPage from "./components/SingleCardPage";
-import AllTransactionsPage from "./components/AllTransactionsPage";
+import DashboardPage from "./components/DashboardPage";
 import SingleTransactionPage from "./components/SingleTransactionPage";
 
 function App() {
@@ -32,11 +32,11 @@ function App() {
           <Route path="/dashboard/cards/:cardId">
             <SingleCardPage />
           </Route>
+          <Route path="/dashboard/cards" exact>
+            <AllCardsPage />
+          </Route>
           <Route path="/dashboard" exact>
             <DashboardPage />
-          </Route>
-          <Route path="/dashboard/transactions" exact>
-            <AllTransactionsPage />
           </Route>
           <Route path="/dashboard/transactions/:transactionId">
             <SingleTransactionPage />
