@@ -35,6 +35,7 @@ const DashboardPage = () => {
           <div className="AllTransactions-Header-Item1">Transaction ID</div>
           <div className="AllTransactions-Header-Item2">Transaction Date</div>
           <div className="AllTransactions-Header-Item3">Transaction Amount</div>
+          <div className="AllTransactions-Header-Item4">Status</div>
         </div>
 
         {allTransactionsArr.map((transaction) => (
@@ -53,6 +54,9 @@ const DashboardPage = () => {
                 </div>
                 <div className="AllTransactions-Amount">
                   ${transaction.amount}
+                </div>
+                <div className="AllTransactions-Status">
+                  {transaction.status}
                 </div>
               </div>
             </div>
