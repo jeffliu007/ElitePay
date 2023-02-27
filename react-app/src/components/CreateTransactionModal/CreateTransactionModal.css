@@ -1,0 +1,10 @@
+.Create-Transaction-Modal-Button {
+  border: hidden;
+  color: white;
+  background-color: transparent;
+  font-size: 18px;
+  position: absolute;
+  bottom: 29%;
+  right: 28%;
+  cursor: pointer;
+}

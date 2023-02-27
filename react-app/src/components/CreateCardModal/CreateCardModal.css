@@ -1,0 +1,10 @@
+.createCard-Button {
+  border: hidden;
+  background-color: transparent;
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  right: 22%;
+  top: 69%;
+  cursor: pointer;
+}

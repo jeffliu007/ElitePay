@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import { VerticalNavigation } from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import AllCardsPage from "./components/AllCardsPage";
 import SingleCardPage from "./components/SingleCardPage";
@@ -14,13 +15,19 @@ import SingleTransactionPage from "./components/SingleTransactionPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const location = useLocation();
+  const isSplashPage = location.pathname === "/";
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {isSplashPage ? (
+        <Navigation isLoaded={isLoaded} />
+      ) : (
+        <VerticalNavigation isLoaded={isLoaded} />
+      )}
       {isLoaded && (
         <Switch>
           <Route path="/login">

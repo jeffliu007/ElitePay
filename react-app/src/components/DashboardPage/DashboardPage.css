@@ -1,11 +1,12 @@
 .AllTransactions-Main-Container {
   display: flex;
   flex-direction: row;
-  margin-top: 69px;
+  margin-top: 0;
   background-color: #000000;
   min-height: 100vh;
-  width: 100%;
+  width: 88%;
   text-align: left;
+  margin-left: 10rem;
 }
 
 .AllTransactions-Main-Container h1 {
@@ -17,11 +18,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: 1px hidden #575454;
   background: #1d1d1d;
   border-top: hidden;
-  border-radius: 17px;
-  margin-top: 35px;
+  padding-left: 25px;
   padding-top: 4%;
 }
 
@@ -91,7 +90,7 @@
   display: flex;
   justify-content: space-between;
   color: white;
-  opacity: 69%;
+  opacity: 86%;
   padding: 6px;
   padding-bottom: 3%;
 }
@@ -118,4 +117,13 @@
   .AllTransactions-Header-Item2 {
     padding-left: 9%;
   }
+}
+
+.Second-Nav {
+  position: fixed;
+  width: 200px; /* adjust width as needed */
+  height: 100%; /* make sure it covers the full height of the screen */
+  background-color: #1d1d1d; /* add a background color to make it stand out */
+  z-index: 1;
+  color: white;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -7,6 +7,8 @@ import SignupFormModal from "../SignupFormModal";
 import OpenModalButton from "../OpenModalButton";
 import { useLocation } from "react-router-dom";
 import "./Navigation.css";
+import CreateTransactionModal from "../CreateTransactionModal/Index";
+import CreateCardModal from "../CreateCardModal";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session);
@@ -45,6 +47,66 @@ function Navigation({ isLoaded }) {
             />
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+export function VerticalNavigation({ isLoaded }) {
+  const sessionUser = useSelector((state) => state.session);
+  const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  let userName = useSelector((state) => state.session.user);
+
+  return (
+    <div className="Vertical-Nav">
+      <div className="navbar-nav">
+        <div className="nav-item">
+          <NavLink exact to="/">
+            <img
+              src={process.env.PUBLIC_URL + "/logo.png"}
+              className="VerticalNavbar-Home-Logo"
+              alt="navbar homelogo"
+            />
+          </NavLink>
+        </div>
+        <div className="nav-item">
+          <img
+            src={process.env.PUBLIC_URL + "/userIcon.png"}
+            className="userIcon-img"
+          />
+        </div>
+        <div className="nav-item-username">{userName?.username}</div>
+        <NavLink className="nav-item-allCards" to="/dashboard/cards">
+          <img
+            src={process.env.PUBLIC_URL + "/multipleCards.png"}
+            className="multipleCards-img"
+          />
+          <div className="link-text-allCards">All Cards</div>
+        </NavLink>
+        <div className="nav-item-createTransaction">
+          <img
+            src={process.env.PUBLIC_URL + "/makeTransaction.png"}
+            className="transact-img"
+          />
+          {<CreateTransactionModal />}
+        </div>
+        <div className="nav-item-allCards">
+          <img
+            src={process.env.PUBLIC_URL + "/addCard.png"}
+            className="addCard-img"
+          />
+          {<CreateCardModal />}
+        </div>
       </div>
     </div>
   );

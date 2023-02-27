@@ -1,5 +1,6 @@
 import OpenModalButton from "../OpenModalButton";
 import CreateCardForm from "./CreateCardForm";
+import "./CreateCardModal.css";
 
 const CreateCardModal = () => {
   return (
@@ -7,6 +8,7 @@ const CreateCardModal = () => {
       <OpenModalButton
         buttonText="Add a card"
         modalComponent={<CreateCardForm />}
+        className="createCard-Button"
       />
     </div>
   );

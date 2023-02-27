@@ -56,7 +56,6 @@ const DashboardPage = () => {
 
   return (
     <div className="AllTransactions-Main-Container">
-      <div className="Second-Nav"> Second Navbar Holder</div>
       <div className="AllTransactions-Card-Holder">
         <div className="AllTransactions-Header">
           <div className="AllTransactions-Header-Item1">Transaction ID</div>

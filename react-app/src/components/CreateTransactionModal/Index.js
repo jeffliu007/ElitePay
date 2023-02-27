@@ -1,12 +1,14 @@
 import OpenModalButton from "../OpenModalButton";
 import CreateTransactionForm from "./CreateTransactionForm";
+import "./CreateTransactionModal.css";
 
 const CreateTransactionModal = () => {
   return (
     <div>
       <OpenModalButton
-        buttonText="Add a transaction"
+        buttonText="Transact"
         modalComponent={<CreateTransactionForm />}
+        className="Create-Transaction-Modal-Button"
       />
     </div>
   );
