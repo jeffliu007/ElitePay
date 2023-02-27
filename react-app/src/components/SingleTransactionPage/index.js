@@ -22,11 +22,12 @@ const SingleTransactionPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [loadedPage, setLoadedPage] = useState(false);
+  const [users, setUsers] = useState([]);
 
   const singleTransaction = useSelector(
     (state) => state.transactions.singleTransaction
   );
-  const sessionUser = useSelector((state) => state.session);
+  const sessionUserId = useSelector((state) => state.session.user.id);
 
   const { transactionId } = useParams();
 
@@ -34,45 +35,80 @@ const SingleTransactionPage = () => {
     dispatch(thunkGetSingleTransaction(transactionId)).then(() =>
       setLoadedPage(true)
     );
-  }, [dispatch, transactionId]);
+    if (!users.length) {
+      async function fetchData() {
+        const response = await fetch(`/api/users/`);
+        const responseData = await response.json();
+        setUsers(responseData.users);
+      }
+      fetchData();
+    }
+  }, [dispatch, transactionId, users.length]);
 
   // -----> to delete a transaction
   const handleTransactionDelete = async (e) => {
     e.preventDefault();
     dispatch(thunkDeleteTransaction(transactionId)).then(() =>
-      history.push("/dashboard/transactions")
+      history.push("/dashboard")
     );
   };
+
+  const recipientDisplayName = users.filter(
+    (user) => user?.id == singleTransaction?.recipient_id
+  )[0]?.username;
 
   return (
     <div className="SingleTransaction-Main-Container">
       <div className="SingleTransaction-Content-Holder">
-        <h2>Transaction</h2>
-        <div>Single Transaction amount {singleTransaction.amount}</div>
-        <div>Single Transaction card_id {singleTransaction.card_id}</div>
-        <div>Single Transaction created_at {singleTransaction.created_at}</div>
-        <div>
-          Single Transaction description {singleTransaction.description}
+        <h1>Transaction #{transactionId}</h1>
+        <div className="SingleTransaction-Div">
+          Amount: ${singleTransaction.amount}
         </div>
-        <div>Single Transaction id {singleTransaction.id}</div>
-        <div>
-          Single Transaction recipient_id {singleTransaction.recipient_id}
+        <div className="SingleTransaction-Div">
+          Card ID: {singleTransaction.card_id}
         </div>
-        <div>Single Transaction sender_id {singleTransaction.sender_id}</div>
-        <div>Single Transaction status {singleTransaction.status}</div>
+        <div className="SingleTransaction-Div">
+          Created At:{" "}
+          {new Date(singleTransaction.created_at).toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </div>
+        <div className="SingleTransaction-Div">
+          Description: {singleTransaction.description}
+        </div>
+        <div className="SingleTransaction-Div">
+          Receiver Username: {recipientDisplayName}
+        </div>
+        {singleTransaction.sender_id == sessionUserId && (
+          <div className="SingleTransaction-Div">
+            Sender: You sent this transaction
+          </div>
+        )}
+        <div className="SingleTransaction-Div">
+          Status: {singleTransaction.status}
+        </div>
+        {singleTransaction.status !== "completed" &&
+          sessionUserId == singleTransaction.recipient_id && (
+            <div className="SingleTransaction-Accept-Transaction">
+              <AcceptTransactionModal />
+            </div>
+          )}
+        {singleTransaction.status !== "pending" && (
+          <div className="SingleTransaction-Button-Holder">
+            <div
+              className="SingleTransaction-Delete-Transaction"
+              onClick={handleTransactionDelete}
+            >
+              Delete Transaction
+            </div>
+            <div className="SingleTransaction-Update-Transaction">
+              <UpdateTransactionModal />
+            </div>
+          </div>
+        )}
       </div>
-      {/* <div
-        className="AllTransaction-Delete-Transaction"
-        onClick={handleTransactionDelete}
-      >
-        Delete Transaction
-      </div>
-      <div className="AllTransaction-Accept-Transaction">
-        <AcceptTransactionModal />
-      </div>
-      <div className="AllTransaction-Update-Transaction">
-        <UpdateTransactionModal />
-      </div> */}
     </div>
   );
 };

@@ -2,3 +2,8 @@
   display: flex;
   margin-top: 80px;
 }
+
+.Dashboard-AllCards-Holder {
+  overflow-y: scroll;
+  /* add any other styling you need for the container */
+}

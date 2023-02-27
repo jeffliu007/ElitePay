@@ -204,12 +204,12 @@
 
 .addCard-img {
   position: relative;
-  bottom: 13px;
+  bottom: 22px;
 }
 
 .addCard-text {
   position: relative;
-  top: -58px;
+  top: -51px;
   color: white;
   display: flex;
   justify-content: center;

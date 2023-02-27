@@ -26,7 +26,7 @@ function AcceptTransactionForm() {
       // const data = await res.json();
 
       closeModal();
-      // history.push(`/transactions/${res.id}`);
+      history.push(`/dashboard`);
       // history.go(0);
     } catch (error) {
       let errorObject = JSON.parse(error.message);
