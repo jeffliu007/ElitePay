@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import OpenModalButton from "../OpenModalButton";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import "./Navigation.css";
 import CreateTransactionModal from "../CreateTransactionModal/Index";
 import CreateCardModal from "../CreateCardModal";
+import { logout } from "../../store/session";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session);
@@ -53,16 +54,16 @@ function Navigation({ isLoaded }) {
 }
 
 export function VerticalNavigation({ isLoaded }) {
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session);
   const location = useLocation();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const history = useHistory();
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout()).then(() => {
+      history.push("/");
+    });
   };
 
   let userName = useSelector((state) => state.session.user);
@@ -70,7 +71,7 @@ export function VerticalNavigation({ isLoaded }) {
   return (
     <div className="Vertical-Nav">
       <div className="navbar-nav">
-        <div className="nav-item">
+        <div className="nav-item1">
           <NavLink exact to="/">
             <img
               src={process.env.PUBLIC_URL + "/logo.png"}
@@ -79,21 +80,28 @@ export function VerticalNavigation({ isLoaded }) {
             />
           </NavLink>
         </div>
-        <div className="nav-item">
-          <img
-            src={process.env.PUBLIC_URL + "/userIcon.png"}
-            className="userIcon-img"
-          />
+        <div className="nav-item2">
+          <NavLink className="nav-item" exact to="/dashboard">
+            <img
+              src={process.env.PUBLIC_URL + "/userIcon.png"}
+              className="userIcon-img"
+            />
+            <span className="nav-item-username">{userName?.username}</span>
+            <span className="nav-item-logout" onClick={handleLogout}>
+              Logout
+            </span>
+          </NavLink>
         </div>
-        <div className="nav-item-username">{userName?.username}</div>
-        <NavLink className="nav-item-allCards" to="/dashboard/cards">
-          <img
-            src={process.env.PUBLIC_URL + "/multipleCards.png"}
-            className="multipleCards-img"
-          />
-          <div className="link-text-allCards">All Cards</div>
-        </NavLink>
-        <div className="nav-item-createTransaction">
+        <div className="nav-item3">
+          <NavLink className="nav-item-allCards" to="/dashboard/cards">
+            <img
+              src={process.env.PUBLIC_URL + "/multipleCards.png"}
+              className="multipleCards-img"
+            />
+            <span className="nav-item-allCards-text">All Cards</span>
+          </NavLink>
+        </div>
+        <div className="nav-item4">
           <img
             src={process.env.PUBLIC_URL + "/makeTransaction.png"}
             className="transact-img"
@@ -101,7 +109,7 @@ export function VerticalNavigation({ isLoaded }) {
           {<CreateTransactionModal />}
           <div className="transact-text">Transact</div>
         </div>
-        <div className="nav-item-allCards">
+        <div className="nav-item5">
           <img
             src={process.env.PUBLIC_URL + "/addCard.png"}
             className="addCard-img"

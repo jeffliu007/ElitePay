@@ -64,7 +64,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 12rem;
+  width: 11rem;
   position: fixed;
   padding: 0;
   margin: 0;
@@ -79,25 +79,152 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .VerticalNavbar-Home-Logo {
-  height: 23vh;
   position: relative;
   bottom: 16%;
+  height: 26vh;
+  position: relative;
+}
+.nav-item1 {
+  height: 20vh;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.nav-item-username {
-  position: absolute;
-  bottom: 65%;
-  color: white;
+.nav-item2 {
+  height: 20vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .userIcon-img {
+  height: 19vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item-username {
+  position: relative;
+  top: -36px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item-logout {
+  display: none;
+}
+
+.nav-item-logout:hover {
+  display: flex;
+  position: relative;
+  top: -33px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-top: 3px;
+}
+
+.userIcon-img:hover + .nav-item-username + .nav-item-logout {
+  display: flex;
+  position: relative;
+  top: -33px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.multipleCards-img {
+  height: 24vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: -23px;
+}
+
+.nav-item3 {
+  height: 20vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item-allCards-text {
+  position: relative;
+  top: -90px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item4 {
+  height: 20vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.transact-img {
+  height: 29vh;
+  width: 100%;
+  display: flex;
+  position: relative;
+  right: -7px;
+}
+
+.transact-text {
+  position: relative;
+  top: -51px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item5 {
+  height: 13vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.addCard-img {
+  position: relative;
+  bottom: 13px;
+}
+
+.addCard-text {
+  position: relative;
+  top: -58px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+/*
+
+/* .userIcon-img {
   height: 20vh;
   position: relative;
   left: 13px;
   top: -58px;
+  cursor: pointer;
+  width: 96%;
+  z-index: 100;
 }
 
 .multipleCards-img {
@@ -165,4 +292,4 @@
   top: 70%;
   left: 29%;
   font-size: 16px;
-}
+} */
