@@ -11,7 +11,7 @@
 
 .AllTransactions-Main-Container h1 {
   color: white;
-  opacity: 87%;
+  opacity: 0.87;
 }
 
 .AllTransactions-Card-Holder {
@@ -28,7 +28,7 @@
   display: flex;
   margin-top: 6%;
   color: white;
-  opacity: 87%;
+  opacity: 0.87;
   width: 100%;
   background-color: #1d1d1d;
   height: 13vh;
@@ -55,7 +55,7 @@
   flex-direction: row;
   justify-content: space-between;
   color: white;
-  opacity: 69%;
+  opacity: 0.69;
   align-items: center;
   width: 100%;
 }
@@ -90,7 +90,7 @@
   display: flex;
   justify-content: space-between;
   color: white;
-  opacity: 86%;
+  opacity: 0.86;
   padding: 6px;
   padding-bottom: 3%;
 }
