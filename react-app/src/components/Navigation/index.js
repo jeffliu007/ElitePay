@@ -99,6 +99,7 @@ export function VerticalNavigation({ isLoaded }) {
             className="transact-img"
           />
           {<CreateTransactionModal />}
+          <div className="transact-text">Transact</div>
         </div>
         <div className="nav-item-allCards">
           <img
@@ -106,6 +107,7 @@ export function VerticalNavigation({ isLoaded }) {
             className="addCard-img"
           />
           {<CreateCardModal />}
+          <div className="addCard-text">Add card</div>
         </div>
       </div>
     </div>

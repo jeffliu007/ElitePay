@@ -112,6 +112,7 @@
   position: absolute;
   right: 33%;
   bottom: 20%;
+  font-size: 16px;
 }
 
 .nav-item {
@@ -146,4 +147,22 @@
   position: relative;
   right: -6%;
   top: -17%;
+}
+
+.transact-text {
+  color: white;
+  display: flex;
+  position: absolute;
+  top: 69%;
+  left: 32%;
+  font-size: 16px;
+}
+
+.addCard-text {
+  color: white;
+  display: flex;
+  position: absolute;
+  top: 70%;
+  left: 29%;
+  font-size: 16px;
 }
