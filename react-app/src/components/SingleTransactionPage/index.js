@@ -45,9 +45,9 @@ const SingleTransactionPage = () => {
   };
 
   return (
-    <div className="SingleTransaction-Container">
-      <h1>Dumping all single transaction info here</h1>
-      <div className="SingleTransaction-Temp-Holder">
+    <div className="SingleTransaction-Main-Container">
+      <div className="SingleTransaction-Content-Holder">
+        <h2>Transaction</h2>
         <div>Single Transaction amount {singleTransaction.amount}</div>
         <div>Single Transaction card_id {singleTransaction.card_id}</div>
         <div>Single Transaction created_at {singleTransaction.created_at}</div>
@@ -61,7 +61,7 @@ const SingleTransactionPage = () => {
         <div>Single Transaction sender_id {singleTransaction.sender_id}</div>
         <div>Single Transaction status {singleTransaction.status}</div>
       </div>
-      <div
+      {/* <div
         className="AllTransaction-Delete-Transaction"
         onClick={handleTransactionDelete}
       >
@@ -72,7 +72,7 @@ const SingleTransactionPage = () => {
       </div>
       <div className="AllTransaction-Update-Transaction">
         <UpdateTransactionModal />
-      </div>
+      </div> */}
     </div>
   );
 };
