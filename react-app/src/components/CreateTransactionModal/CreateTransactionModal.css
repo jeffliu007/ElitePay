@@ -1,10 +1,13 @@
 .Create-Transaction-Modal-Button {
-  border: hidden;
-  color: white;
+  color: transparent;
   background-color: transparent;
-  font-size: 18px;
+  font-size: 16px;
   position: absolute;
   bottom: 29%;
   right: 28%;
+  border: 1px hidden;
   cursor: pointer;
+  height: 17vh;
+  width: 8vw;
+  z-index: 100;
 }

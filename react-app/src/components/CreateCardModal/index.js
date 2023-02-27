@@ -6,7 +6,7 @@ const CreateCardModal = () => {
   return (
     <div>
       <OpenModalButton
-        buttonText="Add a card"
+        buttonText="Add card"
         modalComponent={<CreateCardForm />}
         className="createCard-Button"
       />
