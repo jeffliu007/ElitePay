@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { thunkUpdateCard } from "../../store/cards";
+import { thunkGetAllCards, thunkUpdateCard } from "../../store/cards";
 
 function UpdateCardForm() {
   const dispatch = useDispatch();
@@ -46,6 +46,9 @@ function UpdateCardForm() {
       dispatch(thunkUpdateCard(body))
         .then(() => {
           closeModal();
+        })
+        .then(() => {
+          dispatch(thunkGetAllCards());
         })
         .catch((err) => {
           setValidationErrors([err.message]);

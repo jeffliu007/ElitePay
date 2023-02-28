@@ -79,7 +79,7 @@ const SingleTransactionPage = () => {
           Description: {singleTransaction.description}
         </div>
         <div className="SingleTransaction-Div">
-          Receiver Username: {recipientDisplayName}
+          Receiver Username: {recipientDisplayName} {"(You got $$$)"}
         </div>
         {singleTransaction.sender_id == sessionUserId && (
           <div className="SingleTransaction-Div">
@@ -92,22 +92,25 @@ const SingleTransactionPage = () => {
         {singleTransaction.status !== "completed" &&
           sessionUserId == singleTransaction.recipient_id && (
             <div className="SingleTransaction-Accept-Transaction">
-              <AcceptTransactionModal />
+              <AcceptTransactionModal transactionId={transactionId} />
             </div>
           )}
-        {singleTransaction.status !== "pending" && (
-          <div className="SingleTransaction-Button-Holder">
+        <div className="SingleTransaction-Button-Holder">
+          {singleTransaction.sender_id == sessionUserId && (
             <div
               className="SingleTransaction-Delete-Transaction"
               onClick={handleTransactionDelete}
             >
               Delete Transaction
             </div>
-            <div className="SingleTransaction-Update-Transaction">
-              <UpdateTransactionModal />
-            </div>
-          </div>
-        )}
+          )}
+          {singleTransaction.status !== "completed" &&
+            sessionUserId !== singleTransaction.recipient_id && (
+              <div className="SingleTransaction-Update-Transaction">
+                <UpdateTransactionModal />
+              </div>
+            )}
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetAllCards } from "../../store/cards";
-import CreateCardModal from "../CreateCardModal";
-import UpdateCardModal from "../UpdateCardModal";
 import { NavLink } from "react-router-dom";
 import SingleCardModal from "../SingleCardModal/SingleCardModal";
 
@@ -32,7 +30,6 @@ const AllCardsPage = () => {
         <div className="AllCards-Card-Holder">
           {allCardsArr.map((card) => (
             <div className="AllCards-Content" key={card.id}>
-              {/* <NavLink exact to={`/dashboard/cards/${card.id}`}> */}
               <SingleCardModal card={card} />
               <div>Balance: ${card.balance}</div>
               <div>Created at: {card.created_at}</div>

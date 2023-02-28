@@ -5,11 +5,11 @@ import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { thunkAcceptTransaction } from "../../store/transactions";
 
-function AcceptTransactionForm() {
+function AcceptTransactionForm({ transactionId }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [transaction_id, setTransactionId] = useState(0);
+  const [transaction_id, setTransactionId] = useState(transactionId);
 
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
@@ -44,7 +44,7 @@ function AcceptTransactionForm() {
         className="Global-Logo"
         alt="logo"
       />
-      <div className="Global-Modal-Header">Add a new transaction</div>
+      <div className="Global-Modal-Header">Accept transaction</div>
       <form onSubmit={handleSubmit} className="Global-ModalForm-Container">
         <ul className="Global-Errors-UL">
           {errors.map((error, idx) => (
@@ -61,10 +61,11 @@ function AcceptTransactionForm() {
             required
             placeholder="Transaction_id"
             className="Global-Modal-input"
+            readOnly
           />
         </label>
         <button type="submit" className="Global-SubmitButton">
-          Accept Transaction
+          Accept
         </button>
       </form>
     </div>
