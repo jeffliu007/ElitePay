@@ -57,7 +57,8 @@ function UpdateTransactionForm() {
       const transaction_id = singleTransaction.id;
       dispatch(thunkUpdateTransaction(body, transaction_id))
         .then(() => {
-          dispatch(thunkGetSingleTransaction(transaction_id)); // fetch updated transaction
+          dispatch(thunkGetAllTransactions());
+
           closeModal();
         })
         .catch((err) => {

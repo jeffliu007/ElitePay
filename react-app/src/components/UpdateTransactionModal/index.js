@@ -6,7 +6,7 @@ const UpdateTransactionModal = ({ transactionId }) => {
   return (
     <div>
       <OpenModalButton
-        buttonText="Update Transaction"
+        buttonText="Update"
         modalComponent={<UpdateTransactionForm transactionId={transactionId} />}
         className="Update-Transaction-Button"
       />
