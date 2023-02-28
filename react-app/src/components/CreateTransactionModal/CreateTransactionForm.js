@@ -26,8 +26,8 @@ function CreateTransactionForm() {
     if (amount <= 0) {
       errors.push("Amount must be greater than 0");
     }
-    if (description.length > 100) {
-      errors.push("Description must be shorter than 100 characters long");
+    if (description.length > 70) {
+      errors.push("Description must be shorter than 70 characters long");
     }
 
     return errors;
@@ -76,7 +76,7 @@ function CreateTransactionForm() {
   const otherUsers = users?.filter((user) => user.id !== sessionUserId);
 
   return (
-    <div className="Global-Modal-Container">
+    <div className="Global-Modal-Container4">
       <img
         src={process.env.PUBLIC_URL + "/logo.png"}
         className="Global-Logo"

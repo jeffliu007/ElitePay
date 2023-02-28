@@ -67,7 +67,7 @@ function CreateCardForm() {
   };
 
   return (
-    <div className="Global-Modal-Container">
+    <div className="Global-Modal-Container5">
       <img
         src={process.env.PUBLIC_URL + "/logo.png"}
         className="Global-Logo"
@@ -75,6 +75,13 @@ function CreateCardForm() {
       />
       <div className="Global-Modal-Header">Create a card</div>
       <form onSubmit={handleSubmit} className="Global-ModalForm-Container">
+        <ul className="Global-Errors-UL">
+          {validationErrors.map((error, idx) => (
+            <li key={idx} className="Global-Errors-LI">
+              {error}
+            </li>
+          ))}
+        </ul>
         <label htmlFor="full_name" className="Global-Modal-Label">
           <input
             type="text"
@@ -85,13 +92,6 @@ function CreateCardForm() {
             className="Global-Modal-input"
           />
         </label>
-        <ul className="Global-Errors-UL">
-          {validationErrors.map((error, idx) => (
-            <li key={idx} className="Global-Errors-LI">
-              {error}
-            </li>
-          ))}
-        </ul>
         <label htmlFor="debit_number" className="Global-Modal-Label">
           <input
             type="text"
@@ -100,8 +100,12 @@ function CreateCardForm() {
             placeholder="Debit Number"
             className="Global-Modal-input"
           />
-          <button type="button" onClick={generateRandomDebitNumber}>
-            Generate Debit Number
+          <button
+            type="button"
+            onClick={generateRandomDebitNumber}
+            className="generate-buttons"
+          >
+            Generate Debit #
           </button>
         </label>
         <label htmlFor="cvc-number" className="Global-Modal-Label">
@@ -114,10 +118,14 @@ function CreateCardForm() {
             placeholder="CVC"
             className="Global-Modal-input"
           />
+          <button
+            type="button"
+            onClick={generateRandomCvcNumber}
+            className="generate-buttons"
+          >
+            Generate CVC #
+          </button>
         </label>
-        <button type="button" onClick={generateRandomCvcNumber}>
-          Generate CVC Number
-        </button>
         <label htmlFor="balance" className="Global-Modal-Label">
           <input
             type="number"

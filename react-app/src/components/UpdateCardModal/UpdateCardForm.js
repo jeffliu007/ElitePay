@@ -69,7 +69,7 @@ function UpdateCardForm() {
   };
 
   return (
-    <div className="Global-Modal-Container">
+    <div className="Global-Modal-Container5">
       <img
         src={process.env.PUBLIC_URL + "/logo.png"}
         className="Global-Logo"
@@ -102,8 +102,12 @@ function UpdateCardForm() {
             placeholder="Debit Number"
             className="Global-Modal-input"
           />
-          <button type="button" onClick={generateRandomDebitNumber}>
-            Generate Debit Number
+          <button
+            type="button"
+            onClick={generateRandomDebitNumber}
+            className="generate-buttons"
+          >
+            Generate Debit #
           </button>
         </label>
         <label htmlFor="cvc-number" className="Global-Modal-Label">
@@ -116,10 +120,14 @@ function UpdateCardForm() {
             placeholder="CVC"
             className="Global-Modal-input"
           />
+          <button
+            type="button"
+            onClick={generateRandomCvcNumber}
+            className="generate-buttons"
+          >
+            Generate CVC #
+          </button>
         </label>
-        <button type="button" onClick={generateRandomCvcNumber}>
-          Generate CVC Number
-        </button>
         <label htmlFor="balance" className="Global-Modal-Label">
           <input
             type="number"
