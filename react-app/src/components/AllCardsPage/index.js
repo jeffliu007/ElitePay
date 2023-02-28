@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkGetAllCards } from "../../store/cards";
 import CreateCardModal from "../CreateCardModal";
 import UpdateCardModal from "../UpdateCardModal";
+import { NavLink } from "react-router-dom";
 
 import "./AllCardsPage.css";
 
@@ -22,22 +23,29 @@ const AllCardsPage = () => {
   if (!loadedPage) return null;
 
   return (
-    <div className="Dashboard-Main-Container">
-      <div className="Dashboard-AllCards-Holder">
-        <h1>dumping all cards info here</h1>
-        {allCardsArr.map((card) => (
-          <div key={card.id}>
-            <div>Card balances: ${card.balance}</div>
-            <div>Card created at: {card.created_at}</div>
-            <div>Card CVC: {card.cvc_number}</div>
-            <div>Card number: {card.debit_number}</div>
-            <div>Card Full Name: {card.full_name}</div>
-            <div>Card Id Num: {card.id} </div>
-          </div>
-        ))}
+    <div className="AllCards-Main-Container">
+      <div className="AllCards-Header">
+        <h1>Current Active Cards</h1>
       </div>
-      <div className="Dashboard-Create-Card">
-        <CreateCardModal user={sessionUser} />
+      <div className="AllCards-Card-Container">
+        <div className="AllCards-Card-Holder">
+          {allCardsArr.map((card) => (
+            <div className="AllCards-Content" key={card.id}>
+              <NavLink exact to={`/dashboard/cards/${card.id}`}>
+                <div>Balance: ${card.balance}</div>
+                <div>Created at: {card.created_at}</div>
+                <div>CVC: {card.cvc_number}</div>
+                <div>Debit #: {card.debit_number}</div>
+                <div>Full Name: {card.full_name}</div>
+                <div>Card ID #: {card.id} </div>
+                <img
+                  src={process.env.PUBLIC_URL + "/singleCard.png"}
+                  className="singleCard-img"
+                />
+              </NavLink>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
