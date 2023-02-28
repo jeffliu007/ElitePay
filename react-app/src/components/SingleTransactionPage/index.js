@@ -44,6 +44,10 @@ const SingleTransactionPage = () => {
     );
   };
 
+  const handleBack = () => {
+    history.push("/dashboard");
+  };
+
   const recipientDisplayName = users.filter(
     (user) => user?.id == singleTransaction?.recipient_id
   )[0]?.username;
@@ -51,6 +55,9 @@ const SingleTransactionPage = () => {
   return (
     <div className="SingleTransaction-Main-Container">
       <div className="SingleTransaction-Content-Holder">
+        <div className="SingleTransaction-Back-Button" onClick={handleBack}>
+          {"<--- Back to All Transactions"}
+        </div>
         <h1>Transaction #{transactionId}</h1>
         <div className="SingleTransaction-Div">
           Amount: ${singleTransaction.amount}
