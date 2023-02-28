@@ -14,3 +14,121 @@
   border: 1px hidden;
   cursor: pointer;
 }
+
+.Global-Modal-Container6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 37vh;
+  height: 55vh;
+  padding: 36px 40px;
+  z-index: 100;
+  background-color: rgb(48, 48, 48);
+}
+
+.SingleCard-Info-Holder div {
+  padding: 8px;
+}
+
+.Global-Modal-Container6 h1 {
+  color: white;
+  opacity: 0.87;
+}
+
+.SingleCard-Info-Holder {
+  background-color: rgb(32, 226, 222);
+  border-radius: 8px;
+  padding: 33px;
+  width: 69%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.SingleCard-Delete-Button {
+  background-color: rgb(32, 226, 222);
+  color: rgb(27, 27, 27);
+  border-color: transparent;
+  border-radius: 3px;
+  width: 15vw;
+  padding: 10px;
+  margin-bottom: 8px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 20px;
+  cursor: pointer;
+}
+
+.SingleCard-Update-Button {
+  background-color: rgb(32, 226, 222);
+  color: rgb(27, 27, 27);
+  border-color: transparent;
+  border-radius: 3px;
+  width: 16vw;
+  padding: 10px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+  display: flex;
+  font-size: 17px;
+  justify-content: center;
+  position: relative;
+  top: 16px;
+  cursor: pointer;
+}
+
+.SingleCard-Delete-Button:hover {
+  background-color: rgb(104, 245, 242);
+}
+
+.SingleCard-Update-Button:hover {
+  background-color: rgb(104, 245, 242);
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .Global-Modal-Container6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 37vh;
+    height: 70vh;
+    padding: 36px 40px;
+    z-index: 100;
+    background-color: rgb(48, 48, 48);
+  }
+  .SingleCard-Update-Button {
+    background-color: rgb(32, 226, 222);
+    color: rgb(27, 27, 27);
+    border-color: transparent;
+    border-radius: 3px;
+    width: 18vw;
+    padding: 10px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    display: flex;
+    font-size: 17px;
+    justify-content: center;
+    position: relative;
+    top: 16px;
+    cursor: pointer;
+  }
+  .SingleCard-Delete-Button {
+    background-color: rgb(32, 226, 222);
+    color: rgb(27, 27, 27);
+    border-color: transparent;
+    border-radius: 3px;
+    width: 17vw;
+    padding: 10px;
+    margin-bottom: 8px;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+  }
+}

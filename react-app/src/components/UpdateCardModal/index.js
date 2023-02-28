@@ -5,8 +5,9 @@ const UpdateCardModal = () => {
   return (
     <div>
       <OpenModalButton
-        buttonText="Update a card"
+        buttonText="Update Card"
         modalComponent={<UpdateCardForm />}
+        className="SingleCard-Update-Button"
       />
     </div>
   );

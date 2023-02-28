@@ -30,20 +30,26 @@ const SingleCardContent = ({ card }) => {
   };
 
   return (
-    <div className="SingleCard-Container">
-      <h1>dumping all single card info here</h1>
-      <div className="SingleCard-TempInfo-Holder">
-        <div>Single Card balance{card?.balance}</div>
-        <div>Single Card created at{card?.created_at}</div>
-        <div>Single Card cvc {card?.cvc_number}</div>
-        <div>Single Card debit num {card?.debit_number}</div>
-        <div>Single Card full name {card?.full_name}</div>
-        <div>Single Card id {card?.id}</div>
+    <div className="Global-Modal-Container6">
+      <h1>Card #: {card?.id}</h1>
+      <div className="SingleCard-Info-Holder">
+        <div>Card balance: ${card?.balance}</div>
+        <div>
+          Created at:{" "}
+          {new Date(card.created_at).toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </div>
+        <div>CVC #: {card?.cvc_number}</div>
+        <div>Debit #: {card?.debit_number}</div>
+        <div>Card Holder: {card?.full_name}</div>
       </div>
       <div className="Dashboard-Edit-Card">
         <UpdateCardModal user={sessionUser} />
       </div>
-      <div className="Dashboard-Delete-Card" onClick={handleCardDelete}>
+      <div className="SingleCard-Delete-Button" onClick={handleCardDelete}>
         Delete Card
       </div>
     </div>

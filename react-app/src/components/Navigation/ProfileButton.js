@@ -39,7 +39,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button onClick={openMenu} className="pfpButton">
         <i className="fas fa-user-circle" />
       </button>
       <ul className={ulClassName} ref={ulRef}>
@@ -48,7 +48,9 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <button onClick={handleLogout} className="logOut-button">
+                Log Out
+              </button>
             </li>
           </>
         ) : (

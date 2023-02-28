@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { thunkUpdateTransaction } from "../../store/transactions";
+import {
+  thunkUpdateTransaction,
+  thunkGetAllTransactions,
+  thunkGetSingleTransaction,
+} from "../../store/transactions";
 import { thunkGetAllCards } from "../../store/cards";
 
 function UpdateTransactionForm() {
@@ -15,7 +19,6 @@ function UpdateTransactionForm() {
   const allCards = useSelector((state) => state.cards.allCards);
   let allCardsArr = Object.values(allCards);
   const sessionUserId = useSelector((state) => state.session.user.id);
-
   const [amount, setAmount] = useState(singleTransaction.amount);
   const [description, setDescription] = useState(singleTransaction.description);
   const [recipient_id, setRecipient] = useState(singleTransaction.recipient_id);
@@ -29,8 +32,8 @@ function UpdateTransactionForm() {
     if (amount <= 0) {
       errors.push("Amount must be greater than 0");
     }
-    if (description.length > 100) {
-      errors.push("Description must be shorter than 100 characters long");
+    if (description.length > 70) {
+      errors.push("Description must be shorter than 70 characters long");
     }
 
     return errors;
@@ -39,6 +42,10 @@ function UpdateTransactionForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateSubmission();
+    const selectedCard = allCards[card_id];
+    if (selectedCard && parseFloat(amount) > parseFloat(selectedCard.balance)) {
+      errors.push("Insufficient balance");
+    }
     setValidationErrors(errors);
     if (errors.length === 0) {
       const body = {
@@ -50,6 +57,7 @@ function UpdateTransactionForm() {
       const transaction_id = singleTransaction.id;
       dispatch(thunkUpdateTransaction(body, transaction_id))
         .then(() => {
+          dispatch(thunkGetSingleTransaction(transaction_id)); // fetch updated transaction
           closeModal();
         })
         .catch((err) => {
@@ -60,7 +68,7 @@ function UpdateTransactionForm() {
 
   useEffect(() => {
     dispatch(thunkGetAllCards());
-
+    dispatch(thunkGetSingleTransaction(singleTransaction.id));
     if (!users.length) {
       async function fetchData() {
         const response = await fetch(`/api/users/`);
@@ -69,12 +77,12 @@ function UpdateTransactionForm() {
       }
       fetchData();
     }
-  }, [sessionUserId, dispatch, users.length]);
+  }, [users, singleTransaction.id]);
 
   const otherUsers = users?.filter((user) => user.id !== sessionUserId);
 
   return (
-    <div className="Global-Modal-Container">
+    <div className="Global-Modal-Container3">
       <img
         src={process.env.PUBLIC_URL + "/logo.png"}
         className="Global-Logo"

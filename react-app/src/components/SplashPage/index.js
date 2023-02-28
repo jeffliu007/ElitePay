@@ -32,8 +32,8 @@ const SplashPage = () => {
           </div>
           <div className="Splash-GetStarted-Container">
             <div className="Splash-GetStarted" onClick={demoLogin}>
-              Get <br />
-              Started
+              Try <br />
+              Demo
             </div>
           </div>
           <div>

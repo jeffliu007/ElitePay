@@ -52,10 +52,36 @@
   border: 2px solid #bb86fc !important;
 }
 
+.Accept-Transaction-Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #bb86fc !important;
+  position: relative;
+  top: -1%;
+  width: 14vw;
+  right: -1%;
+  height: 9vh;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  background: #1d1d1d;
+  color: white;
+}
+
+.Accept-Transaction-Button:hover {
+  background-color: #373737;
+  border: 2px solid #bb86fc;
+}
+
 .SingleTransaction-Button-Holder {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   position: relative;
   border: hidden !important;
+}
+
+.hidden {
+  display: none;
 }

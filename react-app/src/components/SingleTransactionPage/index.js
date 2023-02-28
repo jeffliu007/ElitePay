@@ -9,15 +9,6 @@ import {
 import AcceptTransactionModal from "../AcceptTransactionModal";
 import UpdateTransactionModal from "../UpdateTransactionModal";
 
-//!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!!!!!!
-// MISSING CONDITIONAL
-// USER CAN CURRENTLY VIEW ANY SPECIFIC TRANSACTION
-//EVEN IF THEY ARENT THE SENDER OR RECEIVER
-//this can most likely be prevented by only allowing users to hit this route by clicking on navlinks
-//to each card they own in the all cards route
-
 const SingleTransactionPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -65,9 +56,6 @@ const SingleTransactionPage = () => {
           Amount: ${singleTransaction.amount}
         </div>
         <div className="SingleTransaction-Div">
-          Card ID: {singleTransaction.card_id}
-        </div>
-        <div className="SingleTransaction-Div">
           Created At:{" "}
           {new Date(singleTransaction.created_at).toLocaleString("en-US", {
             month: "short",
@@ -92,22 +80,27 @@ const SingleTransactionPage = () => {
         {singleTransaction.status !== "completed" &&
           sessionUserId == singleTransaction.recipient_id && (
             <div className="SingleTransaction-Accept-Transaction">
-              <AcceptTransactionModal />
+              <AcceptTransactionModal transactionId={transactionId} />
             </div>
           )}
-        {singleTransaction.status !== "pending" && (
-          <div className="SingleTransaction-Button-Holder">
+        <div className="SingleTransaction-Button-Holder">
+          {singleTransaction.sender_id === sessionUserId ||
+          singleTransaction.status === "completed" ? (
             <div
               className="SingleTransaction-Delete-Transaction"
               onClick={handleTransactionDelete}
             >
               Delete Transaction
             </div>
-            <div className="SingleTransaction-Update-Transaction">
-              <UpdateTransactionModal />
-            </div>
-          </div>
-        )}
+          ) : null}
+
+          {singleTransaction.status !== "completed" &&
+            sessionUserId !== singleTransaction.recipient_id && (
+              <div className="SingleTransaction-Update-Transaction">
+                <UpdateTransactionModal />
+              </div>
+            )}
+        </div>
       </div>
     </div>
   );
