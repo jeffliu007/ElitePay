@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
+import { useLocation, useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
 
@@ -10,6 +11,8 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+  const location = useLocation();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,13 +20,14 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      if (location.pathname == "/") history.push("/dashboard");
+      closeModal();
     }
   };
 
   return (
     <>
-      <h1>Log In</h1>
+      <h1>Log in</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (

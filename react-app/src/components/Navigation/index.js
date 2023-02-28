@@ -36,16 +36,18 @@ function Navigation({ isLoaded }) {
         </NavLink>
       </div>
       <div className="rightNav">
-        <div className="Dashboard-Button-Holder" onClick={handleRedirect}>
-          Dashboard
-        </div>
+        {isLoaded && sessionUser.user && (
+          <div className="Dashboard-Button-Holder" onClick={handleRedirect}>
+            Dashboard
+          </div>
+        )}
         {isLoaded && sessionUser.user && (
           <ProfileButton user={sessionUser.user} />
         )}
         {!sessionUser.user && (
           <div className="Login-Signup-Holder">
             <OpenModalButton
-              buttonText="Log In"
+              buttonText="Log in"
               className="login"
               modalComponent={<LoginFormModal />}
             />

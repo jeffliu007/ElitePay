@@ -56,9 +56,6 @@ const SingleTransactionPage = () => {
           Amount: ${singleTransaction.amount}
         </div>
         <div className="SingleTransaction-Div">
-          Card ID: {singleTransaction.card_id}
-        </div>
-        <div className="SingleTransaction-Div">
           Created At:{" "}
           {new Date(singleTransaction.created_at).toLocaleString("en-US", {
             month: "short",
@@ -70,7 +67,7 @@ const SingleTransactionPage = () => {
           Description: {singleTransaction.description}
         </div>
         <div className="SingleTransaction-Div">
-          Receiver Username: {recipientDisplayName} {"(You got $$$)"}
+          Receiver Username: {recipientDisplayName}
         </div>
         {singleTransaction.sender_id == sessionUserId && (
           <div className="SingleTransaction-Div">
