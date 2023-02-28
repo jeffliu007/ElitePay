@@ -39,7 +39,17 @@
 .AllCards-Content {
   color: white;
   opacity: 0.69;
-  border: 2px solid;
+  border: 2px solid rgba(255, 255, 255, 0.587);
+  border-radius: 8px;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
+}
+
+.AllCards-Content:hover {
+  color: white;
+  opacity: 0.69;
+  border: 2px solid rgba(255, 255, 255, 0.951);
   border-radius: 8px;
   padding: 8px;
   position: relative;
