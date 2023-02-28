@@ -14,6 +14,11 @@ import { logout } from "../../store/session";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session);
   const location = useLocation();
+  const history = useHistory();
+
+  const handleRedirect = () => {
+    history.push("/dashboard");
+  };
 
   return (
     <div
@@ -31,6 +36,9 @@ function Navigation({ isLoaded }) {
         </NavLink>
       </div>
       <div className="rightNav">
+        <div className="Dashboard-Button-Holder" onClick={handleRedirect}>
+          Dashboard
+        </div>
         {isLoaded && sessionUser.user && (
           <ProfileButton user={sessionUser.user} />
         )}

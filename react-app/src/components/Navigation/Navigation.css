@@ -1,5 +1,11 @@
 .profile-dropdown {
   position: absolute;
+  background-color: #202022;
+  top: 51px;
+  border-radius: 8px;
+  color: white;
+  height: 8vh;
+  padding: 16px;
 }
 
 .hidden {
@@ -50,10 +56,63 @@
   z-index: 100;
 }
 
-.Log {
-  margin-right: 10px;
-  width: 56px;
+.login {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
   color: white;
+  font-size: 18px;
+}
+
+.signup {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.Login-Signup-Holder {
+  display: flex;
+  gap: 10px;
+}
+
+.pfpButton {
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-right: 25px;
+  font-size: 39px;
+}
+
+.logOut-button {
+  border-radius: 5px;
+  color: white;
+  border: none;
+  background-color: #06808f;
+  cursor: pointer;
+  height: 3vh;
+  margin-top: 3px;
+}
+
+.logOut-button:hover {
+  background-color: #5fddee;
+}
+
+.Dashboard-Button-Holder {
+  margin-right: 40px;
+  color: white;
+  z-index: 92;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4vh;
+  background: transparent;
+  width: 28vw;
+  font-size: 21px;
+  cursor: pointer;
 }
 
 /* Vertical Nav Starts here */
@@ -143,6 +202,16 @@
   padding-top: 5px;
 }
 
+.nav-item-username:hover + .nav-item-logout {
+  display: flex;
+  position: relative;
+  top: -33px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
 .multipleCards-img {
   height: 24vh;
   width: 100%;
@@ -158,7 +227,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  top: 1%;
+  top: 2.5%;
 }
 
 .nav-item-allCards-text {
