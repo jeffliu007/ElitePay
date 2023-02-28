@@ -50,6 +50,7 @@
   margin-bottom: 10px;
   opacity: 0.8;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 .Global-Modal-input {
@@ -165,4 +166,5 @@
   top: 4%;
   right: -2%;
   width: 51%;
+  cursor: pointer;
 }
