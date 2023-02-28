@@ -25,7 +25,7 @@
   align-items: flex-end;
   justify-content: flex-start;
   background-color: #1d1d1d;
-  /* margin-top: 1%; */
+  margin-top: 3%;
   margin-left: 4%;
 }
 
@@ -52,4 +52,26 @@
   width: 24vh;
   height: auto;
   transform: rotate(-23deg);
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .AllCards-Main-Container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    background-color: #1d1d1d;
+    min-height: 100vh;
+    width: 83%;
+    text-align: left;
+    margin-left: 10rem;
+  }
+
+  .singleCard-img {
+    position: absolute;
+    top: 15px;
+    right: -8px;
+    width: 24vh;
+    height: auto;
+    transform: rotate(-23deg);
+  }
 }
