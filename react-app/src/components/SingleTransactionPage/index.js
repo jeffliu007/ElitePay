@@ -84,14 +84,16 @@ const SingleTransactionPage = () => {
             </div>
           )}
         <div className="SingleTransaction-Button-Holder">
-          {singleTransaction.sender_id == sessionUserId && (
+          {singleTransaction.sender_id === sessionUserId ||
+          singleTransaction.status === "completed" ? (
             <div
               className="SingleTransaction-Delete-Transaction"
               onClick={handleTransactionDelete}
             >
               Delete Transaction
             </div>
-          )}
+          ) : null}
+
           {singleTransaction.status !== "completed" &&
             sessionUserId !== singleTransaction.recipient_id && (
               <div className="SingleTransaction-Update-Transaction">

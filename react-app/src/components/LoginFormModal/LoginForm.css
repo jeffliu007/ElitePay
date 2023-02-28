@@ -1,0 +1,108 @@
+.Global-Errors-LI {
+  color: red;
+}
+
+.Global-Errors-UL {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  flex-direction: column;
+  padding: 0;
+}
+
+.Global-Modal-Image-Container {
+  display: flex;
+  justify-content: center;
+}
+
+.Global-Modal-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32vh;
+  height: 43vh;
+  padding: 36px 40px;
+  z-index: 100;
+  background-color: rgb(48, 48, 48);
+}
+
+.Global-ModalForm-Container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.Global-Logo {
+  width: 50%;
+}
+
+.Global-SubmitButton {
+  background-color: rgb(32, 226, 222);
+  color: rgb(27, 27, 27);
+  border-color: transparent;
+  border-radius: 3px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+  font-weight: bolder;
+}
+
+.Global-Modal-input {
+  padding: 13px;
+  margin-bottom: 10px;
+  width: 100%;
+  background-color: rgb(198, 198, 198);
+}
+
+.Global-Modal-Header {
+  /* padding-top: 15px; */
+  color: white;
+  opacity: 0.8;
+}
+
+.Global-Modal-Label {
+  width: 100%;
+  display: flex;
+}
+
+.Login-Demo {
+  padding-top: 19px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #078793;
+}
+
+.Login-Demo:hover {
+  color: #127384;
+  text-decoration: underline;
+}
+
+.Global-Modal-Container3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32vh;
+  height: 56vh;
+  padding: 36px 40px;
+  z-index: 100;
+  background-color: rgb(48, 48, 48);
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .Global-Modal-Container3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 32vh;
+    height: 59vh;
+    padding: 36px 40px;
+    z-index: 100;
+    background-color: rgb(48, 48, 48);
+  }
+}

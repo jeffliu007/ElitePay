@@ -1,0 +1,11 @@
+.Global-Modal-Container2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32vh;
+  height: 50vh;
+  padding: 36px 40px;
+  z-index: 100;
+  background-color: rgb(48, 48, 48);
+}
