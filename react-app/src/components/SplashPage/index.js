@@ -11,7 +11,7 @@ const SplashPage = () => {
 
   const demoLogin = () => {
     dispatch(sessionActions.login("demo@aa.io", "password"));
-    return history.push("/dashboard");
+    return (window.location.href = "/dashboard");
   };
 
   return (
