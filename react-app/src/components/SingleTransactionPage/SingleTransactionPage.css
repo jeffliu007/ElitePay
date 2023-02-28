@@ -85,3 +85,13 @@
 .hidden {
   display: none;
 }
+
+.SingleTransaction-Back-Button {
+  color: white;
+  position: relative;
+  margin-left: 1%;
+  top: -12%;
+  cursor: pointer;
+  margin-top: 3%;
+  opacity: 1;
+}
