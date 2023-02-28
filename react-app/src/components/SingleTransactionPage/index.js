@@ -9,15 +9,6 @@ import {
 import AcceptTransactionModal from "../AcceptTransactionModal";
 import UpdateTransactionModal from "../UpdateTransactionModal";
 
-//!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!!!!!!
-// MISSING CONDITIONAL
-// USER CAN CURRENTLY VIEW ANY SPECIFIC TRANSACTION
-//EVEN IF THEY ARENT THE SENDER OR RECEIVER
-//this can most likely be prevented by only allowing users to hit this route by clicking on navlinks
-//to each card they own in the all cards route
-
 const SingleTransactionPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();

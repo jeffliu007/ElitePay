@@ -57,10 +57,8 @@ function UpdateTransactionForm() {
       const transaction_id = singleTransaction.id;
       dispatch(thunkUpdateTransaction(body, transaction_id))
         .then(() => {
+          dispatch(thunkGetSingleTransaction(transaction_id)); // fetch updated transaction
           closeModal();
-        })
-        .then(() => {
-          dispatch(thunkGetSingleTransaction());
         })
         .catch((err) => {
           setValidationErrors([err.message]);
@@ -68,23 +66,18 @@ function UpdateTransactionForm() {
     }
   };
 
-  useEffect(
-    () => {
-      dispatch(thunkGetAllCards());
-
-      if (!users.length) {
-        async function fetchData() {
-          const response = await fetch(`/api/users/`);
-          const responseData = await response.json();
-          setUsers(responseData.users);
-        }
-        fetchData();
+  useEffect(() => {
+    dispatch(thunkGetAllCards());
+    dispatch(thunkGetSingleTransaction(singleTransaction.id));
+    if (!users.length) {
+      async function fetchData() {
+        const response = await fetch(`/api/users/`);
+        const responseData = await response.json();
+        setUsers(responseData.users);
       }
-    },
-    sessionUserId,
-    [],
-    [dispatch]
-  );
+      fetchData();
+    }
+  }, [users, singleTransaction.id]);
 
   const otherUsers = users?.filter((user) => user.id !== sessionUserId);
 
