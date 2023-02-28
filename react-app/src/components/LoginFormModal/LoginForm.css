@@ -142,6 +142,17 @@
     z-index: 100;
     background-color: rgb(48, 48, 48);
   }
+  .Global-Modal-Container6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 37vh;
+    height: 70vh;
+    padding: 36px 40px;
+    z-index: 100;
+    background-color: rgb(48, 48, 48);
+  }
 }
 
 .generate-buttons {
