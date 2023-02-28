@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./DashboardPage.css";
+import "./AllTransactionsPage.css";
 import { NavLink, useHistory } from "react-router-dom";
 import {
   thunkGetAllTransactions,
@@ -8,7 +8,7 @@ import {
 } from "../../store/transactions";
 import CreateTransactionModal from "../CreateTransactionModal/Index";
 
-const DashboardPage = () => {
+const AllTransactionsPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [loadedPage, setLoadedPage] = useState(false);
@@ -63,4 +63,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default AllTransactionsPage;
