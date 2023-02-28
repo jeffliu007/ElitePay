@@ -1,0 +1,16 @@
+.SingleCard-Container {
+  display: flex;
+  margin-top: 80px;
+}
+
+.SingleCard-Button {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  margin-left: -8px;
+  background: transparent;
+  margin-top: -7px;
+  z-index: 100;
+  border: 1px hidden;
+  cursor: pointer;
+}

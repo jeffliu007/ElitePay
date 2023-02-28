@@ -4,6 +4,7 @@ import { thunkGetAllCards } from "../../store/cards";
 import CreateCardModal from "../CreateCardModal";
 import UpdateCardModal from "../UpdateCardModal";
 import { NavLink } from "react-router-dom";
+import SingleCardModal from "../SingleCardModal/SingleCardModal";
 
 import "./AllCardsPage.css";
 
@@ -31,18 +32,19 @@ const AllCardsPage = () => {
         <div className="AllCards-Card-Holder">
           {allCardsArr.map((card) => (
             <div className="AllCards-Content" key={card.id}>
-              <NavLink exact to={`/dashboard/cards/${card.id}`}>
-                <div>Balance: ${card.balance}</div>
-                <div>Created at: {card.created_at}</div>
-                <div>CVC: {card.cvc_number}</div>
-                <div>Debit #: {card.debit_number}</div>
-                <div>Full Name: {card.full_name}</div>
-                <div>Card ID #: {card.id} </div>
-                <img
-                  src={process.env.PUBLIC_URL + "/singleCard.png"}
-                  className="singleCard-img"
-                />
-              </NavLink>
+              {/* <NavLink exact to={`/dashboard/cards/${card.id}`}> */}
+              <SingleCardModal card={card} />
+              <div>Balance: ${card.balance}</div>
+              <div>Created at: {card.created_at}</div>
+              <div>CVC: {card.cvc_number}</div>
+              <div>Debit #: {card.debit_number}</div>
+              <div>Full Name: {card.full_name}</div>
+              <div>Card ID #: {card.id} </div>
+              <img
+                src={process.env.PUBLIC_URL + "/singleCard.png"}
+                className="singleCard-img"
+              />
+              {/* </NavLink> */}
             </div>
           ))}
         </div>
