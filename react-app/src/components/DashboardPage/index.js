@@ -7,6 +7,7 @@ import {
   thunkDeleteTransaction,
 } from "../../store/transactions";
 import CreateTransactionModal from "../CreateTransactionModal/Index";
+import SingleTransactionModal from "../SingleTransactionPage/SingleTransactionModal";
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -39,28 +40,27 @@ const DashboardPage = () => {
         </div>
 
         {allTransactionsArr.map((transaction) => (
-          <NavLink exact to={`dashboard/transactions/${transaction.id}`}>
-            <div className="AllTransactions-Content">
-              <img src={process.env.PUBLIC_URL + "/dollarsign.png"} />
-              <div className="AllTransactions-Inner-Content">
-                <div>Transaction #{transaction.id}</div>
-                <div className="Date">
-                  {" "}
-                  {new Date(transaction.created_at).toLocaleString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </div>
-                <div className="AllTransactions-Amount">
-                  ${transaction.amount}
-                </div>
-                <div className="AllTransactions-Status">
-                  {transaction.status}
-                </div>
+          // <NavLink exact to={`dashboard/transactions/${transaction.id}`}>
+          <div className="AllTransactions-Content">
+            <SingleTransactionModal transaction={transaction} />
+            <img src={process.env.PUBLIC_URL + "/dollarsign.png"} />
+            <div className="AllTransactions-Inner-Content">
+              <div>Transaction #{transaction.id}</div>
+              <div className="Date">
+                {" "}
+                {new Date(transaction.created_at).toLocaleString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })}
               </div>
+              <div className="AllTransactions-Amount">
+                ${transaction.amount}
+              </div>
+              <div className="AllTransactions-Status">{transaction.status}</div>
             </div>
-          </NavLink>
+          </div>
+          // </NavLink>
         ))}
       </div>
     </div>

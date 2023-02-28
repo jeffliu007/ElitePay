@@ -9,7 +9,6 @@ import { VerticalNavigation } from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import AllCardsPage from "./components/AllCardsPage";
 import DashboardPage from "./components/DashboardPage";
-import SingleTransactionPage from "./components/SingleTransactionPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,17 +34,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          {/* <Route path="/dashboard/cards/:cardId">
-            <SingleCardPage />
-          </Route> */}
           <Route path="/dashboard/cards" exact>
             <AllCardsPage />
           </Route>
           <Route path="/dashboard" exact>
             <DashboardPage />
-          </Route>
-          <Route path="/dashboard/transactions/:transactionId">
-            <SingleTransactionPage />
           </Route>
           <Route path="/" exact>
             <SplashPage />

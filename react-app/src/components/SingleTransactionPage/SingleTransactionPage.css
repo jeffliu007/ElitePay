@@ -1,97 +1,143 @@
-.SingleTransaction-Main-Container {
-  display: flex;
-  flex-direction: row;
-  margin-top: 0;
-  background-color: #1d1d1d;
-  min-height: 100vh;
-  width: 88%;
-  text-align: left;
-  margin-left: 10rem;
+.SingleTransaction-Button {
+  position: absolute;
+  width: 86%;
+  height: 10%;
+  background: transparent;
+  border: hidden;
+  z-index: 99;
 }
 
-.SingleTransaction-Content-Holder {
+.SingleTransaction-Main-Container {
+  width: 37vh;
+  height: 74vh;
+  background-color: rgb(48, 48, 48);
+  color: white;
+}
+
+.SingleTransaction-Main-Container p {
+  opacity: 0.73;
+}
+
+.SingleTransaction-Main-Container h2 {
+  opacity: 0.9;
+}
+
+.SingleTransaction-Top-Holder {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  background: #1d1d1d;
-  padding-left: 25px;
-  padding-top: 4%;
-  color: white;
-  opacity: 0.69;
-  justify-content: space-around;
+  align-items: center;
 }
 
-.SingleTransaction-Content-Holder h1 {
-  border-bottom: 4px solid #bb86fc;
-  opacity: 1;
-  padding-bottom: 53px;
-  margin-top: -45px;
+.SingleTransaction-Bottom-Holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 27%;
+  border-top: 2px solid teal;
+  padding-top: 15px;
+}
+
+.SingleTransaction-Main-Container p {
+  position: relative;
+  bottom: 30px;
+}
+
+.SingleTransaction-Div-Amount {
+  font-size: 60px;
+  opacity: 0.79;
+  font-size: 60px;
+  opacity: 0.8;
+  position: relative;
+  top: 51px;
+}
+
+.SingleTransaction-Div-Created-At {
+  position: relative;
+  top: 45px;
+  font-size: 15px;
+  opacity: 0.7;
+}
+
+.SingleTransaction-Div-Description {
+  position: relative;
+  top: 109px;
+  opacity: 0.73;
+}
+
+.SingleTransaction-Bottom-Holder div {
+  padding: 5px;
+}
+.SingleTransaction-Button-Holder {
+  display: flex;
+  gap: 47px;
+  position: relative;
+  top: 13px;
+}
+
+.SingleTransaction-Delete {
+  border: 3px solid teal;
+  border-radius: 10px;
+  width: 5vw;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  height: 4vh;
+  align-items: center;
+  cursor: pointer;
+}
+
+.SingleTransaction-Delete:hover {
+  border: 3px solid rgb(90, 244, 244);
+  background: #313131;
+  cursor: pointer;
+}
+
+.Update-Transaction-Button {
+  color: white;
+  background-color: transparent;
+  font-size: 16px;
+  font-family: "Poppins";
+  border: 3px solid teal;
+  border-radius: 10px;
+  width: 6vw;
+  display: flex;
+  justify-content: center;
+  height: 53.5px;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  bottom: 9px;
+}
+
+.Update-Transaction-Button:hover {
+  border: 3px solid rgb(90, 244, 244);
+  background: #313131;
+  cursor: pointer;
 }
 
 .SingleTransaction-Div {
-  border-bottom: 2px solid #bb86fc;
+  opacity: 0.73;
 }
 
-.SingleTransaction-Delete-Transaction {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #bb86fc !important;
-  position: relative;
-  top: -1%;
-  width: 14vw;
-  right: -1%;
-  height: 9vh;
+.SingleTransaction-Accept {
+  cursor: pointer;
+  border: 3px solid teal;
   border-radius: 8px;
+  height: 3vh;
+}
+
+.SingleTransaction-Accept:hover {
+  border: 3px solid rgb(90, 244, 244);
+  background: #313131;
   cursor: pointer;
-  font-size: 18px;
 }
 
-.SingleTransaction-Delete-Transaction:hover {
-  background-color: #373737;
-  border: 2px solid #bb86fc !important;
-}
-
-.Accept-Transaction-Button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #bb86fc !important;
-  position: relative;
-  top: -1%;
-  width: 14vw;
-  right: -1%;
-  height: 9vh;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 18px;
-  background: #1d1d1d;
-  color: white;
-}
-
-.Accept-Transaction-Button:hover {
-  background-color: #373737;
-  border: 2px solid #bb86fc;
-}
-
-.SingleTransaction-Button-Holder {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  position: relative;
-  border: hidden !important;
-}
-
-.hidden {
-  display: none;
-}
-
-.SingleTransaction-Back-Button {
-  color: white;
-  position: relative;
-  margin-left: 1%;
-  top: -12%;
-  cursor: pointer;
-  margin-top: 3%;
-  opacity: 1;
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .SingleTransaction-Main-Container {
+    width: 42vh;
+    height: 80vh;
+    background-color: rgb(48, 48, 48);
+    color: white;
+  }
 }
