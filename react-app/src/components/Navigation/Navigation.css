@@ -158,6 +158,7 @@
   position: relative;
   display: flex;
   justify-content: center;
+  top: 1%;
 }
 
 .nav-item-allCards-text {
@@ -200,16 +201,17 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  top: 2%;
 }
 
 .addCard-img {
   position: relative;
-  bottom: 13px;
+  bottom: 22px;
 }
 
 .addCard-text {
   position: relative;
-  top: -58px;
+  top: -51px;
   color: white;
   display: flex;
   justify-content: center;

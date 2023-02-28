@@ -213,8 +213,8 @@ def delete_transaction(transactionId):
   if delete_transaction.sender_id != current_user.id:
     return {'errors': ['Unauthorized']}, 401
 
-  if delete_transaction.status == 'completed':
-    return {'errors': ['Transaction already completed, cannot remove']}, 401
+  # if delete_transaction.status == 'completed':
+  #   return {'errors': ['Transaction already completed, cannot remove']}, 401
 
   db.session.delete(delete_transaction)
   db.session.commit()

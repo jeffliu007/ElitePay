@@ -60,23 +60,18 @@ function CreateTransactionForm() {
     }
   };
 
-  useEffect(
-    () => {
-      dispatch(thunkGetAllCards());
+  useEffect(() => {
+    dispatch(thunkGetAllCards());
 
-      if (!users.length) {
-        async function fetchData() {
-          const response = await fetch(`/api/users/`);
-          const responseData = await response.json();
-          setUsers(responseData.users);
-        }
-        fetchData();
+    if (!users.length) {
+      async function fetchData() {
+        const response = await fetch(`/api/users/`);
+        const responseData = await response.json();
+        setUsers(responseData.users);
       }
-    },
-    sessionUserId,
-    [],
-    [dispatch]
-  );
+      fetchData();
+    }
+  }, [dispatch, sessionUserId, users.length]);
 
   const otherUsers = users?.filter((user) => user.id !== sessionUserId);
 

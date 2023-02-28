@@ -1,0 +1,22 @@
+.Update-Transaction-Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #bb86fc !important;
+  position: relative;
+  top: -1%;
+  width: 14vw;
+  right: -1%;
+  height: 9vh;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #1d1d1d;
+  font-size: 18px;
+  color: white;
+  font-family: "Poppins";
+}
+
+.Update-Transaction-Button:hover {
+  background-color: #373737;
+  border: 2px solid #bb86fc !important;
+}
