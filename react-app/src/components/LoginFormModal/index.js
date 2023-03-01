@@ -21,11 +21,17 @@ function LoginFormModal() {
     return (window.location.href = "/dashboard");
   };
 
+  const demoLogin2 = () => {
+    dispatch(sessionActions.login("marnie@aa.io", "password"));
+    closeModal();
+    return (window.location.href = "/dashboard");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      setErrors(["Invalid Credentials"]);
     } else {
       if (location.pathname == "/") window.location.href = "/dashboard";
       closeModal();
@@ -39,11 +45,9 @@ function LoginFormModal() {
       <form onSubmit={handleSubmit} className="Global-ModalForm-Container">
         <ul className="Global-Errors-UL">
           {errors.map((error, idx) => {
-            const errorArray = error.split(":");
-            const errorMessage = errorArray[1].trim();
             return (
               <li className="Global-Errors-LI" key={idx}>
-                {errorMessage}
+                {error}
               </li>
             );
           })}
@@ -73,7 +77,10 @@ function LoginFormModal() {
           Log In
         </button>
         <div onClick={demoLogin} className="Login-Demo">
-          Try demo
+          Try demo 1
+        </div>
+        <div onClick={demoLogin2} className="Login-Demo">
+          Try demo 2
         </div>
       </form>
     </div>
