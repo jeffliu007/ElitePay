@@ -38,30 +38,36 @@ const DashboardPage = () => {
           <div className="AllTransactions-Header-Item3">Transaction Amount</div>
           <div className="AllTransactions-Header-Item4">Status</div>
         </div>
-
-        {allTransactionsArr.map((transaction) => (
-          // <NavLink exact to={`dashboard/transactions/${transaction.id}`}>
-          <div className="AllTransactions-Content">
-            <SingleTransactionModal transaction={transaction} />
-            <img src={process.env.PUBLIC_URL + "/dollarsign.png"} />
-            <div className="AllTransactions-Inner-Content">
-              <div>Transaction #{transaction.id}</div>
-              <div className="Date">
-                {" "}
-                {new Date(transaction.created_at).toLocaleString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })}
+        {allTransactionsArr.length > 0 ? (
+          allTransactionsArr.map((transaction) => (
+            <div className="AllTransactions-Content">
+              <SingleTransactionModal transaction={transaction} />
+              <img src={process.env.PUBLIC_URL + "/dollarsign.png"} />
+              <div className="AllTransactions-Inner-Content">
+                <div>Transaction #{transaction.id}</div>
+                <div className="Date">
+                  {" "}
+                  {new Date(transaction.created_at).toLocaleString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </div>
+                <div className="AllTransactions-Amount">
+                  ${transaction.amount}
+                </div>
+                <div className="AllTransactions-Status">
+                  {transaction.status}
+                </div>
               </div>
-              <div className="AllTransactions-Amount">
-                ${transaction.amount}
-              </div>
-              <div className="AllTransactions-Status">{transaction.status}</div>
             </div>
-          </div>
-          // </NavLink>
-        ))}
+          ))
+        ) : (
+          <h1 className="No-Transactions">
+            {""} No transactions made. Create a card and make your first
+            transaction!
+          </h1>
+        )}
       </div>
     </div>
   );

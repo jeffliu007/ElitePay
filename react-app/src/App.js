@@ -9,6 +9,8 @@ import { VerticalNavigation } from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import AllCardsPage from "./components/AllCardsPage";
 import DashboardPage from "./components/DashboardPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import NotFound from "./components/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,14 +36,17 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/dashboard/cards" exact>
+          <ProtectedRoute path="/dashboard/cards" exact>
             <AllCardsPage />
-          </Route>
-          <Route path="/dashboard" exact>
+          </ProtectedRoute>
+          <ProtectedRoute path="/dashboard" exact>
             <DashboardPage />
-          </Route>
+          </ProtectedRoute>
           <Route path="/" exact>
             <SplashPage />
+          </Route>
+          <Route>
+            <NotFound />
           </Route>
         </Switch>
       )}

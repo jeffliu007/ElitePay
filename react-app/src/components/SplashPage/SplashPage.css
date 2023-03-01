@@ -137,6 +137,14 @@
   cursor: pointer;
 }
 
+.fa-linkedin {
+  display: flex;
+  font-size: 25px;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 1440px) {
   .robotarm {
     height: 78vh;

@@ -18,8 +18,19 @@ const Footer = () => {
           </div>
         );
       })}
-      <a href="https://github.com/jeffliu007">
+      <a
+        href="https://github.com/jeffliu007"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <i className="fa-brands fa-github"></i>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/jeffreyliu17/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i className="fa-brands fa-linkedin"></i>
       </a>
     </div>
   );

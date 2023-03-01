@@ -31,9 +31,9 @@ const SingleCardContent = ({ card }) => {
 
   return (
     <div className="Global-Modal-Container6">
-      <h1>Card #: {card?.id}</h1>
+      <h1>Card #{card?.id}</h1>
       <div className="SingleCard-Info-Holder">
-        <div>Card balance: ${card?.balance}</div>
+        <div>Balance: ${card?.balance}</div>
         <div>
           Created at:{" "}
           {new Date(card.created_at).toLocaleString("en-US", {
@@ -42,8 +42,8 @@ const SingleCardContent = ({ card }) => {
             year: "numeric",
           })}
         </div>
-        <div>CVC #: {card?.cvc_number}</div>
-        <div>Debit #: {card?.debit_number}</div>
+        <div>CVC #{card?.cvc_number}</div>
+        <div>Debit #{card?.debit_number}</div>
         <div>Card Holder: {card?.full_name}</div>
       </div>
       <div className="Dashboard-Edit-Card">
