@@ -26,15 +26,7 @@ function Navigation({ isLoaded }) {
         location.pathname === "/" ? "Navbar-transparent" : "Navbar"
       }`}
     >
-      <div className="leftNav">
-        <NavLink exact to="/">
-          <img
-            src={process.env.PUBLIC_URL + "/logo.png"}
-            className="Navbar-Home-Logo"
-            alt="navbar homelogo"
-          />
-        </NavLink>
-      </div>
+      <div className="leftNav"></div>
       <div className="rightNav">
         {isLoaded && sessionUser.user && (
           <div className="Dashboard-Button-Holder" onClick={handleRedirect}>
@@ -82,7 +74,7 @@ export function VerticalNavigation({ isLoaded }) {
     <div className="Vertical-Nav">
       <div className="navbar-nav">
         <div className="nav-item1">
-          <NavLink exact to="/">
+          <NavLink exact to="/dashboard">
             <img
               src={process.env.PUBLIC_URL + "/logo.png"}
               className="VerticalNavbar-Home-Logo"

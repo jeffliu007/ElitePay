@@ -5,11 +5,12 @@
   background: transparent;
   border: hidden;
   z-index: 99;
+  cursor: pointer;
 }
 
 .SingleTransaction-Main-Container {
   width: 37vh;
-  height: 74vh;
+  height: 78vh;
   background-color: rgb(48, 48, 48);
   color: white;
 }
@@ -63,6 +64,10 @@
   position: relative;
   top: 109px;
   opacity: 0.73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
 }
 
 .SingleTransaction-Bottom-Holder div {
@@ -70,49 +75,55 @@
 }
 .SingleTransaction-Button-Holder {
   display: flex;
-  gap: 47px;
+  gap: 28px;
   position: relative;
-  top: 13px;
+  top: 2px;
+  flex-direction: column;
 }
 
 .SingleTransaction-Delete {
-  border: 3px solid teal;
-  border-radius: 10px;
-  width: 5vw;
+  background-color: rgb(32, 226, 222);
+  color: rgb(27, 27, 27);
+  border-color: transparent;
+  border-radius: 3px;
+  width: 13vw;
+  padding: 10px;
+  margin-bottom: 8px;
+  opacity: 0.8;
   display: flex;
   justify-content: center;
-  cursor: pointer;
-  height: 4vh;
-  align-items: center;
+  position: relative;
+  top: 20px;
   cursor: pointer;
 }
 
 .SingleTransaction-Delete:hover {
-  border: 3px solid rgb(90, 244, 244);
-  background: #313131;
+  background-color: rgb(104, 245, 242);
   cursor: pointer;
 }
 
 .Update-Transaction-Button {
-  color: white;
-  background-color: transparent;
-  font-size: 16px;
-  font-family: "Poppins";
-  border: 3px solid teal;
-  border-radius: 10px;
-  width: 6vw;
+  background-color: rgb(32, 226, 222);
+  color: rgb(27, 27, 27);
+  border-color: transparent;
+  border-radius: 3px;
+  width: 261px;
+  padding: 10px;
+  margin-bottom: 8px;
+  opacity: 0.8;
   display: flex;
   justify-content: center;
-  height: 53.5px;
-  align-items: center;
-  cursor: pointer;
   position: relative;
-  bottom: 9px;
+  cursor: pointer;
+  font-family: "Poppins";
+  font-size: 15px;
+  height: 37px;
+  display: flex;
+  align-items: center;
 }
 
 .Update-Transaction-Button:hover {
-  border: 3px solid rgb(90, 244, 244);
-  background: #313131;
+  background-color: rgb(104, 245, 242);
   cursor: pointer;
 }
 
@@ -121,23 +132,67 @@
 }
 
 .SingleTransaction-Accept {
+  background-color: rgb(32, 226, 222);
+  color: rgb(27, 27, 27);
+  border-color: transparent;
+  border-radius: 3px;
+  width: 13vw;
+  padding: 10px;
+  margin-bottom: 8px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 34px;
   cursor: pointer;
-  border: 3px solid teal;
-  border-radius: 8px;
-  height: 3vh;
 }
 
 .SingleTransaction-Accept:hover {
-  border: 3px solid rgb(90, 244, 244);
-  background: #313131;
+  background-color: rgb(104, 245, 242);
   cursor: pointer;
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
   .SingleTransaction-Main-Container {
     width: 42vh;
-    height: 80vh;
+    height: 95vh;
     background-color: rgb(48, 48, 48);
     color: white;
+  }
+
+  .SingleTransaction-Delete {
+    background-color: rgb(32, 226, 222);
+    color: rgb(27, 27, 27);
+    border-color: transparent;
+    border-radius: 3px;
+    width: 16vw;
+    padding: 10px;
+    margin-bottom: 8px;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+  }
+
+  .Update-Transaction-Button {
+    background-color: rgb(32, 226, 222);
+    color: rgb(27, 27, 27);
+    border-color: transparent;
+    border-radius: 3px;
+    width: 242px;
+    padding: 10px;
+    margin-bottom: 8px;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    font-family: "Poppins";
+    font-size: 15px;
+    height: 37px;
+    display: flex;
+    align-items: center;
   }
 }
