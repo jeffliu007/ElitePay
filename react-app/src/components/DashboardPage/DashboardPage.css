@@ -104,17 +104,7 @@
   padding-right: 2%;
 }
 
-/* @media only screen and (min-width: 1280px) and (max-width: 1440px) {
-  .AllTransactions-Amount {
-    padding-right: 22%;
-  }
-  .Date {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    margin-left: 18%;
-  }
-} */
+.No-Transactions {
+  position: relative;
+  left: 8px;
+}
