@@ -7,7 +7,6 @@ from ..forms.card_form import CreateCardForm, EditCardForm
 
 card_routes = Blueprint('card', __name__)
 
-#blueprint registered with url prefix of /api/dashboard/cards/
 
 
 #route to get all cards that a user owns

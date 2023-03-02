@@ -6,7 +6,6 @@ from ..forms.transaction_form import CreateTransactionForm, EditTransactionForm,
 
 transaction_routes = Blueprint('transaction', __name__)
 
-#blueprint registered with url prefix of /api/dashboard/transactions/
 
 #route to get all users transactions
 @transaction_routes.route("/")
