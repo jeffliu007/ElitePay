@@ -111,9 +111,7 @@ const SingleTransactionContent = ({ transaction }) => {
 
           {transaction?.status !== "completed" &&
             sessionUserId !== transaction?.recipient_id && (
-              <>
-                <UpdateTransactionModal />
-              </>
+              <UpdateTransactionModal />
             )}
         </div>
       </div>

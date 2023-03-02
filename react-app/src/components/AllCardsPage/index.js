@@ -58,7 +58,6 @@ const AllCardsPage = () => {
                 src={process.env.PUBLIC_URL + "/singleCard.png"}
                 className="singleCard-img"
               />
-              {/* </NavLink> */}
             </div>
           ))}
         </div>
