@@ -13,7 +13,7 @@ def seed_rooms():
 
 def undo_rooms():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.cards RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.rooms RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM rooms")
 

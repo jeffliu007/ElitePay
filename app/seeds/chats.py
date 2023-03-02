@@ -39,3 +39,20 @@ chat6 = Chat(
     user_id = 3,
     room_id = 3,
 )
+
+def seed_chats():
+    db.session.add(chat1)
+    db.session.add(chat2)
+    db.session.add(chat3)
+    db.session.add(chat4)
+    db.session.add(chat5)
+    db.session.add(chat6)
+    db.session.commit()
+
+def undo_chats():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.chats RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM chats")
+
+        db.session.commit()

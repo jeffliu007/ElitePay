@@ -2,6 +2,8 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .cards import seed_cards, undo_cards
 from .transactions import seed_transactions, undo_transactions
+from .rooms import seed_rooms, undo_rooms
+from .chats import seed_chats, undo_chats
 
 
 from app.models.db import db, environment, SCHEMA
@@ -25,12 +27,16 @@ def seed():
     seed_users()
     seed_cards()
     seed_transactions()
+    seed_rooms()
+    seed_chats()
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+    undo_chats()
+    undo_rooms()
     undo_transactions()
     undo_cards()
     undo_users()
