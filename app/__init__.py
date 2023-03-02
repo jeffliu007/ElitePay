@@ -12,6 +12,7 @@ from .config import Config
 from .api.card_routes import card_routes
 from .api.transaction_routes import transaction_routes
 from .api.room_routes import room_routes
+from .api.chat_routes import chat_routes
 from .socket import socketio
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
@@ -35,6 +36,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(card_routes, url_prefix='/api/cards')
 app.register_blueprint(transaction_routes, url_prefix='/api/transactions')
 app.register_blueprint(room_routes, url_prefix='/api/rooms')
+app.register_blueprint(chat_routes, url_prefix='/api/chats')
 db.init_app(app)
 Migrate(app, db)
 socketio.init_app(app)
