@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import cardReducer from "./cards";
 import transactionReducer from "./transactions";
+import roomReducer from "./rooms";
 
 const rootReducer = combineReducers({
   session,
   cards: cardReducer,
   transactions: transactionReducer,
+  room: roomReducer,
 });
 
 let enhancer;

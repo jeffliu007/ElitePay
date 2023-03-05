@@ -1,0 +1,39 @@
+.Chat-Main-Container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  background-color: #1d1d1d;
+  min-height: 100vh;
+  width: 90%;
+  text-align: left;
+  margin-left: 11rem;
+  color: white;
+  border: 2px solid greenyellow;
+}
+
+.Chat-Left {
+  display: flex;
+  width: 25%;
+  border: 1px solid red;
+  flex-direction: column;
+}
+
+.room-person {
+  display: flex;
+  flex-direction: row;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .Chat-Main-Container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    background-color: #1d1d1d;
+    min-height: 100vh;
+    width: 87%;
+    text-align: left;
+    margin-left: 11rem;
+    color: white;
+    border: 2px solid greenyellow;
+  }
+}
