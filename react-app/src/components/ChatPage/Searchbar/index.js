@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { thunkCreateRoom } from "../../../store/rooms";
 import "./Searchbar.css";
 
-export const Searchbar = ({ matchUsers }) => {
+export const Searchbar = ({ existingUsers }) => {
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.room.allUsers);
   const session = useSelector((state) => state.session.user);
   const users = Object.values(allUsers);
   const availableUsers = users.filter(
-    (user) => user.id !== session.id && !matchUsers.has(user.id)
+    (user) => user.id !== session.id && !existingUsers.has(user.id)
   );
 
   const [searchInput, setSearchInput] = useState("");

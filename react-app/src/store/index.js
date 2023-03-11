@@ -4,12 +4,14 @@ import session from "./session";
 import cardReducer from "./cards";
 import transactionReducer from "./transactions";
 import roomReducer from "./rooms";
+import chatReducer from "./chats";
 
 const rootReducer = combineReducers({
   session,
   cards: cardReducer,
   transactions: transactionReducer,
   room: roomReducer,
+  chat: chatReducer,
 });
 
 let enhancer;

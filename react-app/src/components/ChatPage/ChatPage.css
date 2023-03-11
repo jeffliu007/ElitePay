@@ -1,4 +1,4 @@
-.Chat-Main-Container {
+.chat-outer-container {
   display: flex;
   flex-direction: row;
   margin-top: 0;
@@ -21,6 +21,10 @@
 .room-person {
   display: flex;
   flex-direction: row;
+}
+
+.room-person-container {
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
