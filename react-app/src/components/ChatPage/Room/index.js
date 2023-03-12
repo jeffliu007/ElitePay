@@ -66,7 +66,7 @@ const ChatRoom = ({ selectedRoom }) => {
   };
 
   const scroll = () => {
-    const chatContainer = document.querySelector(".chats-messages-container");
+    const chatContainer = document.querySelector(".Chats-Messages-Container");
     if (chatContainer) {
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
@@ -79,14 +79,14 @@ const ChatRoom = ({ selectedRoom }) => {
 
   return (
     <>
-      <div className="chats-messages-container">
+      <div className="Chat-Messages-Container">
         {chatArr.map((chat, ind) => (
           <div
-            className="message-bubble right"
+            className="Message-Bubble right"
             key={`${chat.message}-${chat.id}-${ind}`}
           >
             <div
-              className={`left-message-bubble-icon ${
+              className={`Left-Message-Bubble-Icon ${
                 chat.user_id === user.id ? "self" : ""
               }`}
             >
@@ -94,10 +94,10 @@ const ChatRoom = ({ selectedRoom }) => {
                 .charAt(0)
                 .toUpperCase()}`}</div>
             </div>
-            <div className="right-message-bubble-icon">
+            <div className="Right-Message-Bubble-Icon">
               <p>
                 {`${allUsers[chat.user_id]?.username}`}
-                <span> {chat.created_at}</span>
+                <span>{chat.created_at}</span>
               </p>
               <p>{chat.message}</p>
             </div>
@@ -105,7 +105,7 @@ const ChatRoom = ({ selectedRoom }) => {
         ))}
       </div>
       <form
-        className={`chat-input-container${
+        className={`Chat-Input-Container ${
           selectedRoom === 0 ? " disabled" : ""
         }`}
         onSubmit={sendChat}

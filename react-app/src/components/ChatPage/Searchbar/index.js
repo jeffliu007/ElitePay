@@ -42,7 +42,7 @@ export const Searchbar = ({ existingUsers }) => {
       <div className="person-search-container">
         <div className="search">
           <input
-            placeholder="Search for someone by email..."
+            placeholder="Search for people by username..."
             value={searchInput}
             onChange={handleFilter}
           />

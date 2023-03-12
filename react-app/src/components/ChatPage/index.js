@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllRooms, thunkGetAllUsers } from "../../store/rooms";
 import ChatRoom from "./Room";
+import React from "react";
 import "./ChatPage.css";
 import Searchbar from "./Searchbar";
 
@@ -29,22 +30,22 @@ const Chat = () => {
   }
 
   return (
-    <div className="chat-outer-container">
-      <div className="chat-inner-container">
-        <div className="direct-messages-container">
+    <div className="Chat-Outer-Container">
+      <div className="Chat-Inner-Container">
+        <div className="Message-Container">
           <h1>Messages</h1>
           <Searchbar existingUsers={existingUsers} />
           {rooms?.map((room) => (
-            <>
+            <React.Fragment key={`room-${room.id}-fragment`}>
               <div
-                className="room-person-container"
+                className="Room-User-Container"
                 key={`room-${room.id}`}
                 id={room.id}
                 onClick={() => setSelectedRoom(room.id)}
               >
-                <div className="room-person">
-                  <div className="room-person-icon">
-                    <h3>ICON</h3>
+                <div className="Room-User">
+                  <div className="Room-User-Icon">
+                    <i class="fa-regular fa-user"></i>
                   </div>
                   <p>
                     {room.friend_id === user?.id
@@ -53,10 +54,10 @@ const Chat = () => {
                   </p>
                 </div>
               </div>
-            </>
+            </React.Fragment>
           ))}
         </div>
-        <div className="chat-box-container">
+        <div className="Chat-Box-Container">
           <ChatRoom selectedRoom={selectedRoom} />
         </div>
       </div>

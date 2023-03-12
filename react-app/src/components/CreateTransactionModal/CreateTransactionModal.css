@@ -2,10 +2,11 @@
   color: transparent;
   background-color: transparent;
   position: absolute;
-  bottom: 22%;
+  bottom: 10%;
   border: 1px hidden;
   cursor: pointer;
-  height: 16vh;
+  height: 13vh;
   width: 100%;
   z-index: 100;
+  left: 0%;
 }
