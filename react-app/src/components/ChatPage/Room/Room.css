@@ -118,12 +118,14 @@
   font-size: 14px;
 }
 
-.fa-paper-plane {
+.fa-reply {
   color: #1bb4a5;
   transition: 0.4s;
+  font-size: 30px;
+  cursor: pointer;
 }
 
-.fa-paper-plane:hover {
-  color: #66e4d8;
+.fa-reply:hover {
+  color: #7bf5e8;
   cursor: pointer;
 }

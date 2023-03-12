@@ -115,7 +115,7 @@ const ChatRoom = ({ selectedRoom }) => {
           type="submit"
           className={`${selectedRoom === 0 ? " disabled" : ""}`}
         >
-          <i className="fa-regular fa-paper-plane fa-2xl"></i>
+          <i class="fa-solid fa-reply"></i>
         </button>
       </form>
     </>

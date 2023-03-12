@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+.AllTransactions-Content:hover {
+  background-color: rgb(62, 62, 62);
+}
+
 .SingleTransaction-Main-Container {
   width: 37vh;
   max-height: 110vh;

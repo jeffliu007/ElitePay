@@ -12,6 +12,7 @@
 .AllTransactions-Main-Container h1 {
   color: white;
   opacity: 0.87;
+  padding-left: 27px;
 }
 
 .AllTransactions-Card-Holder {
@@ -104,7 +105,16 @@
   padding-right: 2%;
 }
 
+.No-Transactions-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .No-Transactions {
-  position: relative;
-  left: 8px;
+}
+
+.No-Transactions-Img {
+  padding-top: 100px;
 }

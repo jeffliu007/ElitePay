@@ -18,7 +18,7 @@ const createRoom = (room) => ({
 });
 
 export const thunkGetAllRooms = () => async (dispatch) => {
-  const response = await fetch("/api/users/rooms");
+  const response = await fetch("/api/users/room");
 
   if (response.ok) {
     const data = await response.json();
@@ -50,7 +50,7 @@ export const thunkGetAllUsers = () => async (dispatch) => {
 };
 
 export const thunkCreateRoom = (data) => async (dispatch) => {
-  const response = await fetch("/api/rooms/", {
+  const response = await fetch("/api/room/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

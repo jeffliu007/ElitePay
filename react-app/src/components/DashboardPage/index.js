@@ -63,10 +63,16 @@ const DashboardPage = () => {
             </div>
           ))
         ) : (
-          <h1 className="No-Transactions">
-            {""} No transactions made. Create a card and make your first
-            transaction!
-          </h1>
+          <div className="No-Transactions-Container">
+            <h1 className="No-Transactions">
+              {""} No transactions made. Create a card and make your first
+              transaction!
+            </h1>
+            <img
+              src={process.env.PUBLIC_URL + "./noTransactions.png"}
+              className="No-Transactions-Img"
+            />
+          </div>
         )}
       </div>
     </div>

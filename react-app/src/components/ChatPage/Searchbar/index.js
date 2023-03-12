@@ -53,8 +53,8 @@ export const Searchbar = ({ existingUsers }) => {
               return (
                 <div
                   className="member-selection"
-                  key={`${user.id}`}
-                  id={user.id}
+                  key={`${user?.id}`}
+                  id={user?.id}
                   onClick={handleUserSelect}
                 >
                   {user?.username}

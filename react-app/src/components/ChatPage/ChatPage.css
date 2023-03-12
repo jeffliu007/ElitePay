@@ -5,17 +5,10 @@
   margin-top: 0;
   background-color: #1d1d1d;
   height: 100vh;
-  width: 89%;
+  width: 87%;
   text-align: left;
   left: 11rem;
   color: white;
-}
-
-.Chat-Left {
-  display: flex;
-  width: 25%;
-  border: 1px solid red;
-  flex-direction: column;
 }
 
 .Chat-Inner-Container {
@@ -56,6 +49,10 @@
   border-radius: 28px;
 }
 
+.Room-User-Container:hover {
+  background-color: rgb(59, 59, 59);
+}
+
 .Room-User-Icon i {
   width: 60px;
   height: 60px;
@@ -81,6 +78,5 @@
     text-align: left;
     margin-left: 11rem;
     color: white;
-    border: 2px solid greenyellow;
   }
 }

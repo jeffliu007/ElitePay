@@ -11,21 +11,20 @@ const Chat = () => {
   const allUserObject = useSelector((state) => state.room.allUsers);
   const allRooms = useSelector((state) => state.room.rooms);
   const rooms = Object.values(allRooms);
+  const [selectedRoom, setSelectedRoom] = useState(0);
   const existingUsers = new Set();
   rooms.forEach((room) => {
-    existingUsers.add(room.friend_id);
-    existingUsers.add(room.user_id);
+    existingUsers.add(room?.friend_id);
+    existingUsers.add(room?.user_id);
   });
   const dispatch = useDispatch();
-
-  const [selectedRoom, setSelectedRoom] = useState(0);
 
   useEffect(() => {
     dispatch(thunkGetAllRooms());
     dispatch(thunkGetAllUsers());
   }, []);
 
-  if (!rooms) {
+  if (!rooms || !allUserObject) {
     return null;
   }
 
@@ -36,21 +35,23 @@ const Chat = () => {
           <h1>Messages</h1>
           <Searchbar existingUsers={existingUsers} />
           {rooms?.map((room) => (
-            <React.Fragment key={`room-${room.id}-fragment`}>
+            <React.Fragment key={`room-${room?.id}-fragment`}>
               <div
                 className="Room-User-Container"
-                key={`room-${room.id}`}
-                id={room.id}
-                onClick={() => setSelectedRoom(room.id)}
+                key={`room-${room?.id}`}
+                id={room?.id}
+                onClick={() => setSelectedRoom(room?.id)}
               >
                 <div className="Room-User">
                   <div className="Room-User-Icon">
                     <i class="fa-regular fa-user"></i>
                   </div>
                   <p>
-                    {room.friend_id === user?.id
-                      ? `${allUserObject[room.user_id]?.username}`
-                      : `${allUserObject[room.friend_id]?.username}`}
+                    {room?.friend_id === user?.id
+                      ? allUserObject?.[room?.user_id]?.username &&
+                        `${allUserObject?.[room?.user_id]?.username}`
+                      : allUserObject?.[room?.friend_id]?.username &&
+                        `${allUserObject?.[room?.friend_id]?.username}`}
                   </p>
                 </div>
               </div>

@@ -25,7 +25,7 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/rooms', methods=["GET"])
+@user_routes.route('/room', methods=["GET"])
 @login_required
 def user_rooms():
     user = User.query.get(current_user.id)
