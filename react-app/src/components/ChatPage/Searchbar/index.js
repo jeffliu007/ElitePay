@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { thunkCreateRoom } from "../../../store/rooms";
+import {
+  thunkCreateRoom,
+  thunkGetAllRooms,
+  thunkGetAllUsers,
+} from "../../../store/rooms";
 import "./Searchbar.css";
 
 export const Searchbar = ({ existingUsers }) => {
@@ -34,6 +38,7 @@ export const Searchbar = ({ existingUsers }) => {
       friend_id: e.target?.id,
     };
     dispatch(thunkCreateRoom(payload));
+    dispatch(thunkGetAllUsers());
     setSearchInput("");
   };
 

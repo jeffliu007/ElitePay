@@ -15,16 +15,26 @@ function LoginFormModal() {
   const location = useLocation();
   const history = useHistory();
 
-  const demoLogin = () => {
-    dispatch(sessionActions.login("demo@aa.io", "password"));
-    closeModal();
-    return (window.location.href = "/dashboard");
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(["Invalid Credentials"]);
+    } else {
+      if (location.pathname == "/") window.location.href = "/dashboard";
+      closeModal();
+    }
   };
 
-  const demoLogin2 = () => {
-    dispatch(sessionActions.login("marnie@aa.io", "password"));
-    closeModal();
-    return (window.location.href = "/dashboard");
+  const demoLogin2 = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("marnie@aa.io", "password"));
+    if (data) {
+      setErrors(["Invalid Credentials"]);
+    } else {
+      if (location.pathname == "/") window.location.href = "/dashboard";
+      closeModal();
+    }
   };
 
   const handleSubmit = async (e) => {
