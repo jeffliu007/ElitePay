@@ -64,6 +64,10 @@
   background-color: rgb(198, 198, 198);
 }
 
+.Global-Modal-Label select {
+  cursor: pointer;
+}
+
 .Global-Modal-Header {
   /* padding-top: 15px; */
   color: white;

@@ -172,7 +172,7 @@
     color: white;
   }
 
-  .SingleTransaction-Delete {
+  /* .SingleTransaction-Delete {
     background-color: rgb(32, 226, 222);
     color: rgb(27, 27, 27);
     border-color: transparent;
@@ -205,5 +205,5 @@
     font-size: 15px;
     display: flex;
     align-items: center;
-  }
+  } */
 }
