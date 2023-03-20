@@ -1,0 +1,131 @@
+.Chat-Input-Container {
+  position: fixed;
+  bottom: 0;
+  height: 70px;
+  box-sizing: border-box;
+  width: 60%;
+  border-top: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid gray;
+}
+
+.Chat-Input-Container > input {
+  width: 80%;
+  height: 20px;
+  border-radius: 10px;
+  background-color: rgb(34, 34, 34);
+  border: none;
+  color: white;
+  padding: 15px;
+}
+
+.disabled > input {
+  pointer-events: none;
+}
+
+.disabled > button {
+  pointer-events: none;
+}
+
+.Chat-Input-Container > input:focus {
+  outline: none;
+}
+
+.Chat-Input-Container > button {
+  background-color: transparent;
+  border: none;
+}
+
+.Chat-Input-Container > button > img:hover {
+  cursor: pointer;
+}
+
+.filter {
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg)
+    brightness(118%) contrast(119%);
+}
+
+.Chat-Messages-Container {
+  height: 90%;
+  width: 80%;
+  overflow-y: scroll;
+  padding-right: 15%;
+  padding-left: 23px;
+  padding-top: 5px;
+  border-left: 1px solid gray;
+}
+
+.Container > div:last-child {
+  scroll-snap-align: end;
+}
+
+.Chat-Messages-Container::-webkit-scrollbar {
+  background-color: transparent;
+}
+.Chat-Messages-Container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.Chat-Messages-Container::-webkit-scrollbar-thumb {
+  background-color: #5c7680;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+.Message-Bubble {
+  width: 60%;
+  min-height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Left-Message-Bubble-Icon {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(65, 65, 65);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.self {
+  background-color: rgb(26, 136, 148);
+}
+.Right-Message-Bubble-Icon {
+  width: 90%;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+}
+.Right-Message-Bubble-Icon > p:nth-child(1) {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.Right-Message-Bubble-Icon > p:nth-child(1) > span {
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.Right-Message-Bubble-Icon > p:nth-child(2) {
+  font-size: 14px;
+}
+
+.fa-reply {
+  color: #1bb4a5;
+  transition: 0.4s;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.fa-reply:hover {
+  color: #7bf5e8;
+  cursor: pointer;
+}

@@ -1,0 +1,82 @@
+.Chat-Outer-Container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  background-color: #1d1d1d;
+  height: 100vh;
+  width: 87%;
+  text-align: left;
+  left: 11rem;
+  color: white;
+}
+
+.Chat-Inner-Container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.Inner-Container > div:last-child {
+  scroll-snap-align: end;
+}
+
+.Message-Container {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  gap: 16px;
+  padding: 10px;
+}
+
+.Message-Container h1 {
+  margin-left: 16px;
+}
+
+.Chat-Box-Container {
+  width: 80%;
+}
+
+.Room-User {
+  display: flex;
+  flex-direction: row;
+  margin-left: 16px;
+}
+
+.Room-User-Container {
+  cursor: pointer;
+  background-color: rgb(34, 34, 34);
+  border-radius: 28px;
+}
+
+.Room-User-Container:hover {
+  background-color: rgb(59, 59, 59);
+}
+
+.Room-User-Icon i {
+  width: 60px;
+  height: 60px;
+  font-size: 29px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Room-User p {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .Chat-Main-Container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    background-color: #1d1d1d;
+    min-height: 100vh;
+    width: 87%;
+    text-align: left;
+    margin-left: 11rem;
+    color: white;
+  }
+}

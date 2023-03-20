@@ -11,6 +11,7 @@ import AllCardsPage from "./components/AllCardsPage";
 import DashboardPage from "./components/DashboardPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import NotFound from "./components/NotFoundPage";
+import ChatPage from "./components/ChatPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/dashboard" exact>
             <DashboardPage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/dashboard/chat" exact>
+            <ChatPage />
           </ProtectedRoute>
           <Route path="/" exact>
             <SplashPage />

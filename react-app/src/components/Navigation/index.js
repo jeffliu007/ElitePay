@@ -119,6 +119,12 @@ export function VerticalNavigation({ isLoaded }) {
           {<CreateCardModal />}
           <div className="addCard-text">Add card</div>
         </div>
+        <div className="nav-item6">
+          <NavLink className="nav-item-Chat" to="/dashboard/chat">
+            <img src={process.env.PUBLIC_URL + "/chatIcon.png"} />
+            <span className="nav-item-chatRoom-text">Chat Room</span>
+          </NavLink>
+        </div>
       </div>
     </div>
   );

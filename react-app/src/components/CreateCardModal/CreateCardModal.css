@@ -4,10 +4,10 @@
   color: transparent;
   font-size: 16px;
   position: absolute;
-  right: 24%;
-  top: -13%;
+  right: 4%;
+  top: -21%;
   cursor: pointer;
-  height: 16vh;
-  width: 53%;
+  height: 12vh;
+  width: 96%;
   z-index: 100;
 }

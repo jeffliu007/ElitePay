@@ -17,6 +17,11 @@ class User(db.Model, UserMixin):
     cards = db.relationship('Card', back_populates='users', cascade='all,delete')
     transactions= db.relationship('Transaction', back_populates='users', cascade='all, delete')
 
+    rooms = db.relationship("Room", \
+        primaryjoin="or_(User.id==Room.user_id, User.id==Room.friend_id)", \
+        viewonly=True)
+    chats = db.relationship("Chat", back_populates="user")
+
     @property
     def password(self):
         return self.hashed_password
@@ -33,4 +38,5 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            "rooms": {room.id: room.to_dict() for room in self.rooms}
         }

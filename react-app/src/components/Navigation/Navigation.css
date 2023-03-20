@@ -147,21 +147,6 @@
   height: 26vh;
   position: relative;
 }
-.nav-item1 {
-  height: 20vh;
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.nav-item2 {
-  height: 20vh;
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
 
 .userIcon-img {
   height: 19vh;
@@ -213,52 +198,68 @@
 }
 
 .multipleCards-img {
-  height: 24vh;
-  width: 100%;
+  height: 9vh;
+  width: 92%;
   display: flex;
   align-items: center;
   position: relative;
-  top: -23px;
-  left: 12px;
+  left: 3px;
 }
 
-.nav-item3 {
+.nav-item1 {
+  height: 20vh;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item2 {
   height: 20vh;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
-  top: 2.5%;
+  top: -6%;
+}
+
+.nav-item3 {
+  height: 12vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: -3.5%;
 }
 
 .nav-item-allCards-text {
   position: relative;
-  top: -90px;
+  top: 2px;
   color: white;
   display: flex;
   justify-content: center;
 }
 
 .nav-item4 {
-  height: 20vh;
+  height: 13vh;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
 .transact-img {
-  height: 29vh;
-  width: 100%;
+  height: 8vh;
+  width: 40%;
   display: flex;
   position: relative;
-  right: -7px;
 }
 
 .transact-text {
   position: relative;
-  top: -51px;
+  top: -1px;
   color: white;
   display: flex;
   justify-content: center;
@@ -271,97 +272,48 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  top: 2%;
+  align-items: center;
+  top: 5%;
+}
+
+.nav-item6 {
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  top: 5%;
+  height: 12vh;
+  width: 87%;
 }
 
 .addCard-img {
   position: relative;
   bottom: 22px;
+  height: 81px;
+  width: 66px;
 }
 
 .addCard-text {
   position: relative;
-  top: -51px;
+  top: -27px;
   color: white;
   display: flex;
   justify-content: center;
 }
 
-/*
-
-/* .userIcon-img {
-  height: 20vh;
-  position: relative;
-  left: 13px;
-  top: -58px;
+.nav-item6 img {
+  display: flex;
+  height: 72px;
+  width: 72px;
   cursor: pointer;
-  width: 96%;
-  z-index: 100;
 }
 
-.multipleCards-img {
-  height: 22vh;
-  position: relative;
-  display: flex;
-  margin-left: 16px;
+.nav-item-Chat {
+  margin-bottom: 19px;
 }
 
-.link-text-allCards {
-  color: white;
+.nav-item-chatRoom-text {
   position: absolute;
-  right: 33%;
-  bottom: 20%;
-  font-size: 16px;
+  left: 31px;
 }
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.nav-icon-holder {
-  display: flex;
-  flex-direction: column;
-}
-
-.addCard-img {
-  height: 20vh;
-  position: relative;
-  left: 2%;
-}
-
-.nav-item-createTransaaction {
-  position: relative;
-  margin-top: -13%;
-}
-
-.nav-item-allCards {
-  position: relative;
-  margin-top: -33%;
-}
-
-.transact-img {
-  height: 22vh;
-  position: relative;
-  right: -6%;
-  top: -17%;
-}
-
-.transact-text {
-  color: white;
-  display: flex;
-  position: absolute;
-  top: 69%;
-  left: 32%;
-  font-size: 16px;
-}
-
-.addCard-text {
-  color: white;
-  display: flex;
-  position: absolute;
-  top: 70%;
-  left: 29%;
-  font-size: 16px;
-} */
