@@ -46,11 +46,13 @@ const SingleCardContent = ({ card }) => {
         <div>Debit #{card?.debit_number}</div>
         <div>Card Holder: {card?.full_name}</div>
       </div>
-      <div className="Dashboard-Edit-Card">
-        <UpdateCardModal user={sessionUser} />
-      </div>
-      <div className="SingleCard-Delete-Button" onClick={handleCardDelete}>
-        Delete Card
+      <div className="SingleCard-Bottom-Info">
+        <div className="Dashboard-Edit-Card">
+          <UpdateCardModal user={sessionUser} />
+        </div>
+        <div className="SingleCard-Delete-Button" onClick={handleCardDelete}>
+          Delete Card
+        </div>
       </div>
     </div>
   );
