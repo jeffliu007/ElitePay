@@ -11,3 +11,15 @@
   width: 96%;
   z-index: 100;
 }
+
+.generate-buttons {
+  background-color: rgb(32, 226, 222);
+  border-color: transparent;
+  font-weight: bolder;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.generate-buttons:hover {
+  background-color: #7bf5e8;
+}

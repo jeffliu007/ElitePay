@@ -93,7 +93,6 @@
   color: rgb(27, 27, 27);
   border-color: transparent;
   border-radius: 3px;
-  width: 13vw;
   padding: 10px;
   margin-bottom: 8px;
   opacity: 0.8;
@@ -101,7 +100,10 @@
   justify-content: center;
   position: relative;
   top: 20px;
+  height: 37px;
   cursor: pointer;
+  align-items: center;
+  font-weight: bolder;
 }
 
 .SingleTransaction-Delete:hover {
@@ -114,7 +116,6 @@
   color: rgb(27, 27, 27);
   border-color: transparent;
   border-radius: 3px;
-  width: 261px;
   padding: 10px;
   margin-bottom: 8px;
   opacity: 0.8;
@@ -124,9 +125,9 @@
   cursor: pointer;
   font-family: "Poppins";
   font-size: 15px;
-  height: 37px;
   display: flex;
   align-items: center;
+  font-weight: bolder;
 }
 
 .Update-Transaction-Button:hover {
@@ -172,7 +173,6 @@
     color: rgb(27, 27, 27);
     border-color: transparent;
     border-radius: 3px;
-    width: 16vw;
     padding: 10px;
     margin-bottom: 8px;
     opacity: 0.8;
@@ -181,6 +181,7 @@
     position: relative;
     top: 20px;
     cursor: pointer;
+    align-items: center;
   }
 
   .Update-Transaction-Button {
@@ -198,7 +199,6 @@
     cursor: pointer;
     font-family: "Poppins";
     font-size: 15px;
-    height: 37px;
     display: flex;
     align-items: center;
   }

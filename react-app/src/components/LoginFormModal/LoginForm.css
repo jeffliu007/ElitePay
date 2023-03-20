@@ -53,6 +53,10 @@
   cursor: pointer;
 }
 
+.Global-SubmitButton:hover {
+  background-color: rgb(104, 245, 242);
+}
+
 .Global-Modal-input {
   padding: 13px;
   margin-bottom: 10px;
