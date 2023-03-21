@@ -1,12 +1,9 @@
 # ElitePay
 
-This is the readme for the ElitePay. A platform for creating new debit cards and sending/receiving transactions with up to date balance tracking. Enjoy the new generation payment experience!
+This is the readme for the ElitePay. A platform for creating new debit cards and sending/receiving transactions with other users and the ability to accept a transaction. Users can also talk in real-time through a chat room utilizing webs sockets. Enjoy the new generation payment experience!
 
 ## Live Server Link
 https://elitepay.onrender.com/
-
-## Photos
-Photos here once polished
 
 ## Wiki Link
 * [API Documentation](https://github.com/jeffliu007/ElitePay/wiki/API-Docs)
@@ -31,6 +28,15 @@ Photos here once polished
   * Postgres
 * Hosting
   * Render
+  
+  
+ ## Preview
+  
+  ![EPay2](https://user-images.githubusercontent.com/98433650/226741558-c1ae2682-0483-4ec7-819d-1fc93b2b0ea2.gif)
+
+  
+  ![EPay1](https://user-images.githubusercontent.com/98433650/226741572-194d1af2-6abe-4a1f-8b69-75861c8d4b7e.gif)
+
   
 ## Getting started
 1. Clone this repository (only this branch)
