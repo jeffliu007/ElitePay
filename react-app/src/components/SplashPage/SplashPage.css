@@ -191,8 +191,7 @@
 .SplashPage-Top {
   display: flex;
   flex-direction: row;
-
-  gap: 110px;
+  gap: 160px;
 }
 
 .SplashPage-Bottom {
@@ -204,4 +203,12 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+@media only screen and (min-device-width: 1280px) and (max-device-width: 1440px) and (max-device-height: 900px) {
+  .SplashPage-Top {
+    display: flex;
+    flex-direction: row;
+    gap: 110px;
+  }
 }

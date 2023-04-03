@@ -35,7 +35,7 @@ const Footer = () => {
         </a>
       </div>
       <div className="SplashPage-Bottom">
-        All Rights Reserved:{" "}
+        Created By:{" "}
         <span>
           <a
             href="https://jeffliu007.github.io/"
