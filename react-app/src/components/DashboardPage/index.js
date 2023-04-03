@@ -56,7 +56,13 @@ const DashboardPage = () => {
                 <div className="AllTransactions-Amount">
                   ${transaction.amount}
                 </div>
-                <div className="AllTransactions-Status">
+                <div
+                  className={
+                    transaction?.status !== "completed"
+                      ? "AllTransactions-Status"
+                      : "AllTransactions-Status-Green"
+                  }
+                >
                   {transaction.status}
                 </div>
               </div>
