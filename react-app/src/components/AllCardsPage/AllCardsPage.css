@@ -108,3 +108,10 @@
     transform: rotate(-23deg);
   }
 }
+
+.AllCards-Balance {
+  color: white;
+  opacity: 0.88;
+  margin-left: 3px;
+  margin-bottom: 2px;
+}

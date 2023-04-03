@@ -46,19 +46,23 @@ const AllCardsPage = () => {
       <div className="AllCards-Card-Container">
         <div className="AllCards-Card-Holder">
           {allCardsArr.map((card) => (
-            <div className="AllCards-Content" key={card.id}>
-              <SingleCardModal card={card} />
-              <div>Balance: ${card.balance.toLocaleString()}</div>
-              <div>Created at: {card.created_at}</div>
-              <div>CVC: {card.cvc_number}</div>
-              <div>Debit #: {card.debit_number}</div>
-              <div>Full Name: {card.full_name}</div>
-              <div>Card ID #: {card.id} </div>
-              <img
-                src={process.env.PUBLIC_URL + "/singleCard.png"}
-                className="singleCard-img"
-              />
-              {/* </NavLink> */}
+            <div>
+              <h3 className="AllCards-Balance">
+                Balance: ${card.balance.toLocaleString()}
+              </h3>
+              <div className="AllCards-Content" key={card.id}>
+                <SingleCardModal card={card} />
+                <div>Created at: {card.created_at}</div>
+                <div>CVC: {card.cvc_number}</div>
+                <div>Debit #: {card.debit_number}</div>
+                <div>Full Name: {card.full_name}</div>
+                <div>Card ID #: {card.id} </div>
+                <img
+                  src={process.env.PUBLIC_URL + "/singleCard.png"}
+                  className="singleCard-img"
+                />
+                {/* </NavLink> */}
+              </div>
             </div>
           ))}
         </div>

@@ -112,9 +112,10 @@
   justify-content: center;
 }
 
-.No-Transactions {
-}
-
 .No-Transactions-Img {
   padding-top: 100px;
+}
+
+.AllTransactions-Status-Green {
+  color: rgb(50, 224, 50);
 }
