@@ -1,15 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import * as sessionActions from "../../store/session";
-import { useHistory, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import "./SplashPage.css";
 import Footer from "./footer";
 import { login } from "../../store/session";
 import { useModal } from "../../context/Modal";
 
 const SplashPage = () => {
-  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory();
   const { closeModal } = useModal();
   const location = useLocation();
 
@@ -21,7 +18,7 @@ const SplashPage = () => {
   const demoLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login("demo@aa.io", "password"));
-    if (location.pathname == "/") {
+    if (location.pathname === "/") {
       window.location.href = "/dashboard";
       closeModal();
     }

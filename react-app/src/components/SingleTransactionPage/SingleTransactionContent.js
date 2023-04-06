@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./SingleTransactionPage.css";
 import {
   thunkGetSingleTransaction,
@@ -62,6 +62,8 @@ const SingleTransactionContent = ({ transaction }) => {
   const recipientDisplayName = users.filter(
     (user) => user?.id == transaction?.recipient_id
   )[0]?.username;
+
+  if (!loadedPage) return null;
 
   return (
     <div className="SingleTransaction-Main-Container">

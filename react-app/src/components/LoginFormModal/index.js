@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
-import * as sessionActions from "../../store/session";
+// import * as sessionActions from "../../store/session";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -13,7 +13,6 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
   const location = useLocation();
-  const history = useHistory();
 
   const demoLogin = async (e) => {
     e.preventDefault();
@@ -21,7 +20,7 @@ function LoginFormModal() {
     if (data) {
       setErrors(["Invalid Credentials"]);
     } else {
-      if (location.pathname == "/") window.location.href = "/dashboard";
+      if (location.pathname === "/") window.location.href = "/dashboard";
       closeModal();
     }
   };
@@ -32,7 +31,7 @@ function LoginFormModal() {
     if (data) {
       setErrors(["Invalid Credentials"]);
     } else {
-      if (location.pathname == "/") window.location.href = "/dashboard";
+      if (location.pathname === "/") window.location.href = "/dashboard";
       closeModal();
     }
   };
@@ -43,14 +42,18 @@ function LoginFormModal() {
     if (data) {
       setErrors(["Invalid Credentials"]);
     } else {
-      if (location.pathname == "/") window.location.href = "/dashboard";
+      if (location.pathname === "/") window.location.href = "/dashboard";
       closeModal();
     }
   };
 
   return (
     <div className="Global-Modal-Container">
-      <img src={process.env.PUBLIC_URL + "/logo.png"} className="Global-Logo" />
+      <img
+        src={process.env.PUBLIC_URL + "/logo.png"}
+        className="Global-Logo"
+        alt="global-logo"
+      />
       <div className="Global-Modal-Header">Log in to ElitePay</div>
       <form onSubmit={handleSubmit} className="Global-ModalForm-Container">
         <ul className="Global-Errors-UL">

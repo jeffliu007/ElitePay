@@ -1,31 +1,22 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./DashboardPage.css";
-import { NavLink, useHistory } from "react-router-dom";
-import {
-  thunkGetAllTransactions,
-  thunkDeleteTransaction,
-} from "../../store/transactions";
-import CreateTransactionModal from "../CreateTransactionModal/Index";
+import { thunkGetAllTransactions } from "../../store/transactions";
 import SingleTransactionModal from "../SingleTransactionPage/SingleTransactionModal";
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [loadedPage, setLoadedPage] = useState(false);
   const allTransactions = useSelector(
     (state) => state.transactions.allTransactions
   );
-  const sessionUser = useSelector((state) => state.session);
+  // const sessionUser = useSelector((state) => state.session);
 
   let allTransactionsArr = Object.values(allTransactions);
 
   useEffect(() => {
     dispatch(thunkGetAllTransactions()).then(() => setLoadedPage(true));
   }, [dispatch]);
-
-  // const handleTransactionDelete = async (transactionId) => {
-  //   await dispatch(thunkDeleteTransaction(transactionId));
 
   if (!loadedPage) return null;
 
@@ -42,7 +33,10 @@ const DashboardPage = () => {
           allTransactionsArr.map((transaction) => (
             <div className="AllTransactions-Content">
               <SingleTransactionModal transaction={transaction} />
-              <img src={process.env.PUBLIC_URL + "/dollarsign.png"} />
+              <img
+                src={process.env.PUBLIC_URL + "/dollarsign.png"}
+                alt="dollarsign"
+              />
               <div className="AllTransactions-Inner-Content">
                 <div>Transaction #{transaction.id}</div>
                 <div className="Date">
@@ -77,6 +71,7 @@ const DashboardPage = () => {
             <img
               src={process.env.PUBLIC_URL + "./noTransactions.png"}
               className="No-Transactions-Img"
+              alt="noTX"
             />
           </div>
         )}
