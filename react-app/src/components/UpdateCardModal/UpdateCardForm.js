@@ -1,13 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+
 import { useModal } from "../../context/Modal";
 import { thunkGetAllCards, thunkUpdateCard } from "../../store/cards";
 
 function UpdateCardForm() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const card = useSelector((state) => state.cards.singleCard);
 
   const [full_name, setFullname] = useState(card.full_name);

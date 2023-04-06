@@ -12,7 +12,7 @@ const NotFound = () => {
       history.push("/");
     }, 4000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [history]);
 
   useEffect(() => {
     if (!timeLeft) return;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "../LoginFormModal/LoginForm.css";
@@ -15,7 +15,6 @@ function SignupFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
   const location = useLocation();
-  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +23,7 @@ function SignupFormModal() {
       if (data) {
         setErrors(data);
       } else {
-        if (location.pathname == "/") window.location.href = "/dashboard";
+        if (location.pathname === "/") window.location.href = "/dashboard";
         closeModal();
       }
     } else {
@@ -40,6 +39,7 @@ function SignupFormModal() {
         <img
           src={process.env.PUBLIC_URL + "/logo.png"}
           className="Global-Logo"
+          alt="global-logo"
         />
       </div>
       <div className="Global-Modal-Header">Sign up for ElitePay</div>

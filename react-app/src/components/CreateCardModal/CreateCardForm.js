@@ -1,13 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateCard } from "../../store/cards";
 
 function CreateCardForm() {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [full_name, setFullname] = useState("");
   const [debit_number, set_Debit] = useState("");

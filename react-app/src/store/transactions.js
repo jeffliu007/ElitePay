@@ -4,7 +4,7 @@ const CREATE_NEW_TRANSACTION = "transactions/create_new_transaction";
 const UPDATE_TRANSACTION = "transactions/update_transaction";
 const DELETE_TRANSACTION = "transactions/delete_transaction";
 const ACCEPT_TRANSACTION = "transactions/accept_transaction";
-const SET_TRANSACTION_ERRORS = "transactions/set_transaction_errors";
+// const SET_TRANSACTION_ERRORS = "transactions/set_transaction_errors";
 
 // ------------------------->
 
@@ -40,10 +40,10 @@ const acceptTransaction = (transactionId) => ({
   transactionId,
 });
 
-const setTransactionErrors = (errors) => ({
-  type: SET_TRANSACTION_ERRORS,
-  errors,
-});
+// const setTransactionErrors = (errors) => ({
+//   type: SET_TRANSACTION_ERRORS,
+//   errors,
+// });
 
 // ------------------------->
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import {
   thunkUpdateTransaction,
@@ -12,7 +11,6 @@ import { thunkGetAllCards } from "../../store/cards";
 
 function UpdateTransactionForm() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const singleTransaction = useSelector(
     (state) => state.transactions.singleTransaction
   );
@@ -78,7 +76,7 @@ function UpdateTransactionForm() {
       }
       fetchData();
     }
-  }, [users, singleTransaction.id]);
+  }, [users, singleTransaction.id, dispatch]);
 
   const otherUsers = users?.filter((user) => user.id !== sessionUserId);
 

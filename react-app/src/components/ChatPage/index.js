@@ -22,7 +22,7 @@ const Chat = () => {
   useEffect(() => {
     dispatch(thunkGetAllRooms());
     dispatch(thunkGetAllUsers());
-  }, []);
+  }, [dispatch]);
 
   if (!rooms || !allUserObject) {
     return null;

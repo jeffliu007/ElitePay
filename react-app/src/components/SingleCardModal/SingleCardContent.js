@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, NavLink, useHistory } from "react-router-dom";
 import "./SingleCardPage.css";
 import {
   thunkGetSingleCard,
@@ -12,8 +11,7 @@ import { useModal } from "../../context/Modal";
 
 const SingleCardContent = ({ card }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const singleCard = useSelector((state) => state.cards.singleCard);
+
   const sessionUser = useSelector((state) => state.session);
   const [loadedPage, setLoadedPage] = useState(false);
   const { closeModal } = useModal();
@@ -28,6 +26,8 @@ const SingleCardContent = ({ card }) => {
     await dispatch(thunkGetAllCards());
     closeModal();
   };
+
+  if (!loadedPage) return null;
 
   return (
     <div className="Global-Modal-Container6">

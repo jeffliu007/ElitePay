@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -57,8 +57,6 @@ function Navigation({ isLoaded }) {
 
 export function VerticalNavigation({ isLoaded }) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session);
-  const location = useLocation();
   const history = useHistory();
 
   const handleLogout = (e) => {
@@ -78,7 +76,7 @@ export function VerticalNavigation({ isLoaded }) {
             <img
               src={process.env.PUBLIC_URL + "/logo.png"}
               className="VerticalNavbar-Home-Logo"
-              alt="navbar homelogo"
+              alt="navbar-homelogo"
             />
           </NavLink>
         </div>
@@ -87,6 +85,7 @@ export function VerticalNavigation({ isLoaded }) {
             <img
               src={process.env.PUBLIC_URL + "/userIcon.png"}
               className="userIcon-img"
+              alt="usericon"
             />
             <span className="nav-item-username">{userName?.username}</span>
             <span className="nav-item-logout" onClick={handleLogout}>
@@ -99,6 +98,7 @@ export function VerticalNavigation({ isLoaded }) {
             <img
               src={process.env.PUBLIC_URL + "/multipleCards.png"}
               className="multipleCards-img"
+              alt="multipleCards"
             />
             <span className="nav-item-allCards-text">All Cards</span>
           </NavLink>
@@ -107,6 +107,7 @@ export function VerticalNavigation({ isLoaded }) {
           <img
             src={process.env.PUBLIC_URL + "/makeTransaction.png"}
             className="transact-img"
+            alt="makeTransaction"
           />
           {<CreateTransactionModal />}
           <div className="transact-text">Transact</div>
@@ -115,13 +116,17 @@ export function VerticalNavigation({ isLoaded }) {
           <img
             src={process.env.PUBLIC_URL + "/addCard.png"}
             className="addCard-img"
+            alt="addCard"
           />
           {<CreateCardModal />}
           <div className="addCard-text">Add card</div>
         </div>
         <div className="nav-item6">
           <NavLink className="nav-item-Chat" to="/dashboard/chat">
-            <img src={process.env.PUBLIC_URL + "/chatIcon.png"} />
+            <img
+              src={process.env.PUBLIC_URL + "/chatIcon.png"}
+              alt="chatIcon"
+            />
             <span className="nav-item-chatRoom-text">Chat Room</span>
           </NavLink>
         </div>

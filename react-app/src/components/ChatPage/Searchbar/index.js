@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  thunkCreateRoom,
-  thunkGetAllRooms,
-  thunkGetAllUsers,
-} from "../../../store/rooms";
+import { thunkCreateRoom, thunkGetAllUsers } from "../../../store/rooms";
 import "./Searchbar.css";
 
 export const Searchbar = ({ existingUsers }) => {
@@ -52,7 +48,7 @@ export const Searchbar = ({ existingUsers }) => {
             onChange={handleFilter}
           />
         </div>
-        {searchInput.length != 0 && (
+        {searchInput.length !== 0 && (
           <div className="dataResult">
             {filteredUsers.map((user) => {
               return (

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetAllCards } from "../../store/cards";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import SingleCardModal from "../SingleCardModal/SingleCardModal";
 
 import "./AllCardsPage.css";
@@ -11,7 +11,7 @@ const AllCardsPage = () => {
 
   const [loadedPage, setLoadedPage] = useState(false);
   const allCards = useSelector((state) => state.cards.allCards);
-  const sessionUser = useSelector((state) => state.session);
+  // const sessionUser = useSelector((state) => state.session);
   const history = useHistory();
 
   const handleBack = () => {
@@ -60,6 +60,7 @@ const AllCardsPage = () => {
                 <img
                   src={process.env.PUBLIC_URL + "/singleCard.png"}
                   className="singleCard-img"
+                  alt="DebitCard"
                 />
                 {/* </NavLink> */}
               </div>
