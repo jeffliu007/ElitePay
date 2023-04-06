@@ -1,14 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { thunkCreateTransaction } from "../../store/transactions";
 import { thunkGetAllCards } from "../../store/cards";
 
 function CreateTransactionForm() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const allCards = useSelector((state) => state.cards.allCards);
   let allCardsArr = Object.values(allCards);
   const sessionUserId = useSelector((state) => state.session.user.id);

@@ -203,6 +203,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-left: 47px;
 }
 
 @media only screen and (min-device-width: 1280px) and (max-device-width: 1440px) and (max-device-height: 900px) {

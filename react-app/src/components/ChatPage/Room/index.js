@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRoomChats, thunkCreateChat } from "../../../store/chats";
-import { thunkGetAllRooms } from "../../../store/rooms";
 import "./Room.css";
 
 import { io } from "socket.io-client";
@@ -76,7 +75,7 @@ const ChatRoom = ({ selectedRoom }) => {
   useEffect(() => {
     dispatch(getRoomChats(selectedRoom));
     scroll();
-  }, [selectedRoom]);
+  }, [selectedRoom, dispatch]);
 
   return (
     <>
