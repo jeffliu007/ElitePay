@@ -44,7 +44,7 @@ const Chat = () => {
               >
                 <div className="Room-User">
                   <div className="Room-User-Icon">
-                    <i class="fa-regular fa-user"></i>
+                    <i className="fa-regular fa-user"></i>
                   </div>
                   <p>
                     {room?.friend_id === user?.id
