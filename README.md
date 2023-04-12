@@ -1,6 +1,6 @@
 # ElitePay
 
-This is the readme for the ElitePay. A platform for creating new debit cards and sending/receiving transactions with other users and the ability to accept a transaction. Users can also talk in real-time through a chat room utilizing webs sockets. Enjoy the new generation payment experience!
+This is the readme for the ElitePay. A platform for creating new debit cards and sending/receiving transactions with other users and the ability to accept a transaction. Users can also talk in real-time through a chat room utilizing webs sockets. Enjoy the next generation payment experience!
 
 ## Live Server Link
 https://elitepay.onrender.com/
