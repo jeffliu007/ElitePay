@@ -35,17 +35,14 @@ const Footer = () => {
         </a>
       </div>
       <div className="SplashPage-Bottom">
-        Created By:{" "}
-        <span>
-          <a
-            href="https://jeffliu007.github.io/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {" "}
-            Jeff Liu
-          </a>
-        </span>
+        <a
+          href="https://jeffliu007.github.io/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {" "}
+          Created By: Jeff Liu
+        </a>
       </div>
     </div>
   );

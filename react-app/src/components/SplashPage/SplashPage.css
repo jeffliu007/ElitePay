@@ -197,13 +197,18 @@
 .SplashPage-Bottom {
   font-size: smaller;
   opacity: 0.6;
-  padding-bottom: 3px;
+  padding-bottom: 6px;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   margin-left: 47px;
+}
+
+.SplashPage-Bottom:hover {
+  color: white;
+  opacity: 1;
 }
 
 @media only screen and (min-device-width: 1280px) and (max-device-width: 1440px) and (max-device-height: 900px) {
